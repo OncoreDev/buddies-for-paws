@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import KK9RGuinnessWorldRecord from "../../../public/KK9R-Guinness-World-Record.webp";
 import { motion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 
 const feturedEvent = {
   route: "kk9r-guinness-world-record",
@@ -68,8 +69,11 @@ export function EventsPageContent() {
               {feturedEvent.title}
             </h1>
 
-            <Button variant={"yellow"} size={"sm"}>
-              <Link href={"/events/" + feturedEvent.route}>Find out more</Link>
+            <Button variant={"yellow"} size={"sm"} className="group" asChild>
+              <Link href={"/events/" + feturedEvent.route}>
+                Find out more{" "}
+                <ArrowRight className="ease-spring -mr-2 -ml-[18px] inline opacity-0 transition-all duration-400 group-hover:ml-0 group-hover:opacity-100" />
+              </Link>
             </Button>
           </motion.div>
         </div>

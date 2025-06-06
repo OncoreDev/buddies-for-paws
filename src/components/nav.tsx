@@ -8,16 +8,16 @@ import {
 import { cn } from "@/lib/utils";
 import { Portal } from "@radix-ui/react-portal";
 import { VariantProps } from "class-variance-authority";
-import { ExternalLink, HandCoins } from "lucide-react";
+import { HandCoins } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { BsExclamation } from "react-icons/bs";
 import { TbMenu, TbX } from "react-icons/tb";
 import { BFPMaster } from "./logo/bfp-master";
 import { BFPSubmark } from "./logo/bfp-submark";
 import { Button, buttonVariants } from "./ui/button";
-import { BsExclamation } from "react-icons/bs";
 
 const routeThemes: {
   prefixes: string[];
@@ -56,21 +56,6 @@ const links = [
 const mobileLinks = [{ href: "/", label: "Home" }, ...links];
 
 const half = Math.ceil(links.length / 2);
-
-// animation variants
-const navLinkIndicatorWrapperVariants = {
-  visible: {
-    transition: {
-      delayChildren: 0.2,
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const navLinkIndicatorVariants = {
-  hidden: { opacity: 0, y: -4 },
-  visible: { opacity: 1, y: 0, transition: { type: "spring" } },
-};
 
 export function Nav() {
   const pathname = usePathname();
@@ -249,42 +234,59 @@ export function Nav() {
   );
 }
 
+// animation variants
+const navLinkIndicatorWrapperVariants = {
+  visible: {
+    transition: {
+      delayChildren: 0.2,
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const navLinkIndicatorVariants = {
+  hidden: { opacity: 0, y: -4 },
+  visible: { opacity: 1, y: 0, transition: { type: "spring" } },
+};
+
 const NavLink = ({ link, className }: { link: any; className?: string }) => {
   const pathname = usePathname();
   return (
-    <Link
-      href={link.href}
-      target={link.href.startsWith("http") ? "_blank" : undefined}
-      className={cn("relative block transition-all hover:scale-105", className)}
+    <motion.div
+      initial="hidden"
+      animate={pathname === link.href ? "visible" : "hidden"}
+      whileHover={"visible"}
     >
-      {link.label}
-      <AnimatePresence>
-        {pathname === link.href && (
-          <motion.div
-            variants={navLinkIndicatorWrapperVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            className="absolute -top-3 -right-1.5"
-          >
-            <motion.div variants={navLinkIndicatorVariants}>
-              <BsExclamation className="size-5" />
-            </motion.div>
-            <motion.div
-              variants={navLinkIndicatorVariants}
-              className="absolute top-0.5 -right-1.5 size-5 rotate-[22.5deg]"
-            >
-              <BsExclamation className="size-5" />
-            </motion.div>
-            <motion.div
-              variants={navLinkIndicatorVariants}
-              className="absolute top-1.5 -right-[11px] size-5 rotate-[45deg]"
-            >
-              <BsExclamation className="size-5" />
-            </motion.div>
-          </motion.div>
+      <Link
+        href={link.href}
+        target={link.href.startsWith("http") ? "_blank" : undefined}
+        className={cn(
+          "relative block transition-all hover:scale-105",
+          className,
         )}
-      </AnimatePresence>
-    </Link>
+      >
+        {link.label}
+        <motion.div
+          variants={navLinkIndicatorWrapperVariants}
+          className="absolute -top-3 -right-1.5"
+        >
+          <motion.div variants={navLinkIndicatorVariants}>
+            <BsExclamation className="size-5" />
+          </motion.div>
+          <motion.div
+            variants={navLinkIndicatorVariants}
+            className="absolute top-0.5 -right-1.5 size-5 rotate-[22.5deg]"
+          >
+            <BsExclamation className="size-5" />
+          </motion.div>
+          <motion.div
+            variants={navLinkIndicatorVariants}
+            className="absolute top-1.5 -right-[11px] size-5 rotate-[45deg]"
+          >
+            <BsExclamation className="size-5" />
+          </motion.div>
+        </motion.div>
+      </Link>
+    </motion.div>
   );
 };

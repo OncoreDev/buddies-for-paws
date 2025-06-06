@@ -7,6 +7,7 @@ import ToteBage from "../../public/shop/tote-bage.png";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { ExternalLink } from "lucide-react";
 
 export default function StoreBanner() {
   return (
@@ -54,9 +55,10 @@ export default function StoreBanner() {
             Perfect for showing your support and love!
           </p>
 
-          <Button variant={"yellow"} className="mt-4">
+          <Button variant={"yellow"} className="group mt-4" asChild>
             <Link href={"https://baobaoinu.com/"} target="_blank">
               Shop Now
+              <ExternalLink className="ease-spring -mr-2 -ml-5 inline opacity-0 transition-all duration-400 group-hover:ml-0 group-hover:opacity-100" />
             </Link>
           </Button>
         </div>

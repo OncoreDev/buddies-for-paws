@@ -26,6 +26,7 @@ export default function EventsList() {
             viewport={{ once: true }}
             transition={{ type: "spring", delay: 0.2 }}
             key={event.title + "card"}
+            className="group"
           >
             <Link
               href={`/events/${event.route}`}
@@ -34,10 +35,10 @@ export default function EventsList() {
               <Image
                 src={event.image}
                 alt={event.title}
-                className="rw-full absolute inset-0 -z-10 h-full object-cover"
+                className="ease-spring absolute inset-0 -z-10 h-full w-full scale-[1.15] object-cover transition-all duration-400 group-hover:scale-105"
               />
-              <div className="hover:bg-orange/80 absolute inset-0 flex items-center justify-center p-6 transition-all">
-                <p className="font-cooper text-center text-3xl text-white drop-shadow-lg">
+              <div className="hover:bg-orange/80 absolute inset-0 flex items-center justify-center bg-black/40 p-6 transition-all duration-400">
+                <p className="font-cooper text-center text-3xl text-white">
                   {event.title}
                 </p>
               </div>

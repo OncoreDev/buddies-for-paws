@@ -5,6 +5,7 @@ import Image from "next/image";
 import Bani from "../../public/hero-bani.png";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -29,8 +30,11 @@ export default function Hero() {
           <span className="text-6xl md:text-9xl">Bani</span>
         </h1>
 
-        <Button variant={"teal"}>
-          <Link href={"/journeys#bani"}>Find out more</Link>
+        <Button variant={"teal"} asChild className="group">
+          <Link href={"/journeys#bani"}>
+            Find out more
+            <ArrowRight className="ease-spring -mr-2 -ml-5 inline opacity-0 transition-all duration-400 group-hover:ml-0 group-hover:opacity-100" />
+          </Link>
         </Button>
       </motion.div>
     </div>

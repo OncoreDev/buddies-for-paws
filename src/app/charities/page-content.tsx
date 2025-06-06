@@ -18,7 +18,7 @@ export function CharitiesPageContent() {
         >
           Charities
         </motion.h1>
-        <motion.p
+        {/* <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", delay: 0.4 }}
@@ -28,7 +28,7 @@ export function CharitiesPageContent() {
           charities could be placed here. Place text about charities here,
           information about charities could be placed here. Place text about
           charities here, information about charities could be placed here.{" "}
-        </motion.p>
+        </motion.p> */}
       </div>
 
       <div className="grid grid-cols-2 flex-wrap items-center justify-center gap-8 sm:flex sm:gap-x-24 sm:gap-y-16">

@@ -64,7 +64,7 @@ export function Footer() {
                 <Input
                   name="EMAIL"
                   type="email"
-                  placeholder="Enter you email"
+                  placeholder="Enter your email"
                   className="font-cooper border-background text-background placeholder:text-background focus:placeholder:text-muted-foreground grow text-center"
                 />
 
@@ -100,7 +100,7 @@ export function Footer() {
               transition={{ type: "spring" }}
             >
               <Link
-                href={"https://x.com/BONKForPaws"}
+                href={"https://x.com/buddiesforpaws"}
                 target="_blank"
                 className="hover:text-blue-foreground block transition-all hover:scale-110"
               >

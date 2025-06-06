@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -36,10 +36,11 @@ export function EventPageContent({ event }: { event: any }) {
               asChild
               size={"sm"}
               variant={"yellow"}
-              className="w-10 p-0 sm:w-auto sm:px-5 sm:pl-3"
+              className="group w-10 p-0 sm:w-auto sm:px-5"
             >
               <Link href={"/events"}>
-                <ChevronLeft />
+                <ArrowLeft className="ease-spring inline transition-all duration-400 sm:-mr-[18px] sm:-ml-2 sm:opacity-0 sm:group-hover:mr-0 sm:group-hover:opacity-100" />
+
                 <span className="hidden sm:inline">Back</span>
               </Link>
             </Button>

@@ -4,9 +4,10 @@ import { BFPMaster } from "@/components/logo/bfp-master";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Send } from "lucide-react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Shiba from "../../../public/contact/shiba.png";
-import { motion } from "motion/react";
 
 export function ContactPageContent() {
   return (
@@ -100,8 +101,9 @@ export function ContactPageContent() {
               className="border-orange"
             />
           </div>
-          <Button variant={"yellow"} className="ml-auto">
+          <Button variant={"yellow"} className="group ml-auto">
             Send Message
+            <Send className="ease-spring -mr-2 -ml-5 inline opacity-0 transition-all duration-400 group-hover:ml-0 group-hover:opacity-100" />
           </Button>
         </motion.div>
       </motion.div>
