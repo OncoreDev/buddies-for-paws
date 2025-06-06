@@ -5,6 +5,8 @@ import Bottle from "../../public/shop/bottle.png";
 import Shirt from "../../public/shop/shirt.png";
 import ToteBage from "../../public/shop/tote-bage.png";
 import { motion } from "motion/react";
+import Link from "next/link";
+import { Button } from "./ui/button";
 
 export default function StoreBanner() {
   return (
@@ -44,11 +46,19 @@ export default function StoreBanner() {
 
         <div className="flex flex-col items-center justify-center gap-2 text-center md:px-12">
           <h4 className="font-cooper text-4xl text-white sm:text-5xl">
-            Store Coming Soon!
+            Visit Our Store!
           </h4>
-          <p className="sm:text-lg">
-            We&apos;re cooking something up. Stay posted!
+
+          <p className="mt-2 max-w-lg sm:text-lg">
+            Rep the movement with limited-edition BFP shirts, totes, and more.
+            Perfect for showing your support and love!
           </p>
+
+          <Button variant={"yellow"} className="mt-4">
+            <Link href={"https://baobaoinu.com/"} target="_blank">
+              Shop Now
+            </Link>
+          </Button>
         </div>
       </motion.div>
     </div>
