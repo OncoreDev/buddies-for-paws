@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import Form from "next/form";
 import Image from "next/image";
 import Link from "next/link";
-import { FaDiscord, FaInstagram, FaTiktok, FaTwitter } from "react-icons/fa6";
+import { FaDiscord, FaInstagram, FaTiktok, FaXTwitter } from "react-icons/fa6";
 import FooterBG from "../../public/footer-bg.png";
 import { motion } from "motion/react";
 
@@ -104,7 +104,7 @@ export function Footer() {
                 target="_blank"
                 className="hover:text-blue-foreground block transition-all hover:scale-110"
               >
-                <FaTwitter className="size-6" />
+                <FaXTwitter className="size-6" />
                 <span className="sr-only">twitter</span>
               </Link>
             </motion.div>
