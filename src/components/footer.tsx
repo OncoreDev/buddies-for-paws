@@ -61,13 +61,16 @@ export function Footer() {
                   value="ca0cb7eff6bdf10bbae650d96"
                 />
                 <input type="hidden" name="id" value="9f80730d46" />
+                <label htmlFor="email" className="sr-only">
+                  Email
+                </label>
                 <Input
+                  id="email"
                   name="EMAIL"
                   type="email"
                   placeholder="Enter your email"
                   className="font-cooper border-background text-background placeholder:text-background focus:placeholder:text-muted-foreground grow text-center"
                 />
-
                 <Button type="submit" className="sm:px-8">
                   Sign Up
                 </Button>

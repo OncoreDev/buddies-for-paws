@@ -5,6 +5,7 @@ import { SITE_CONFIG } from "@/lib/site-config";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const inter = Inter({
@@ -56,6 +57,12 @@ export default function RootLayout({
           <Nav />
           {children}
           <Footer />
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              className: "!rounded-lg",
+            }}
+          />
         </TooltipProvider>
       </body>
     </html>

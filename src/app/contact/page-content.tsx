@@ -2,24 +2,74 @@
 
 import { BFPMaster } from "@/components/logo/bfp-master";
 import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Send } from "lucide-react";
+import {
+  ContactUsForm,
+  contactUsFormSchema,
+} from "@/lib/schema/contact-us-form-schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2, Send } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import Shiba from "../../../images/contact/shiba.png";
 
 export function ContactPageContent() {
+  const form = useForm<ContactUsForm>({
+    resolver: zodResolver(contactUsFormSchema),
+    defaultValues: {
+      email: "",
+      message: "",
+    },
+  });
+
+  async function onSubmit(values: ContactUsForm) {
+    const toastId = toast.loading("Submitting your message...");
+    try {
+      const res = await fetch("/api/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.message || "Failed to submit form");
+      }
+
+      console.log("Form submitted successfully:", data);
+      toast.success(
+        "Your message has been sent and we will get back to you soon!",
+        {
+          id: toastId,
+        },
+      );
+    } catch (error: any) {
+      console.error("Error submitting form:", error);
+      toast.error(error.message || "Failed to submit form", {
+        id: toastId,
+      });
+    }
+  }
+
   return (
     <div className="mx-auto grid w-full max-w-7xl gap-16 px-6 py-24 sm:px-16 sm:py-32 sm:pb-40 lg:grid-cols-2">
       <motion.div
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1 },
-        }}
-        initial="hidden"
-        whileInView="visible"
-        transition={{ type: "spring" }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
         viewport={{ once: true }}
         className="relative hidden items-center justify-center lg:flex"
       >
@@ -34,7 +84,6 @@ export function ContactPageContent() {
       </motion.div>
       <motion.div
         variants={{
-          hidden: {},
           visible: {
             transition: {
               delayChildren: 0.2,
@@ -68,7 +117,6 @@ export function ContactPageContent() {
           For more information on how to get involved with Buddies for Paws
           please feel free to contact us using the form below.
         </motion.p>
-
         <motion.div
           variants={{
             hidden: { opacity: 0, y: 20 },
@@ -77,34 +125,69 @@ export function ContactPageContent() {
           transition={{ type: "spring" }}
           className="flex flex-col gap-6"
         >
-          <div className="flex flex-col gap-2">
-            <label className="font-cooper text-orange text-lg font-semibold">
-              Email*
-            </label>
-            <Input
-              type="email"
-              name="email"
-              required
-              placeholder="you@example.com"
-              className="border-orange"
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label className="font-cooper text-orange text-lg font-semibold">
-              Message*
-            </label>
-            <Textarea
-              name="message"
-              required
-              rows={10}
-              placeholder="Contact us for general inquiries or request to be added to list of charities"
-              className="border-orange"
-            />
-          </div>
-          <Button variant={"yellow"} className="group ml-auto">
-            Send Message
-            <Send className="ease-spring -mr-2 -ml-5 inline opacity-0 transition-all duration-400 group-hover:ml-0 group-hover:opacity-100" />
-          </Button>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="flex flex-col gap-6"
+            >
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-cooper text-orange text-xl">
+                      Email
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="buddiesforpaws@gmail.com"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <div className="flex items-end justify-between gap-2">
+                      <FormLabel className="font-cooper text-orange text-xl">
+                        Message
+                      </FormLabel>
+
+                      <FormLabel className="text-muted-foreground text-xs">
+                        ({field.value.length}/1000)
+                      </FormLabel>
+                    </div>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Tell us how you'd like to get involved or ask us anything!"
+                        rows={5}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button
+                type="submit"
+                variant={"yellow"}
+                className="group ml-auto"
+                disabled={form.formState.isSubmitting}
+              >
+                {form.formState.isSubmitting ? (
+                  <Loader2 className="-ml-2 animate-spin" />
+                ) : (
+                  <Send className="-ml-2" />
+                )}
+                Send Message
+              </Button>
+            </form>
+          </Form>
         </motion.div>
       </motion.div>
     </div>
