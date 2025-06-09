@@ -169,7 +169,7 @@ export function Footer() {
               visible: { opacity: 1, y: 0 },
             }}
             transition={{ type: "spring" }}
-            className="text-muted-foreground text-sm"
+            className="text-sm"
           >
             All rights reserved © 2025 Buddies For Paws
           </motion.p>
