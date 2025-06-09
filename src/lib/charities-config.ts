@@ -1,12 +1,12 @@
-import AnimalsAsiaLogo from "../../public/charity/animals_asia.webp";
-import DBLColorLogo from "../../public/charity/DBL-Color-Logo.png";
-import OrangutanOutreachLogo from "../../public/charity/OrangutanOutreach-logo-transparent.webp";
-import SaveTheChimpsLogo from "../../public/charity/save_the_chimps.webp";
-import SeaTurtleConservancyLogo from "../../public/charity/sea_turtle_conservancy.webp";
-import WCNLogo from "../../public/charity/wcn.webp";
-import WildLifeSOS from "../../public/charity/wildlife_sos.webp";
+import AnimalsAsiaLogo from "../../images/charity/animals_asia.webp";
+import DBLColorLogo from "../../images/charity/DBL-Color-Logo.png";
+import OrangutanOutreachLogo from "../../images/charity/OrangutanOutreach-logo-transparent.webp";
+import SaveTheChimpsLogo from "../../images/charity/save_the_chimps.webp";
+import SeaTurtleConservancyLogo from "../../images/charity/sea_turtle_conservancy.webp";
+import WCNLogo from "../../images/charity/wcn.webp";
+import WildLifeSOS from "../../images/charity/wildlife_sos.webp";
 
-export const CHARITIES = [
+export const CHARITIES_CONFIG = [
   {
     image: WildLifeSOS,
     name: "Wildlife SOS",

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { CHARITIES } from "@/lib/charities";
+import { CHARITIES_CONFIG } from "@/lib/charities-config";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,7 +32,7 @@ export function CharitiesPageContent() {
       </div>
 
       <div className="grid grid-cols-2 flex-wrap items-center justify-center gap-8 sm:flex sm:gap-x-24 sm:gap-y-16">
-        {CHARITIES.map((charity, i) => (
+        {CHARITIES_CONFIG.map((charity, i) => (
           <motion.div
             key={charity.name}
             initial={{ opacity: 0, y: 20 }}

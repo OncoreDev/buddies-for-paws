@@ -14,7 +14,7 @@ const inter = Inter({
 
 const cooperBlackStd = localFont({
   variable: "--font-cooper-black-std",
-  src: "./../../public/Cooper Std Black.ttf",
+  src: "./../../fonts/Cooper Std Black.ttf",
 });
 
 export const metadata: Metadata = {

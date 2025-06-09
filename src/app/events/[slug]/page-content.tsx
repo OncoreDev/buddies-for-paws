@@ -3,10 +3,23 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
+import {
+  RenderImageContext,
+  RenderImageProps,
+  RowsPhotoAlbum,
+} from "react-photo-album";
+import "react-photo-album/rows.css";
+
 export function EventPageContent({ event }: { event: any }) {
+  const photos = event.gallery.map((photo: StaticImageData) => ({
+    src: photo.src,
+    width: photo.width,
+    height: photo.height,
+  }));
+
   return (
     <div>
       <div className="relative z-0 w-full overflow-hidden bg-black">
@@ -39,9 +52,9 @@ export function EventPageContent({ event }: { event: any }) {
               className="group w-10 p-0 sm:w-auto sm:px-5"
             >
               <Link href={"/events"}>
-                <ArrowLeft className="ease-spring inline transition-all duration-400 sm:-mr-[18px] sm:-ml-2 sm:opacity-0 sm:group-hover:mr-0 sm:group-hover:opacity-100" />
+                <ArrowLeft className="sm:-ml-2" />
 
-                <span className="hidden sm:inline">Back</span>
+                <span className="hidden sm:inline">All Events</span>
               </Link>
             </Button>
           </motion.div>
@@ -101,6 +114,43 @@ export function EventPageContent({ event }: { event: any }) {
           </div>
         )}
       </div>
+
+      <div className="mx-auto w-full max-w-7xl p-6">
+        <RowsPhotoAlbum
+          photos={photos}
+          render={{ image: renderNextImage }}
+          targetRowHeight={320}
+        />
+      </div>
     </div>
+  );
+}
+
+function renderNextImage(
+  { alt = "", title, sizes }: RenderImageProps,
+  { photo, width, height }: RenderImageContext,
+) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ type: "spring" }}
+      viewport={{ once: true }}
+      style={{
+        width: "100%",
+        position: "relative",
+        aspectRatio: `${width} / ${height}`,
+      }}
+      className="overflow-hidden rounded-md bg-black"
+    >
+      <Image
+        fill
+        src={photo}
+        alt={alt}
+        title={title}
+        sizes={sizes}
+        placeholder={"blurDataURL" in photo ? "blur" : undefined}
+      />
+    </motion.div>
   );
 }

@@ -1,13 +1,13 @@
 "use client";
 
-import Image from "next/image";
-import Bottle from "../../public/shop/bottle.png";
-import Shirt from "../../public/shop/shirt.png";
-import ToteBage from "../../public/shop/tote-bage.png";
-import { motion } from "motion/react";
-import Link from "next/link";
-import { Button } from "./ui/button";
 import { ExternalLink } from "lucide-react";
+import { motion } from "motion/react";
+import Image from "next/image";
+import Link from "next/link";
+import Bottle from "../../images/shop/bottle.png";
+import Shirt from "../../images/shop/shirt.png";
+import ToteBage from "../../images/shop/tote-bage.png";
+import { Button } from "./ui/button";
 
 export default function StoreBanner() {
   return (

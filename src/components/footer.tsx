@@ -6,7 +6,7 @@ import Form from "next/form";
 import Image from "next/image";
 import Link from "next/link";
 import { FaDiscord, FaInstagram, FaTiktok, FaXTwitter } from "react-icons/fa6";
-import FooterBG from "../../public/footer-bg.png";
+import FooterBG from "../../images/footer-bg.png";
 import { motion } from "motion/react";
 
 export function Footer() {

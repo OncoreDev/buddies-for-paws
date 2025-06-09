@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Send } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
-import Shiba from "../../../public/contact/shiba.png";
+import Shiba from "../../../images/contact/shiba.png";
 
 export function ContactPageContent() {
   return (

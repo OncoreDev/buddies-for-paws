@@ -30,7 +30,7 @@ export default function EventsCarouel() {
             <Button asChild className="group mr-auto">
               <Link href="/events">
                 All Events
-                <ArrowRight className="ease-spring -mr-2 -ml-5 inline opacity-0 transition-all duration-400 group-hover:ml-0 group-hover:opacity-100" />
+                <ArrowRight className="-mr-2" />
               </Link>
             </Button>
             <div className="flex items-center gap-3">

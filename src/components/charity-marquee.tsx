@@ -1,5 +1,5 @@
 import { Marquee } from "@/components/magicui/marquee";
-import { CHARITIES } from "@/lib/charities";
+import { CHARITIES_CONFIG } from "@/lib/charities-config";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ export default function CharityMarquee() {
         pauseOnHover
         className="[--duration:20s] [--gap:2rem] lg:[--gap:6rem]"
       >
-        {CHARITIES.map((charity) => (
+        {CHARITIES_CONFIG.map((charity) => (
           <Link
             key={charity.name}
             href={charity.url}

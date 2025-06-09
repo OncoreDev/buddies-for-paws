@@ -152,17 +152,17 @@ export function Nav() {
                 opened: {
                   y: "0%",
                   transition: {
-                    duration: 1,
+                    duration: 0.75,
                     ease: [0.74, 0, 0.19, 1.02],
-                    delayChildren: 0.8,
+                    delayChildren: 0.6,
                     staggerChildren: 0.25,
                   },
                 },
                 closed: {
                   y: "-100%",
                   transition: {
-                    delay: 0.75,
-                    duration: 0.5,
+                    delay: 0.5,
+                    duration: 0.3,
                     ease: [0.74, 0, 0.19, 1.02],
                     staggerDirection: -1,
                     staggerChildren: 0.5,
