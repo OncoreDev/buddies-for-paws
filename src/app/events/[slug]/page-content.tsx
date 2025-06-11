@@ -5,7 +5,7 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-
+import ReactMarkdown from "react-markdown";
 import {
   RenderImageContext,
   RenderImageProps,
@@ -78,15 +78,26 @@ export function EventPageContent({ event }: { event: any }) {
           >
             About The Event
           </motion.h1>
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ type: "spring", delay: 0.2 }}
             className="max-w-3xl"
           >
-            {event.description}
-          </motion.p>
+            <ReactMarkdown
+              components={{
+                a: ({ node, ...props }) => (
+                  <a
+                    {...props}
+                    className="text-orange hover:text-blue underline transition-all"
+                  />
+                ),
+              }}
+            >
+              {event.description}
+            </ReactMarkdown>
+          </motion.div>
         </div>
 
         {event.links.length > 0 && (

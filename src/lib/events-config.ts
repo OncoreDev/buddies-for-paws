@@ -42,10 +42,10 @@ import KK9RGuinnessWorldRecord06 from "../../images/events/kk9r_guinness_world_r
 
 export const EVENTS_CONFIG = [
   {
-    route: "kk9r-guinness-world-record",
-    title: "KK9R Guinness World Record",
+    route: "bonk-x-kk9r-guinness-world-record",
+    title: "BONK x KK9R Guinness World Record",
     description:
-      "On September 5, 2024, in Goesan, South Korea, 38 dogs from Korean K9 Rescue, in collaboration with Bonk Canada, made history by setting a new Guinness World Record for the most dogs walked simultaneously by a single person.",
+      "A historic event took place in Korea with KK9R Charity teaming up with Mitchell Rudy, a BONK contributor, who broke the [Guinness World Record for the most dogs walked](https://www.guinnessworldrecords.com/news/2024/10/pooch-perfect-day-out-for-animal-lover-who-walked-38-dogs-at-once-to-promote-adoption) all at once. All 38 dogs that participated were rescued dogs waiting for adoption, going through a week of practice with Mitchell guided by a local well-known dog trainer [Mr.Lee](https://dogtraining.modoo.at/?link=c9fp1bey). This successful attempt in 2024 has helped about 2/3 of the dogs find new homes in the US at the start of 2025 due to increased visibility of the charity. The Guinness World Record event helped raise awareness for stray animals that need good homes domestically and internationally. Read more about it in different publications including [the Washington Post](https://www.washingtonpost.com/lifestyle/2024/10/26/dog-walk-guinness-record-adopt/) and [CBCD articles](https://medium.com/@cbcd/every-paw-helps-244184cb1347).",
     image: KK9RGuinnessWorldRecord,
     links: [
       {
@@ -86,7 +86,7 @@ export const EVENTS_CONFIG = [
     route: "london-baobao-charity-fashion-show",
     title: "London BaoBao Charity Fashion Show",
     description:
-      "A charity fashion show event held in London, bringing together fashion enthusiasts and philanthropists to support a noble cause.",
+      "An exciting live fashion show in the middle of Solana Hackerhouse to close out a few days of work, panels, and networking. This charity fashion show had BaoBao’s lifestyle and active wear available for all to buy and donate 100% of the proceeds. All donations were matched by BONK, and it was the 2nd successful BaoBao Fashion Show after the first one in Hong Kong.",
     image: HackerHouseLondon,
     links: [],
     gallery: [
@@ -109,10 +109,10 @@ export const EVENTS_CONFIG = [
     ],
   },
   {
-    route: "singapore-baobao-charity-fashion-show",
-    title: "Singapore BaoBao Charity Fashion Show",
+    route: "singapore-charity-fashion-show",
+    title: "Singapore Charity Fashion Show",
     description:
-      "A charity fashion show event in Singapore, uniting the community to raise funds and awareness for important causes.",
+      "Breakpoint Singapore, the biggest Solana Foundation Conference in 2024, was the perfect stage to host a charity fashion show to raise funds for all Buddies for Paws charities. The BaoBao Q3 product line hit the runway with conference models, and live music at the ground floor entrance during opening day. BFP was able to successfully collect generous amounts of donations which 100% was matched by BONK and contributed to the partner charities.",
     image: HackerHouseSingapore,
     links: [],
     gallery: [
