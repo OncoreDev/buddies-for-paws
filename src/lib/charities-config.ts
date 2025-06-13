@@ -3,6 +3,7 @@ import DBLColorLogo from "../../images/charity/DBL-Color-Logo.png";
 import OrangutanOutreachLogo from "../../images/charity/OrangutanOutreach-logo-transparent.webp";
 import SaveTheChimpsLogo from "../../images/charity/save_the_chimps.webp";
 import SeaTurtleConservancyLogo from "../../images/charity/sea_turtle_conservancy.webp";
+import DOlphineProjectLogo from "../../images/charity/dolphin_project.png";
 import WCNLogo from "../../images/charity/wcn.webp";
 import WildLifeSOS from "../../images/charity/wildlife_sos.webp";
 
@@ -41,5 +42,10 @@ export const CHARITIES_CONFIG = [
     image: WCNLogo,
     name: "Wildlife Conservation Network",
     url: "https://bonkforpaws.com/donate/wildlife-conservation-network",
+  },
+  {
+    image: DOlphineProjectLogo,
+    name: "Dolphin Project",
+    url: "https://bonkforpaws.com/donate/dolphin-project",
   },
 ];

@@ -6,7 +6,7 @@ export const JOURNEYS_CONFIG = [
     id: "bani",
     title: "Meet Bani",
     description:
-      "Our first adoptee, an orphaned baby elephant has been sharing her journey with us.  Nine month old Bani became a victim of a train collision when she was crossing the tracks with a herd of wild elephants.  Left abandoned by the panicked herd, the paralysed elephant calf was discovered in a field beside the tracks.  The baby elephant was found suffering significant injuries on her spine, hips and legs, rendering her unable to stand.  We are committed providing Bani with the support she needs for her recovery.  Funds raised have gone towards her extensive rehabilitation including acupuncture, daily physical therapies, massage and hydrotherapy and other forms of advanced and holistic care at Wildlife SOS.",
+      "Our first adoptee, an orphaned baby elephant has been sharing her journey with us.  Nine month old Bani became a victim of a train collision when she was crossing the tracks with a herd of wild elephants.  Left abandoned by the panicked herd, the paralysed elephant calf was discovered in a field beside the tracks.  The baby elephant was found suffering significant injuries on her spine, hips and legs, rendering her unable to stand.  We are committed to providing Bani with the support she needs for her recovery.  Funds raised have gone towards her extensive rehabilitation including acupuncture, daily physical therapies, massage and hydrotherapy and other forms of advanced and holistic care at Wildlife SOS.",
     image: bani,
     donateURL: "https://bonkforpaws.com/donate/wildlife-sos",
     watchURL: "https://www.youtube.com/watch?v=HC9l-S_MzHU",
