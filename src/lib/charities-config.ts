@@ -6,6 +6,8 @@ import SeaTurtleConservancyLogo from "../../images/charity/sea_turtle_conservanc
 import DOlphineProjectLogo from "../../images/charity/dolphin_project.png";
 import WCNLogo from "../../images/charity/wcn.webp";
 import WildLifeSOS from "../../images/charity/wildlife_sos.webp";
+import SSPCALogo from "../../images/charity/SSPCA.png";
+import HalfwayCatsLogo from "../../images/charity/halfway-cats.jpg";
 
 export const CHARITIES_CONFIG = [
   {
@@ -47,5 +49,15 @@ export const CHARITIES_CONFIG = [
     image: DOlphineProjectLogo,
     name: "Dolphin Project",
     url: "https://bonkforpaws.com/donate/dolphin-project",
+  },
+  {
+    image: SSPCALogo,
+    name: "Scottish Society for the Prevention of Cruelty to Animals",
+    url: "https://bonkforpaws.com/donate/scottish-spca",
+  },
+  {
+    image: HalfwayCatsLogo,
+    name: "Halfway Cats Inc",
+    url: "https://bonkforpaws.com/donate/halfway-cats-inc",
   },
 ];
