@@ -136,7 +136,7 @@ export function Nav() {
 
           <Link
             href={"/"}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="ease-spring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 hover:scale-105"
           >
             <BFPMaster className="hidden size-32 lg:block" />
             <BFPSubmark className="w-20 lg:hidden" />
@@ -238,7 +238,6 @@ export function Nav() {
 const navLinkIndicatorWrapperVariants = {
   visible: {
     transition: {
-      delayChildren: 0.2,
       staggerChildren: 0.05,
     },
   },
@@ -261,7 +260,7 @@ const NavLink = ({ link, className }: { link: any; className?: string }) => {
         href={link.href}
         target={link.href.startsWith("http") ? "_blank" : undefined}
         className={cn(
-          "relative block transition-all hover:scale-105",
+          "ease-spring relative block transition-all duration-500 hover:scale-105",
           className,
         )}
       >
