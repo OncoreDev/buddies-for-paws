@@ -1,5 +1,5 @@
-import bani from "../../images/bani.jpeg";
-import dew from "../../images/dew.png";
+import bani from "../../images/bani.webp";
+import dew from "../../images/dew.webp";
 
 export const JOURNEYS_CONFIG = [
   {

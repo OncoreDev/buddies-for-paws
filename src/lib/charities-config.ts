@@ -1,13 +1,13 @@
 import AnimalsAsiaLogo from "../../images/charity/animals_asia.webp";
-import DBLColorLogo from "../../images/charity/DBL-Color-Logo.png";
+import DBLColorLogo from "../../images/charity/DBL-Color-Logo.webp";
 import OrangutanOutreachLogo from "../../images/charity/OrangutanOutreach-logo-transparent.webp";
 import SaveTheChimpsLogo from "../../images/charity/save_the_chimps.webp";
 import SeaTurtleConservancyLogo from "../../images/charity/sea_turtle_conservancy.webp";
-import DOlphineProjectLogo from "../../images/charity/dolphin_project.png";
+import DOlphineProjectLogo from "../../images/charity/dolphin_project.webp";
 import WCNLogo from "../../images/charity/wcn.webp";
 import WildLifeSOS from "../../images/charity/wildlife_sos.webp";
-import SSPCALogo from "../../images/charity/SSPCA.png";
-import HalfwayCatsLogo from "../../images/charity/halfway-cats.jpg";
+import SSPCALogo from "../../images/charity/SSPCA.webp";
+import HalfwayCatsLogo from "../../images/charity/halfway-cats.webp";
 
 export const CHARITIES_CONFIG = [
   {

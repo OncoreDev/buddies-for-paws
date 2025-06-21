@@ -4,9 +4,9 @@ import { ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import Bottle from "../../images/shop/bottle.png";
-import Shirt from "../../images/shop/shirt.png";
-import ToteBage from "../../images/shop/tote-bage.png";
+import Bottle from "../../images/shop/bottle.webp";
+import Shirt from "../../images/shop/shirt.webp";
+import ToteBage from "../../images/shop/tote-bage.webp";
 import { Button } from "./ui/button";
 
 export default function StoreBanner() {
