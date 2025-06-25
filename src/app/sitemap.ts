@@ -28,6 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: domainURL("/about"),
+      lastModified: new Date(),
+      changeFrequency: "never",
+      priority: 0.8,
+    },
+    {
       url: domainURL("/contact"),
       lastModified: new Date(),
       changeFrequency: "never",

@@ -49,6 +49,7 @@ const links = [
   { href: "/journeys", label: "Journeys" },
   { href: "/events", label: "Events" },
   { href: "/charities", label: "Charities" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
   { href: "https://baobaoinu.com/", label: "Store" },
 ];
@@ -82,9 +83,9 @@ export function Nav() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring" }}
-          className="max-w-9xl relative z-10 mx-auto flex h-24 w-full items-center gap-6 px-6 lg:h-40"
+          className="max-w-9xl relative z-10 mx-auto flex h-24 w-full items-center gap-6 px-6 xl:h-40"
         >
-          <div className="flex w-full items-center justify-between lg:hidden">
+          <div className="flex w-full items-center justify-between xl:hidden">
             <Button
               variant={routeTheme?.buttonVariant}
               size={"icon"}
@@ -114,14 +115,14 @@ export function Nav() {
             </Tooltip>
           </div>
 
-          <div className="hidden w-full grid-cols-2 lg:grid">
-            <div className="flex flex-1 items-center justify-end gap-12 pr-28 font-bold xl:gap-20 xl:pr-40">
+          <div className="hidden w-full grid-cols-2 xl:grid">
+            <div className="flex flex-1 items-center justify-end gap-12 pr-28 font-bold min-[1510px]:gap-20 min-[1510px]:pr-40">
               {links.slice(0, half).map((link) => (
                 <NavLink link={link} key={link.label + "desktop"} />
               ))}
             </div>
 
-            <div className="flex flex-1 items-center justify-start gap-12 pl-28 font-bold xl:gap-20 xl:pl-40">
+            <div className="flex flex-1 items-center justify-start gap-12 pl-28 font-bold min-[1510px]:gap-20 min-[1510px]:pl-40">
               {links.slice(half).map((link) => (
                 <NavLink link={link} key={link.label + "desktop"} />
               ))}
@@ -138,8 +139,8 @@ export function Nav() {
             href={"/"}
             className="ease-spring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 hover:scale-105"
           >
-            <BFPMaster className="hidden size-32 lg:block" />
-            <BFPSubmark className="w-20 lg:hidden" />
+            <BFPMaster className="hidden size-32 xl:block" />
+            <BFPSubmark className="w-20 xl:hidden" />
           </Link>
         </motion.div>
       </nav>

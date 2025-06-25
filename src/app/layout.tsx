@@ -36,7 +36,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     creator: "@" + SITE_CONFIG.xHandle,
   },
-  keywords: [],
+  keywords: [
+    "buddies for paws",
+    "bfp",
+    "bonk",
+    "bonk ecosystem",
+    "charity",
+    "animal welfare",
+    "wildlife conservation",
+    "web3 charity",
+  ],
 };
 
 export const viewport: Viewport = {
