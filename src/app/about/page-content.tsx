@@ -45,7 +45,7 @@ export function ContactPageContent() {
           At Buddies for Paws, we believe compassion and innovation go hand in
           paw. Harnessing the energy of our global community and the benefits of
           blockchain, we help fund animal rescues, wildlife sanctuaries and
-          nature first initaitves.
+          nature first initiatives.
         </motion.p>
 
         <motion.p variants={variants}>
