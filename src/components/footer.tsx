@@ -8,6 +8,7 @@ import Link from "next/link";
 import { FaDiscord, FaInstagram, FaTiktok, FaXTwitter } from "react-icons/fa6";
 import FooterBG from "../../images/footer-bg.webp";
 import { motion } from "motion/react";
+import { SITE_CONFIG } from "@/lib/site-config";
 
 export function Footer() {
   return (
@@ -103,7 +104,7 @@ export function Footer() {
               transition={{ type: "spring" }}
             >
               <Link
-                href={"https://x.com/buddiesforpaws"}
+                href={SITE_CONFIG.links.x}
                 target="_blank"
                 className="hover:text-blue-foreground block transition-all hover:scale-110"
               >
@@ -120,7 +121,7 @@ export function Footer() {
               transition={{ type: "spring" }}
             >
               <Link
-                href={"https://discord.com/invite/qaQa6M6mN2"}
+                href={SITE_CONFIG.links.discord}
                 target="_blank"
                 className="hover:text-blue-foreground block transition-all hover:scale-110"
               >
@@ -137,7 +138,7 @@ export function Footer() {
               transition={{ type: "spring" }}
             >
               <Link
-                href={"https://www.instagram.com/official_bonk_inu/"}
+                href={SITE_CONFIG.links.instagram}
                 target="_blank"
                 className="hover:text-blue-foreground block transition-all hover:scale-110"
               >
@@ -154,7 +155,7 @@ export function Footer() {
               transition={{ type: "spring" }}
             >
               <Link
-                href={"https://www.tiktok.com/@bonk.for.paws"}
+                href={SITE_CONFIG.links.tiktok}
                 target="_blank"
                 className="hover:text-blue-foreground block transition-all hover:scale-110"
               >

@@ -9,7 +9,7 @@ import Link from "next/link";
 export function CharitiesPageContent() {
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-16 px-6 py-24 sm:px-16 sm:py-40">
-      <div className="mx-auto flex max-w-4xl flex-col items-center justify-center gap-6 text-center">
+      <div className="mx-auto flex max-w-4xl flex-col gap-6 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

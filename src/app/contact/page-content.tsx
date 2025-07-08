@@ -165,7 +165,7 @@ export function ContactPageContent() {
                     <FormControl>
                       <Textarea
                         placeholder="Tell us how you'd like to get involved or ask us anything!"
-                        rows={5}
+                        rows={10}
                         {...field}
                       />
                     </FormControl>

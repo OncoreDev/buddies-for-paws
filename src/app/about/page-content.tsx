@@ -1,5 +1,6 @@
 "use client";
 
+import { SITE_CONFIG } from "@/lib/site-config";
 import { motion } from "motion/react";
 import Link from "next/link";
 
@@ -52,11 +53,19 @@ export function ContactPageContent() {
           For more information about buddies for Paws work, explore the rest of
           our site, subscribe to our newsletter and follow us on{" "}
           <Link
-            href="https://x.com/buddiesforpaws"
+            href={SITE_CONFIG.links.x}
             target="_blank"
             className="text-orange hover:text-blue transition-all hover:underline"
           >
             X
+          </Link>{" "}
+          and{" "}
+          <Link
+            href={SITE_CONFIG.links.instagram}
+            target="_blank"
+            className="text-orange hover:text-blue transition-all hover:underline"
+          >
+            Instagram
           </Link>
           . If you would like to get in touch we would love to hear from you,
           just head to our{" "}
