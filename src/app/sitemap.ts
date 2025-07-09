@@ -22,12 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: domainURL("/charities"),
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: domainURL("/about"),
       lastModified: new Date(),
       changeFrequency: "never",
@@ -38,6 +32,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "never",
       priority: 0.8,
+    },
+    {
+      url: domainURL("/charities/global-partners"),
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: domainURL("/charities/local-partners"),
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
     },
   ];
 }

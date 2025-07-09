@@ -1,6 +1,12 @@
 "use client";
 
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
@@ -8,7 +14,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Portal } from "@radix-ui/react-portal";
 import { VariantProps } from "class-variance-authority";
-import { HandCoins } from "lucide-react";
+import { ChevronDown, HandCoins } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -23,6 +29,8 @@ const routeThemes: {
   prefixes: string[];
   navClass: string;
   linkIndicatorClass: string;
+  subContentClass: string;
+  subLinkClass: string;
   buttonVariant: VariantProps<typeof buttonVariants>["variant"];
 }[] = [
   {
@@ -30,25 +38,44 @@ const routeThemes: {
     navClass: "bg-yellow text-yellow-foreground",
     linkIndicatorClass: "bg-yellow-foreground",
     buttonVariant: "orange",
+    subContentClass: "bg-yellow-foreground text-yellow",
+    subLinkClass: "hover:!bg-yellow hover:!text-yellow-foreground",
   },
   {
     prefixes: ["/events"],
     navClass: "bg-orange text-orange-foreground",
     linkIndicatorClass: "bg-orange-foreground",
     buttonVariant: "yellow",
+    subContentClass: "bg-orange-foreground text-orange",
+    subLinkClass: "hover:!bg-orange hover:!text-orange-foreground",
   },
   {
     prefixes: ["/charities"],
     navClass: "bg-teal text-teal-foreground",
     linkIndicatorClass: "bg-teal-foreground",
     buttonVariant: "blue",
+    subContentClass: "bg-teal-foreground text-teal",
+    subLinkClass: "hover:!bg-teal hover:!text-teal-foreground",
   },
 ];
 
 const links = [
   { href: "/journeys", label: "Journeys" },
   { href: "/events", label: "Events" },
-  { href: "/charities", label: "Charities" },
+  {
+    href: "/charities",
+    label: "Charities",
+    subLinks: [
+      {
+        href: "/charities/global-partners",
+        label: "Buddies Global Charities Partners",
+      },
+      {
+        href: "/charities/local-partners",
+        label: "Buddies Local Charity Partners",
+      },
+    ],
+  },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
   { href: "https://baobaoinu.com/", label: "Store" },
@@ -118,13 +145,13 @@ export function Nav() {
           <div className="hidden w-full grid-cols-2 xl:grid">
             <div className="flex flex-1 items-center justify-end gap-12 pr-28 font-bold min-[1510px]:gap-20 min-[1510px]:pr-40">
               {links.slice(0, half).map((link) => (
-                <NavLink link={link} key={link.label + "desktop"} />
+                <NavLink key={link.label + "desktop"} link={link} />
               ))}
             </div>
 
             <div className="flex flex-1 items-center justify-start gap-12 pl-28 font-bold min-[1510px]:gap-20 min-[1510px]:pl-40">
               {links.slice(half).map((link) => (
-                <NavLink link={link} key={link.label + "desktop"} />
+                <NavLink key={link.label + "desktop"} link={link} />
               ))}
 
               <Button asChild variant={routeTheme?.buttonVariant}>
@@ -251,42 +278,114 @@ const navLinkIndicatorVariants = {
 
 const NavLink = ({ link, className }: { link: any; className?: string }) => {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  const routeTheme = routeThemes.find(({ prefixes }) =>
+    prefixes.some((prefix) => pathname.startsWith(prefix)),
+  );
+
   return (
     <motion.div
       initial="hidden"
-      animate={pathname === link.href ? "visible" : "hidden"}
+      animate={
+        pathname === link.href ||
+        link.subLinks?.some((link: any) => link.href === pathname) ||
+        open
+          ? "visible"
+          : "hidden"
+      }
       whileHover={"visible"}
     >
-      <Link
-        href={link.href}
-        target={link.href.startsWith("http") ? "_blank" : undefined}
-        className={cn(
-          "ease-spring relative block transition-all duration-500 hover:scale-105",
-          className,
-        )}
-      >
-        {link.label}
-        <motion.div
-          variants={navLinkIndicatorWrapperVariants}
-          className="absolute -top-3 -right-1.5"
+      {link.subLinks ? (
+        <DropdownMenu open={open} onOpenChange={setOpen}>
+          <DropdownMenuTrigger asChild>
+            <button
+              className={cn(
+                "ease-spring relative block cursor-pointer transition-all duration-500 hover:scale-105",
+                className,
+              )}
+            >
+              {link.label}{" "}
+              <ChevronDown
+                className={cn(
+                  "inline h-4 w-4 transition-transform duration-200",
+                  open && "rotate-180",
+                )}
+              />
+              <motion.div
+                variants={navLinkIndicatorWrapperVariants}
+                className="absolute -top-3 -right-1.5"
+              >
+                <motion.div variants={navLinkIndicatorVariants}>
+                  <BsExclamation className="size-5" />
+                </motion.div>
+                <motion.div
+                  variants={navLinkIndicatorVariants}
+                  className="absolute top-0.5 -right-1.5 size-5 rotate-[22.5deg]"
+                >
+                  <BsExclamation className="size-5" />
+                </motion.div>
+                <motion.div
+                  variants={navLinkIndicatorVariants}
+                  className="absolute top-1.5 -right-[11px] size-5 rotate-[45deg]"
+                >
+                  <BsExclamation className="size-5" />
+                </motion.div>
+              </motion.div>
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            className={cn(
+              "bg-blue-foreground text-blue mt-2 border-0 p-2",
+              routeTheme?.subContentClass,
+            )}
+          >
+            {link.subLinks.map((subLink: any) => (
+              <DropdownMenuItem
+                key={subLink.label}
+                className={cn(
+                  "hover:!bg-blue hover:!text-blue-foreground h-10 cursor-pointer px-4 font-semibold transition-all",
+                  routeTheme?.subLinkClass,
+                )}
+                asChild
+              >
+                <Link href={subLink.href}>{subLink.label}</Link>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      ) : (
+        <Link
+          href={link.href}
+          target={link.href.startsWith("http") ? "_blank" : undefined}
+          className={cn(
+            "ease-spring relative block transition-all duration-500 hover:scale-105",
+            className,
+          )}
         >
-          <motion.div variants={navLinkIndicatorVariants}>
-            <BsExclamation className="size-5" />
-          </motion.div>
+          {link.label}
           <motion.div
-            variants={navLinkIndicatorVariants}
-            className="absolute top-0.5 -right-1.5 size-5 rotate-[22.5deg]"
+            variants={navLinkIndicatorWrapperVariants}
+            className="absolute -top-3 -right-1.5"
           >
-            <BsExclamation className="size-5" />
+            <motion.div variants={navLinkIndicatorVariants}>
+              <BsExclamation className="size-5" />
+            </motion.div>
+            <motion.div
+              variants={navLinkIndicatorVariants}
+              className="absolute top-0.5 -right-1.5 size-5 rotate-[22.5deg]"
+            >
+              <BsExclamation className="size-5" />
+            </motion.div>
+            <motion.div
+              variants={navLinkIndicatorVariants}
+              className="absolute top-1.5 -right-[11px] size-5 rotate-[45deg]"
+            >
+              <BsExclamation className="size-5" />
+            </motion.div>
           </motion.div>
-          <motion.div
-            variants={navLinkIndicatorVariants}
-            className="absolute top-1.5 -right-[11px] size-5 rotate-[45deg]"
-          >
-            <BsExclamation className="size-5" />
-          </motion.div>
-        </motion.div>
-      </Link>
+        </Link>
+      )}
     </motion.div>
   );
 };
