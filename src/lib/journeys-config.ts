@@ -1,7 +1,19 @@
 import bani from "../../images/bani.webp";
 import dew from "../../images/dew.webp";
+import bigPapa from "../../images/big-papa.webp";
 
 export const JOURNEYS_CONFIG = [
+  {
+    id: "big-papa",
+    title: "Meet Big Papa",
+    description:
+      "Big Papa is a male orangutan adopted through our partnership with Orangutan Outreach. As a young orangutan he was illegally sold as a pet in Taiwan before being rescued and brought to Borneo, where he has been in the care of the BOS foundation since 1994. For many years he lived in isolation due to a hepatitis B diagnosis until a breakthrough discovery revealed his condition posed no risk to others. Today, Big Papa enjoys a life on his own island at the Samboja Lestari Rehabilitation Centre with three female companions. Buddies for Paws is proud to support his life long care and well earned retirement",
+    image: bigPapa,
+    donateURL: "https://bonkforpaws.com/donate/orangutan-outreach",
+    watchURL: "https://www.youtube.com/watch?v=nu35nHsdn-0",
+    learnMoreURL:
+      "https://www.theorangutanproject.org.uk/?referrer_source=GADUK_GENERIC&gad_campaignid=11750015207",
+  },
   {
     id: "bani",
     title: "Meet Bani",
