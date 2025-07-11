@@ -3,7 +3,7 @@ import { CHARITIES_CONFIG } from "@/lib/charities-config";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CharityMarquee() {
+export function CharityMarquee() {
   return (
     <div className="py-4 lg:py-12">
       <Marquee

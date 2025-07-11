@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-export default function Hero() {
+export function Hero() {
   return (
     <div className="bg-blue sm:px-6 sm:py-16 lg:pb-40">
       <motion.div

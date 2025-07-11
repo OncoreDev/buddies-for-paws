@@ -9,7 +9,7 @@ import Shirt from "../../images/shop/shirt.webp";
 import ToteBage from "../../images/shop/tote-bage.webp";
 import { Button } from "./ui/button";
 
-export default function StoreBanner() {
+export function StoreBanner() {
   return (
     <div className="bg-orange text-orange-foreground flex items-center justify-center overflow-hidden py-24 sm:py-40">
       <motion.div

@@ -8,14 +8,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { EVENTS_CONFIG } from "@/lib/events-config";
+import { EVENTS_QUERYResult } from "@/sanity/types";
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
-import Image from "next/image";
 import Link from "next/link";
 
-export default function EventsCarouel() {
+export function EventsCarouel({ events }: { events: EVENTS_QUERYResult }) {
   return (
     <Carousel opts={{ align: "center" }} plugins={[Autoplay({ delay: 3000 })]}>
       <div className="bg-yellow overflow-hidden py-24 sm:py-40">
@@ -49,17 +48,16 @@ export default function EventsCarouel() {
           </div>
 
           <CarouselContent className="md:-ml-8">
-            {EVENTS_CONFIG.flat().map((event, i) => (
+            {events.map((event, i) => (
               <CarouselItem
-                key={event.title + i}
+                key={event.title ?? i}
                 className="basis-11/12 md:pl-8"
               >
                 <div className="relative z-0 flex flex-col gap-6">
                   <div className="relative -z-10 h-96 gap-6 overflow-hidden rounded-lg bg-black p-6 sm:p-8 lg:h-[720px] lg:p-12">
-                    <Image
-                      src={event.image}
-                      alt="KK9R Guinness World Record"
-                      fill
+                    <img
+                      src={event.mainImageUrl ?? ""}
+                      alt={event.title ?? ""}
                       className="roudned-lg absolute inset-0 -z-10 h-full w-full object-cover"
                     />
 
@@ -74,7 +72,7 @@ export default function EventsCarouel() {
                         asChild
                         className="group"
                       >
-                        <Link href={"/events/" + event.route}>
+                        <Link href={"/events/" + event.slug?.current}>
                           Find out more
                           <ArrowRight className="ease-spring -mr-2 -ml-[18px] inline opacity-0 transition-all duration-400 group-hover:ml-0 group-hover:opacity-100" />
                         </Link>
@@ -90,7 +88,9 @@ export default function EventsCarouel() {
                     </h1>
 
                     <Button variant={"orange"} size={"sm"}>
-                      <Link href={"/events/" + event.route}>Find out more</Link>
+                      <Link href={"/events/" + event.slug?.current}>
+                        Find out more
+                      </Link>
                     </Button>
                   </div>
                 </div>

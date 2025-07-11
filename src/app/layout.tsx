@@ -1,11 +1,7 @@
-import { Footer } from "@/components/footer";
-import { Nav } from "@/components/nav";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { SITE_CONFIG } from "@/lib/site-config";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 const inter = Inter({
@@ -62,17 +58,7 @@ export default function RootLayout({
       <body
         className={`${cooperBlackStd.variable} ${inter.variable} relative z-0 flex min-h-screen flex-col antialiased`}
       >
-        <TooltipProvider delayDuration={200}>
-          <Nav />
-          {children}
-          <Footer />
-          <Toaster
-            position="bottom-right"
-            toastOptions={{
-              className: "!rounded-lg",
-            }}
-          />
-        </TooltipProvider>
+        {children}
       </body>
     </html>
   );

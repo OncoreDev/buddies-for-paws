@@ -1,11 +1,10 @@
 "use client";
 
-import { EVENTS_CONFIG } from "@/lib/events-config";
-import Image from "next/image";
+import { EVENTS_QUERYResult } from "@/sanity/types";
 import { motion } from "motion/react";
 import Link from "next/link";
 
-export default function EventsList() {
+export default function EventsList({ events }: { events: EVENTS_QUERYResult }) {
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-16 px-6 py-24 sm:py-40">
       <motion.h1
@@ -19,7 +18,7 @@ export default function EventsList() {
       </motion.h1>
 
       <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-        {EVENTS_CONFIG.map((event) => (
+        {events.map((event) => (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -29,12 +28,12 @@ export default function EventsList() {
             className="group"
           >
             <Link
-              href={`/events/${event.route}`}
+              href={`/events/${event.slug?.current}`}
               className="relative z-0 flex aspect-square cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-black"
             >
-              <Image
-                src={event.image}
-                alt={event.title}
+              <img
+                src={event.mainImageUrl!}
+                alt={event.title!}
                 className="ease-spring absolute inset-0 -z-10 h-full w-full scale-[1.15] object-cover transition-all duration-400 group-hover:scale-105"
               />
               <div className="hover:bg-orange/80 absolute inset-0 flex items-center justify-center bg-black/40 p-6 transition-all duration-400">

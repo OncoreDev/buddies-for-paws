@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { Portal } from "@radix-ui/react-portal";
 import { VariantProps } from "class-variance-authority";
 import { ChevronDown, HandCoins } from "lucide-react";
+import type { Variants } from "motion";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -271,7 +272,7 @@ const navLinkIndicatorWrapperVariants = {
   },
 };
 
-const navLinkIndicatorVariants = {
+const navLinkIndicatorVariants: Variants = {
   hidden: { opacity: 0, y: -4 },
   visible: { opacity: 1, y: 0, transition: { type: "spring" } },
 };
