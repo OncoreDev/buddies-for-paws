@@ -7,15 +7,42 @@ import Link from "next/link";
 export default function EventsList({ events }: { events: EVENTS_QUERYResult }) {
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-16 px-6 py-24 sm:py-40">
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+      <motion.div
+        variants={{
+          visible: { transition: { staggerChildren: 0.2, delayChildren: 0.2 } },
+        }}
+        initial={"hidden"}
+        whileInView={"visible"}
         viewport={{ once: true }}
-        transition={{ type: "spring", delay: 0.2 }}
-        className="font-cooper text-blue text-center text-5xl"
+        className="mx-auto flex w-full max-w-5xl flex-col gap-6"
       >
-        All Events
-      </motion.h1>
+        <motion.h1
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ type: "spring" }}
+          className="font-cooper text-blue text-center text-5xl"
+        >
+          All Events
+        </motion.h1>
+
+        <motion.p
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ type: "spring" }}
+          className="text-center"
+        >
+          Since 2024, Buddies for Paws has been raising funds for animal welfare
+          and wildlife charities through unique events held around the world.
+          From Moonwalks to catwalks to record-breaking dog walks, our
+          fundraising events are never ordinary. All funds raised at our events
+          are 100% matched by BONK, doubling the impact for animals in need.
+          Take a look at some of our past events below.
+        </motion.p>
+      </motion.div>
 
       <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
         {events.map((event) => (

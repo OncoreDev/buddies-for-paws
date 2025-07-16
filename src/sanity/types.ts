@@ -265,7 +265,7 @@ export type CHARITIES_QUERYResult = Array<{
   logoUrl: string | null;
 }>;
 // Variable: EVENTS_QUERY
-// Query: *[_type == "event"] | order(featured desc) {  _id,  _updatedAt,  title,  slug,  description,  featured,  externalLinks,  mainImage,  galleryImages[]{      asset->{        _id,        url,        metadata {          dimensions {            width,            height          }        }      }    },  "mainImageUrl": mainImage.asset->url,  "galleryImageUrls": galleryImages[].asset->url}
+// Query: *[_type == "event"] | order(_createdAt desc) {  _id,  _updatedAt,  title,  slug,  description,  featured,  externalLinks,  mainImage,  galleryImages[]{      asset->{        _id,        url,        metadata {          dimensions {            width,            height          }        }      }    },  "mainImageUrl": mainImage.asset->url,  "galleryImageUrls": galleryImages[].asset->url}
 export type EVENTS_QUERYResult = Array<{
   _id: string;
   _updatedAt: string;
@@ -396,7 +396,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "charity"] | order(name asc) {\n  _id,\n  name,\n  donationUrl,\n  local,\n  "logoUrl": logo.asset->url\n}': CHARITIES_QUERYResult;
-    '*[_type == "event"] | order(featured desc) {\n  _id,\n  _updatedAt,\n  title,\n  slug,\n  description,\n  featured,\n  externalLinks,\n  mainImage,\n  galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n  "mainImageUrl": mainImage.asset->url,\n  "galleryImageUrls": galleryImages[].asset->url\n}': EVENTS_QUERYResult;
+    '*[_type == "event"] | order(_createdAt desc) {\n  _id,\n  _updatedAt,\n  title,\n  slug,\n  description,\n  featured,\n  externalLinks,\n  mainImage,\n  galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n  "mainImageUrl": mainImage.asset->url,\n  "galleryImageUrls": galleryImages[].asset->url\n}': EVENTS_QUERYResult;
     '\n  *[_type == "event" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    description,\n    featured,\n    externalLinks,\n    mainImage,\n    galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n    "mainImageUrl": mainImage.asset->url,\n    "galleryImageUrls": galleryImages[].asset->url\n  }\n': EVENT_QUERYResult;
     '*[_type == "journey"]{\n  _id,\n  title,\n  description,\n  "imageUrl": image.asset->url,\n  donationUrl,\n  watchUrl,\n  learnMoreUrl\n}': JOURNEYS_QUERYResult;
   }
