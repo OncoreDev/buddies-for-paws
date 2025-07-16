@@ -29,7 +29,7 @@ export function EventPageContent({ event }: { event: EVENT_QUERYResult }) {
         <img
           src={event?.mainImageUrl ?? ""}
           alt={event?.title ?? ""}
-          className="absolute inset-0 -z-10 h-full w-full scale-110 object-cover opacity-20"
+          className="absolute inset-0 -z-10 h-full w-full scale-110 object-cover opacity-40"
         />
 
         <div className="relative z-0 mx-auto flex w-full max-w-7xl items-center justify-center p-6 py-24 sm:min-h-96 sm:py-40">
@@ -60,11 +60,11 @@ export function EventPageContent({ event }: { event: EVENT_QUERYResult }) {
               </Link>
             </Button>
           </motion.div>
-          <img
+          {/* <img
             src={event?.mainImageUrl ?? ""}
             alt={event?.title ?? ""}
             className="absolute inset-0 -z-10 h-full w-full object-cover"
-          />
+          /> */}
         </div>
       </div>
 

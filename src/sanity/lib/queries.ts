@@ -10,7 +10,7 @@ export const CHARITIES_QUERY =
 }`);
 
 export const EVENTS_QUERY =
-  defineQuery(`*[_type == "event"] | order(featured desc) {
+  defineQuery(`*[_type == "event"] | order(_createdAt desc) {
   _id,
   _updatedAt,
   title,

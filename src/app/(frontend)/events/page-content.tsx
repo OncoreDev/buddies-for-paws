@@ -25,8 +25,9 @@ export function EventsPageContent({ events }: { events: EVENTS_QUERYResult }) {
               <img
                 src={featuredEvent.mainImageUrl!}
                 alt="KK9R Guinness World Record"
-                className="roudned-lg absolute inset-0 -z-10 h-full w-full object-cover"
+                className="absolute inset-0 -z-10 h-full w-full rounded-lg object-cover"
               />
+              <div className="absolute inset-0 -z-10 bg-gradient-to-br from-black/60 via-transparent" />
 
               <div className="-mb-2 rounded-full bg-black px-3 py-1 text-xs font-semibold text-white">
                 FEATURED
