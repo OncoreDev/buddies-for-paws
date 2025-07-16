@@ -15,11 +15,13 @@ import {
 import "react-photo-album/rows.css";
 
 export function EventPageContent({ event }: { event: EVENT_QUERYResult }) {
-  const photos = event?.galleryImages?.map((image) => ({
-    src: image.asset?.url,
-    width: image.asset?.metadata?.dimensions?.width,
-    height: image.asset?.metadata?.dimensions?.height,
-  })) as Photo[];
+  const photos = event?.galleryImages
+    ? (event.galleryImages.map((image) => ({
+        src: image.asset?.url,
+        width: image.asset?.metadata?.dimensions?.width,
+        height: image.asset?.metadata?.dimensions?.height,
+      })) as Photo[])
+    : undefined;
 
   return (
     <div>
@@ -133,13 +135,15 @@ export function EventPageContent({ event }: { event: EVENT_QUERYResult }) {
         )}
       </div>
 
-      <div className="mx-auto w-full max-w-7xl p-6">
-        <RowsPhotoAlbum
-          photos={photos}
-          render={{ image: renderNextImage }}
-          targetRowHeight={320}
-        />
-      </div>
+      {photos && photos.length > 0 && (
+        <div className="mx-auto w-full max-w-7xl p-6">
+          <RowsPhotoAlbum
+            photos={photos}
+            render={{ image: renderNextImage }}
+            targetRowHeight={320}
+          />
+        </div>
+      )}
     </div>
   );
 }
