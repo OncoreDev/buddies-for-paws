@@ -1,4 +1,9 @@
-export function BFPMaster(props: React.SVGProps<SVGSVGElement>) {
+import * as React from "react";
+
+const BFPMaster = React.forwardRef<
+  SVGSVGElement,
+  React.SVGProps<SVGSVGElement>
+>((props, ref) => {
   return (
     <svg
       id="Layer_2"
@@ -6,6 +11,7 @@ export function BFPMaster(props: React.SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 439.78 349.97"
       fill="currentColor"
+      ref={ref}
       {...props}
     >
       <g id="Layer_1-2" data-name="Layer 1">
@@ -66,4 +72,8 @@ export function BFPMaster(props: React.SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+});
+
+BFPMaster.displayName = "BFPMaster"; // Optional but recommended for dev tools
+
+export { BFPMaster };

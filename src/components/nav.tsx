@@ -35,7 +35,7 @@ const routeThemes: {
   buttonVariant: VariantProps<typeof buttonVariants>["variant"];
 }[] = [
   {
-    prefixes: ["/journeys"],
+    prefixes: ["/journeys", "/brand"],
     navClass: "bg-yellow text-yellow-foreground",
     linkIndicatorClass: "bg-yellow-foreground",
     buttonVariant: "orange",
@@ -77,6 +77,7 @@ const links = [
       },
     ],
   },
+  { href: "/brand", label: "Brand" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
   { href: "https://baobaoinu.com/", label: "Store" },
@@ -167,7 +168,7 @@ export function Nav() {
             href={"/"}
             className="ease-spring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 hover:scale-105"
           >
-            <BFPMaster className="hidden size-32 xl:block" />
+            <BFPMaster className="hidden size-24 xl:block 2xl:size-32" />
             <BFPSubmark className="w-20 xl:hidden" />
           </Link>
         </motion.div>
