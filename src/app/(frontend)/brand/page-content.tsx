@@ -1,8 +1,8 @@
 "use client";
 
-import COLOR_COMBINATIONS_PNG from "../../../../images/brand/color-combinations.webp";
-import PRIMARY_COLORS_PNG from "../../../../images/brand/primary-colors.webp";
-import SECONDARY_COLORS_PNG from "../../../../images/brand/secondary-colors.webp";
+import COLOR_COMBINATIONS_PNG from "../../../../images/brand/color-combinations.png";
+import PRIMARY_COLORS_PNG from "../../../../images/brand/primary-colors.png";
+import SECONDARY_COLORS_PNG from "../../../../images/brand/secondary-colors.png";
 
 import { BFPMaster } from "@/components/logo/bfp-master";
 import { BFPSubmark } from "@/components/logo/bfp-submark";
