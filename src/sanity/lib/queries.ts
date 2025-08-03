@@ -70,3 +70,8 @@ export const JOURNEYS_QUERY = defineQuery(`*[_type == "journey"]{
   watchUrl,
   learnMoreUrl
 }`);
+
+export const TOTAL_RAISED_QUERY = defineQuery(`*[_type == "totalRaised"][0] {
+  _id,
+  amount
+}`);

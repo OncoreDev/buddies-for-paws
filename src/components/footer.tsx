@@ -12,7 +12,10 @@ import { SITE_CONFIG } from "@/lib/site-config";
 
 export function Footer() {
   return (
-    <footer className="bg-blue text-background relative z-0 flex grow flex-col gap-24 px-6 py-24 sm:py-32">
+    <footer
+      id="footer"
+      className="bg-blue text-background relative z-0 flex grow flex-col gap-24 px-6 py-24 sm:py-32"
+    >
       <Image
         src={FooterBG}
         alt="A background image for the footer"

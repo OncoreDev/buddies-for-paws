@@ -43,7 +43,7 @@ const routeThemes: {
     subLinkClass: "hover:!bg-yellow hover:!text-yellow-foreground",
   },
   {
-    prefixes: ["/events"],
+    prefixes: ["/events", "/about/impact", "/about/mission"],
     navClass: "bg-orange text-orange-foreground",
     linkIndicatorClass: "bg-orange-foreground",
     buttonVariant: "yellow",
@@ -78,7 +78,20 @@ const links = [
     ],
   },
   { href: "/brand", label: "Brand" },
-  { href: "/about", label: "About" },
+  {
+    href: "/about",
+    label: "About",
+    subLinks: [
+      {
+        href: "/about/mission",
+        label: "Mission",
+      },
+      {
+        href: "/about/impact",
+        label: "Impact",
+      },
+    ],
+  },
   { href: "/contact", label: "Contact" },
   { href: "https://baobaoinu.com/", label: "Store" },
 ];
@@ -184,8 +197,8 @@ export function Nav() {
                   transition: {
                     duration: 0.75,
                     ease: [0.74, 0, 0.19, 1.02],
-                    delayChildren: 0.6,
-                    staggerChildren: 0.25,
+                    delayChildren: 0.4,
+                    staggerChildren: 0.2,
                   },
                 },
                 closed: {
@@ -195,7 +208,7 @@ export function Nav() {
                     duration: 0.3,
                     ease: [0.74, 0, 0.19, 1.02],
                     staggerDirection: -1,
-                    staggerChildren: 0.5,
+                    staggerChildren: 0.2,
                   },
                 },
               }}
@@ -303,11 +316,11 @@ const NavLink = ({ link, className }: { link: any; className?: string }) => {
           <DropdownMenuTrigger asChild>
             <button
               className={cn(
-                "ease-spring relative block cursor-pointer transition-all duration-500 hover:scale-105",
+                "ease-spring relative flex cursor-pointer items-center justify-center gap-1 transition-all duration-500 hover:scale-105",
                 className,
               )}
             >
-              {link.label}{" "}
+              {link.label}
               <ChevronDown
                 className={cn(
                   "inline h-4 w-4 transition-transform duration-200",
@@ -316,7 +329,7 @@ const NavLink = ({ link, className }: { link: any; className?: string }) => {
               />
               <motion.div
                 variants={navLinkIndicatorWrapperVariants}
-                className="absolute -top-3 -right-1.5"
+                className="absolute -top-3.5 -right-2"
               >
                 <motion.div variants={navLinkIndicatorVariants}>
                   <BsExclamation className="size-5" />
@@ -368,7 +381,7 @@ const NavLink = ({ link, className }: { link: any; className?: string }) => {
           {link.label}
           <motion.div
             variants={navLinkIndicatorWrapperVariants}
-            className="absolute -top-3 -right-1.5"
+            className="absolute -top-3.5 -right-2"
           >
             <motion.div variants={navLinkIndicatorVariants}>
               <BsExclamation className="size-5" />

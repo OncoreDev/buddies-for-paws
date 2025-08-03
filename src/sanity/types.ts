@@ -13,6 +13,15 @@
  */
 
 // Source: schema.json
+export type TotalRaised = {
+  _id: string;
+  _type: "totalRaised";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  amount?: number;
+};
+
 export type Charity = {
   _id: string;
   _type: "charity";
@@ -239,6 +248,7 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | TotalRaised
   | Charity
   | Journey
   | Event
@@ -390,6 +400,12 @@ export type JOURNEYS_QUERYResult = Array<{
   watchUrl: string | null;
   learnMoreUrl: string | null;
 }>;
+// Variable: TOTAL_RAISED_QUERY
+// Query: *[_type == "totalRaised"][0] {  _id,  amount}
+export type TOTAL_RAISED_QUERYResult = {
+  _id: string;
+  amount: number | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -399,5 +415,6 @@ declare module "@sanity/client" {
     '*[_type == "event"] | order(_createdAt desc) {\n  _id,\n  _updatedAt,\n  title,\n  slug,\n  description,\n  featured,\n  externalLinks,\n  mainImage,\n  galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n  "mainImageUrl": mainImage.asset->url,\n  "galleryImageUrls": galleryImages[].asset->url\n}': EVENTS_QUERYResult;
     '\n  *[_type == "event" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    description,\n    featured,\n    externalLinks,\n    mainImage,\n    galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n    "mainImageUrl": mainImage.asset->url,\n    "galleryImageUrls": galleryImages[].asset->url\n  }\n': EVENT_QUERYResult;
     '*[_type == "journey"]{\n  _id,\n  title,\n  description,\n  "imageUrl": image.asset->url,\n  donationUrl,\n  watchUrl,\n  learnMoreUrl\n}': JOURNEYS_QUERYResult;
+    '*[_type == "totalRaised"][0] {\n  _id,\n  amount\n}': TOTAL_RAISED_QUERYResult;
   }
 }

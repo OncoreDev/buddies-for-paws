@@ -1,12 +1,5 @@
-import type { Metadata } from "next";
-import { ContactPageContent } from "./page-content";
+import { redirect, RedirectType } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Learn more about Buddies for Paws, our mission, and the team behind our success.",
-};
-
-export default function ContactPage() {
-  return <ContactPageContent />;
+export default function AboutPage() {
+  return redirect("/about/mission", RedirectType.replace);
 }
