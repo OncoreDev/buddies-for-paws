@@ -280,7 +280,9 @@ export function ImpactPageContent({
           className="mx-auto w-full max-w-64"
           asChild
         >
-          <Link href={"/contact"}>Click here to donate</Link>
+          <Link href={"https://bonkforpaws.com/"} target="_blank">
+            Click here to donate
+          </Link>
         </Button>
 
         <p className="mx-auto w-full max-w-lg text-center">
