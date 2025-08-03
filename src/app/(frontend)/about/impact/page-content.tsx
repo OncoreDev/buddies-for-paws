@@ -131,7 +131,7 @@ export function ImpactPageContent({
     getDonationState();
   }, []);
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-col gap-16 px-6 py-24 sm:gap-24 sm:px-16 sm:py-40">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-16 px-6 py-24 sm:gap-24 sm:px-16 sm:py-32">
       <motion.div
         variants={{
           visible: {

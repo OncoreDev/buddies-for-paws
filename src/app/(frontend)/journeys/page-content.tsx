@@ -12,7 +12,7 @@ export function JourneysPageContent({
   journeys: JOURNEYS_QUERYResult;
 }) {
   return (
-    <div className="max-w-9xl mx-auto flex w-full flex-col gap-24 px-6 py-24 sm:px-16 sm:py-40 xl:gap-32 xl:px-24">
+    <div className="max-w-9xl mx-auto flex w-full flex-col gap-24 px-6 py-24 sm:px-16 sm:py-32 xl:gap-32 xl:px-24">
       <div className="flex flex-col gap-6 sm:text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

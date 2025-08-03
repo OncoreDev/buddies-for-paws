@@ -27,7 +27,7 @@ const logoColors = [
 
 export function BrandPageContent() {
   return (
-    <div className="max-w-8xl mx-auto flex w-full flex-col gap-24 px-6 py-24 sm:gap-32 sm:px-16 sm:py-40">
+    <div className="max-w-8xl mx-auto flex w-full flex-col gap-16 px-6 py-24 sm:gap-24 sm:px-16 sm:py-32">
       <motion.div
         initial={"hidden"}
         whileInView={"visible"}

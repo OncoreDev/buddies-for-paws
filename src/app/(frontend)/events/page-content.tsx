@@ -14,7 +14,7 @@ export function EventsPageContent({ events }: { events: EVENTS_QUERYResult }) {
     <div>
       {featuredEvent && (
         <div className="bg-orange">
-          <div className="mx-auto max-w-7xl pb-0 sm:px-6 sm:pt-8 sm:pb-24">
+          <div className="max-w-9xl mx-auto sm:px-6 sm:pb-24">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

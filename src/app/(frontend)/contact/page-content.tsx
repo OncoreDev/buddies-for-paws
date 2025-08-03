@@ -65,7 +65,7 @@ export function ContactPageContent() {
   }
 
   return (
-    <div className="mx-auto grid w-full max-w-7xl gap-16 px-6 py-24 sm:px-16 sm:py-32 sm:pb-40 lg:grid-cols-2">
+    <div className="mx-auto grid w-full max-w-7xl gap-16 px-6 py-24 sm:px-16 sm:py-32 sm:pb-32 lg:grid-cols-2">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
