@@ -77,7 +77,6 @@ const links = [
       },
     ],
   },
-  { href: "/brand", label: "Brand" },
   {
     href: "/about",
     label: "About",
@@ -92,6 +91,7 @@ const links = [
       },
     ],
   },
+  { href: "/brand", label: "Brand" },
   { href: "/contact", label: "Contact" },
   { href: "https://baobaoinu.com/", label: "Store" },
 ];
