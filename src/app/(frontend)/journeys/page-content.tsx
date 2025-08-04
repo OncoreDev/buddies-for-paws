@@ -122,13 +122,13 @@ export function JourneysPageContent({
 
               <Button asChild variant={"orange-outline"}>
                 <Link href={journey.watchUrl ?? ""} target="_blank">
-                  Watch Episode
+                  Watch episode
                 </Link>
               </Button>
 
               <Button asChild variant={"orange-outline"}>
                 <Link href={journey.learnMoreUrl ?? ""} target="_blank">
-                  Learn More
+                  Learn more
                 </Link>
               </Button>
             </motion.div>
