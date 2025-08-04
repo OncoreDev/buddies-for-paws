@@ -53,7 +53,7 @@ export function GlobalCharitiesPageContent({
 
             <Button asChild variant={"blue"} size={"sm"}>
               <Link href={charity.donationUrl!} target="_blank">
-                Donate Now
+                Donate now
               </Link>
             </Button>
           </motion.div>

@@ -39,7 +39,7 @@ const variants: Variants = {
 
 const benefits = [
   {
-    title: "Speedy Donations",
+    title: "Speedy donations",
     description: "Funds arrive instantly, without bank delays",
     icon: "/lighting.svg",
   },
@@ -147,7 +147,7 @@ export function ImpactPageContent({
           variants={variants}
           className="text-orange font-cooper text-center text-4xl sm:text-7xl"
         >
-          The Benefits of Donating with Blockchain
+          The benefits of donating with blockchain
         </motion.h1>
 
         <motion.div
@@ -322,7 +322,7 @@ export function ImpactPageContent({
             className="mx-auto w-full max-w-64"
             asChild
           >
-            <Link href={"/contact"}>Contact Us</Link>
+            <Link href={"/contact"}>Contact us</Link>
           </Button>
         </div>
       </motion.div>

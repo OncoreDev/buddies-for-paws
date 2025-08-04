@@ -76,7 +76,7 @@ export function Footer() {
                   className="font-cooper border-background text-background placeholder:text-background focus:placeholder:text-muted-foreground grow text-center"
                 />
                 <Button type="submit" className="sm:px-8">
-                  Sign Up
+                  Sign up
                 </Button>
               </div>
             </Form>

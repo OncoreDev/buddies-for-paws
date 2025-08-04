@@ -21,16 +21,19 @@ export function MissionPageContent() {
         }}
         initial="hidden"
         animate="visible"
-        className="mx-auto flex max-w-3xl flex-col gap-12"
+        className="flex w-full flex-col gap-12"
       >
         <motion.h1
           variants={variants}
           className="text-orange font-cooper text-center text-5xl sm:text-7xl"
         >
-          About Us for Paws
+          About Buddies for Paws
         </motion.h1>
 
-        <motion.p variants={variants} className="text-orange text-center">
+        <motion.p
+          variants={variants}
+          className="text-orange mx-auto max-w-2xl text-center"
+        >
           <b>
             Buddies for Paws is a charitable initiative within the BONK
             ecosystem, launched in 2024 with a simple mission: to use Web3
@@ -65,7 +68,7 @@ export function MissionPageContent() {
             Any questions?
           </p>
           <Button variant={"yellow"} asChild>
-            <Link href={"/contact"}>Contact Us</Link>
+            <Link href={"/contact"}>Contact us</Link>
           </Button>
         </motion.div>
       </motion.div>

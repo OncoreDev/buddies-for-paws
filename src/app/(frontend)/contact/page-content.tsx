@@ -105,7 +105,7 @@ export function ContactPageContent() {
           transition={{ type: "spring" }}
           className="font-cooper text-orange text-5xl"
         >
-          Contact Us
+          Contact us
         </motion.h1>
         <motion.p
           variants={{
@@ -184,7 +184,7 @@ export function ContactPageContent() {
                 ) : (
                   <Send className="-ml-2" />
                 )}
-                Send Message
+                Send message
               </Button>
             </form>
           </Form>

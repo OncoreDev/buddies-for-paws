@@ -24,7 +24,7 @@ export default function EventsList({ events }: { events: EVENTS_QUERYResult }) {
           transition={{ type: "spring" }}
           className="font-cooper text-blue text-center text-5xl"
         >
-          All Events
+          All events
         </motion.h1>
 
         <motion.p

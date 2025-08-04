@@ -19,7 +19,7 @@ export function LocalCharitiesPageContent({
           transition={{ type: "spring", delay: 0.2 }}
           className="text-blue font-cooper text-5xl sm:text-7xl"
         >
-          Local Charity Partners
+          Local charity partners
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -52,7 +52,7 @@ export function LocalCharitiesPageContent({
 
             <Button asChild variant={"blue"} size={"sm"}>
               <Link href={charity.donationUrl!} target="_blank">
-                Donate Now
+                Donate now
               </Link>
             </Button>
           </motion.div>

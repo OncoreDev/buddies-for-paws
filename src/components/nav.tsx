@@ -69,11 +69,11 @@ const links = [
     subLinks: [
       {
         href: "/charities/global-partners",
-        label: "Buddies Global Charities Partners",
+        label: "Buddies global charities partners",
       },
       {
         href: "/charities/local-partners",
-        label: "Buddies Local Charity Partners",
+        label: "Buddies local charity partners",
       },
     ],
   },

@@ -47,7 +47,7 @@ export function StoreBanner() {
 
         <div className="flex flex-col items-center justify-center gap-2 text-center md:px-12">
           <h4 className="font-cooper text-4xl text-white sm:text-5xl">
-            Visit Our Store!
+            Visit our store!
           </h4>
 
           <p className="mt-2 max-w-lg sm:text-lg">
@@ -57,7 +57,7 @@ export function StoreBanner() {
 
           <Button variant={"yellow"} className="group mt-4" asChild>
             <Link href={"https://baobaoinu.com/"} target="_blank">
-              Shop Now
+              Shop now
               <ExternalLink className="ease-spring -mr-2 -ml-5 inline opacity-0 transition-all duration-400 group-hover:ml-0 group-hover:opacity-100" />
             </Link>
           </Button>

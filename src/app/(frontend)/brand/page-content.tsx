@@ -39,7 +39,7 @@ export function BrandPageContent() {
           variants={variants}
           className="text-orange font-cooper text-5xl sm:text-6xl"
         >
-          Buddies for Paws Brand Guidelines
+          Buddies for Paws brand guidelines
         </motion.h1>
         <motion.p variants={variants} className="mt-4">
           Logos, colours, typefaces and all other good stuff is available here
@@ -57,7 +57,7 @@ export function BrandPageContent() {
 
       <Section>
         <SectionHeader>
-          <SectionTitle>Master Logo</SectionTitle>
+          <SectionTitle>Master logo</SectionTitle>
           <SectionDescription>
             This is our master logo. It should be used as often as possible and
             is available in all BFP primary colors, including black and white.
@@ -81,7 +81,7 @@ export function BrandPageContent() {
 
       <Section>
         <SectionHeader>
-          <SectionTitle>Submark Logo</SectionTitle>
+          <SectionTitle>Submark logo</SectionTitle>
           <SectionDescription>
             This is our submark. We use it in situations where the master logo
             might be too large, the text becomes unreadable, or space is
@@ -103,7 +103,7 @@ export function BrandPageContent() {
 
       <Section>
         <SectionHeader>
-          <SectionTitle>Color Palette</SectionTitle>
+          <SectionTitle>Color palette</SectionTitle>
           <SectionDescription>
             This is the full BFP palette. We don’t lead with a specific color
             way—our approach is flexible and adaptable. Our primary palette
@@ -117,7 +117,7 @@ export function BrandPageContent() {
 
         <div className="flex flex-col gap-6 sm:gap-8">
           <h2 className="text-orange font-cooper text-2xl sm:text-3xl">
-            Primary Colors
+            Primary colors
           </h2>
 
           <Image
@@ -129,7 +129,7 @@ export function BrandPageContent() {
 
         <div className="flex flex-col gap-6 sm:gap-8">
           <h2 className="text-orange font-cooper text-2xl sm:text-3xl">
-            Secondary Colors
+            Secondary colors
           </h2>
 
           <Image
@@ -142,7 +142,7 @@ export function BrandPageContent() {
 
       <Section>
         <SectionHeader>
-          <SectionTitle>Color Combinations</SectionTitle>
+          <SectionTitle>Color combinations</SectionTitle>
           <SectionDescription>
             Use only the approved color combinations shown here to ensure
             legibility across all touchpoints and assets. Some colors pair well

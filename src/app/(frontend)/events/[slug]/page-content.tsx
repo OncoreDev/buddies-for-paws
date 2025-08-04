@@ -56,7 +56,7 @@ export function EventPageContent({ event }: { event: EVENT_QUERYResult }) {
               <Link href={"/events"}>
                 <ArrowLeft className="sm:-ml-2" />
 
-                <span className="hidden sm:inline">All Events</span>
+                <span className="hidden sm:inline">All events</span>
               </Link>
             </Button>
           </motion.div>
@@ -77,7 +77,7 @@ export function EventPageContent({ event }: { event: EVENT_QUERYResult }) {
             transition={{ type: "spring", delay: 0.2 }}
             className="font-cooper text-blue text-4xl sm:text-5xl"
           >
-            About The Event
+            About the event
           </motion.h1>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

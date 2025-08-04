@@ -28,7 +28,7 @@ export function EventsCarouel({ events }: { events: EVENTS_QUERYResult }) {
           <div className="flex items-center justify-between">
             <Button asChild className="group mr-auto">
               <Link href="/events">
-                All Events
+                All events
                 <ArrowRight className="-mr-2" />
               </Link>
             </Button>
