@@ -116,7 +116,7 @@ export function JourneysPageContent({
             >
               <Button asChild>
                 <Link href={journey.donationUrl ?? ""} target="_blank">
-                  DONATE
+                  DONATE NOW
                 </Link>
               </Button>
 
