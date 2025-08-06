@@ -1,9 +1,15 @@
+import {
+  orderRankField,
+  orderRankOrdering,
+} from "@sanity/orderable-document-list";
 import { defineType } from "sanity";
 
 export const journeyType = defineType({
   name: "journey",
   type: "document",
+  orderings: [orderRankOrdering],
   fields: [
+    orderRankField({ type: "category", newItemPosition: "before" }),
     {
       name: "title",
       type: "string",

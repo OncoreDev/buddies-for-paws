@@ -13,12 +13,56 @@
  */
 
 // Source: schema.json
+export type Hero = {
+  _id: string;
+  _type: "hero";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  orderRank?: string;
+  title?: string;
+  description?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  donateLink?: string;
+  main?: boolean;
+};
+
 export type TotalRaised = {
   _id: string;
   _type: "totalRaised";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  orderRank?: string;
+  title?: string;
   amount?: number;
 };
 
@@ -28,6 +72,7 @@ export type Charity = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  orderRank?: string;
   name?: string;
   donationUrl?: string;
   logo?: {
@@ -51,6 +96,7 @@ export type Journey = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  orderRank?: string;
   title?: string;
   description?: string;
   image?: {
@@ -76,6 +122,7 @@ export type Event = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  orderRank?: string;
   title?: string;
   slug?: Slug;
   description?: Array<{
@@ -248,6 +295,7 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | Hero
   | TotalRaised
   | Charity
   | Journey
@@ -266,7 +314,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: CHARITIES_QUERY
-// Query: *[_type == "charity"] | order(name asc) {  _id,  name,  donationUrl,  local,  "logoUrl": logo.asset->url}
+// Query: *[_type == "charity"] | order(orderRank) {  _id,  name,  donationUrl,  local,  "logoUrl": logo.asset->url}
 export type CHARITIES_QUERYResult = Array<{
   _id: string;
   name: string | null;
@@ -275,7 +323,7 @@ export type CHARITIES_QUERYResult = Array<{
   logoUrl: string | null;
 }>;
 // Variable: EVENTS_QUERY
-// Query: *[_type == "event"] | order(_createdAt desc) {  _id,  _updatedAt,  title,  slug,  description,  featured,  externalLinks,  mainImage,  galleryImages[]{      asset->{        _id,        url,        metadata {          dimensions {            width,            height          }        }      }    },  "mainImageUrl": mainImage.asset->url,  "galleryImageUrls": galleryImages[].asset->url}
+// Query: *[_type == "event"] | order(orderRank) {  _id,  _updatedAt,  title,  slug,  description,  featured,  externalLinks,  mainImage,  galleryImages[]{      asset->{        _id,        url,        metadata {          dimensions {            width,            height          }        }      }    },  "mainImageUrl": mainImage.asset->url,  "galleryImageUrls": galleryImages[].asset->url}
 export type EVENTS_QUERYResult = Array<{
   _id: string;
   _updatedAt: string;
@@ -390,7 +438,7 @@ export type EVENT_QUERYResult = {
   galleryImageUrls: Array<string | null> | null;
 } | null;
 // Variable: JOURNEYS_QUERY
-// Query: *[_type == "journey"]{  _id,  title,  description,  "imageUrl": image.asset->url,  donationUrl,  watchUrl,  learnMoreUrl}
+// Query: *[_type == "journey"] | order(orderRank) {  _id,  title,  description,  "imageUrl": image.asset->url,  donationUrl,  watchUrl,  learnMoreUrl}
 export type JOURNEYS_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -406,15 +454,43 @@ export type TOTAL_RAISED_QUERYResult = {
   _id: string;
   amount: number | null;
 } | null;
+// Variable: HERO_CAROUSEL_QUERY
+// Query: *[_type == "hero"] | order(orderRank) {  _id,  title,  description,  "imageUrl": image.asset->url,  donateLink,  main}
+export type HERO_CAROUSEL_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  description: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+  imageUrl: string | null;
+  donateLink: string | null;
+  main: boolean | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "charity"] | order(name asc) {\n  _id,\n  name,\n  donationUrl,\n  local,\n  "logoUrl": logo.asset->url\n}': CHARITIES_QUERYResult;
-    '*[_type == "event"] | order(_createdAt desc) {\n  _id,\n  _updatedAt,\n  title,\n  slug,\n  description,\n  featured,\n  externalLinks,\n  mainImage,\n  galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n  "mainImageUrl": mainImage.asset->url,\n  "galleryImageUrls": galleryImages[].asset->url\n}': EVENTS_QUERYResult;
+    '*[_type == "charity"] | order(orderRank) {\n  _id,\n  name,\n  donationUrl,\n  local,\n  "logoUrl": logo.asset->url\n}': CHARITIES_QUERYResult;
+    '*[_type == "event"] | order(orderRank) {\n  _id,\n  _updatedAt,\n  title,\n  slug,\n  description,\n  featured,\n  externalLinks,\n  mainImage,\n  galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n  "mainImageUrl": mainImage.asset->url,\n  "galleryImageUrls": galleryImages[].asset->url\n}': EVENTS_QUERYResult;
     '\n  *[_type == "event" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    description,\n    featured,\n    externalLinks,\n    mainImage,\n    galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n    "mainImageUrl": mainImage.asset->url,\n    "galleryImageUrls": galleryImages[].asset->url\n  }\n': EVENT_QUERYResult;
-    '*[_type == "journey"]{\n  _id,\n  title,\n  description,\n  "imageUrl": image.asset->url,\n  donationUrl,\n  watchUrl,\n  learnMoreUrl\n}': JOURNEYS_QUERYResult;
+    '*[_type == "journey"] | order(orderRank) {\n  _id,\n  title,\n  description,\n  "imageUrl": image.asset->url,\n  donationUrl,\n  watchUrl,\n  learnMoreUrl\n}': JOURNEYS_QUERYResult;
     '*[_type == "totalRaised"][0] {\n  _id,\n  amount\n}': TOTAL_RAISED_QUERYResult;
+    '*[_type == "hero"] | order(orderRank) {\n  _id,\n  title,\n  description,\n  "imageUrl": image.asset->url,\n  donateLink,\n  main\n}': HERO_CAROUSEL_QUERYResult;
   }
 }

@@ -23,8 +23,14 @@ export function Counter({
 
         <p className="mx-auto w-full max-w-lg text-center text-white">
           All donations made through Buddies for Paws are 100% matched by{" "}
-          <span className="text-yellow font-semibold underline">BONK</span>,
-          doubling the impact for animals in need.
+          <Link
+            href={"https://bonkcoin.com/"}
+            target="_blank"
+            className="text-yellow font-semibold underline"
+          >
+            BONK
+          </Link>
+          , doubling the impact for animals in need.
           <br />
           <br />
           To learn more about the benefits of donating through Buddies for Paws

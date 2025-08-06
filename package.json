@@ -24,6 +24,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@sanity/image-url": "^1.1.0",
+    "@sanity/orderable-document-list": "^1.4.0",
     "@sanity/vision": "^3.99.0",
     "@solana/wallet-adapter-react": "^0.15.39",
     "@solana/wallet-adapter-wallets": "^0.19.37",

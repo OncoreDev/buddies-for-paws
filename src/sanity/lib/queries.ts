@@ -1,7 +1,7 @@
 import { defineQuery } from "next-sanity";
 
 export const CHARITIES_QUERY =
-  defineQuery(`*[_type == "charity"] | order(name asc) {
+  defineQuery(`*[_type == "charity"] | order(orderRank) {
   _id,
   name,
   donationUrl,
@@ -10,7 +10,7 @@ export const CHARITIES_QUERY =
 }`);
 
 export const EVENTS_QUERY =
-  defineQuery(`*[_type == "event"] | order(_createdAt desc) {
+  defineQuery(`*[_type == "event"] | order(orderRank) {
   _id,
   _updatedAt,
   title,
@@ -61,7 +61,8 @@ export const EVENT_QUERY = defineQuery(`
   }
 `);
 
-export const JOURNEYS_QUERY = defineQuery(`*[_type == "journey"]{
+export const JOURNEYS_QUERY =
+  defineQuery(`*[_type == "journey"] | order(orderRank) {
   _id,
   title,
   description,
@@ -74,4 +75,14 @@ export const JOURNEYS_QUERY = defineQuery(`*[_type == "journey"]{
 export const TOTAL_RAISED_QUERY = defineQuery(`*[_type == "totalRaised"][0] {
   _id,
   amount
+}`);
+
+export const HERO_CAROUSEL_QUERY =
+  defineQuery(`*[_type == "hero"] | order(orderRank) {
+  _id,
+  title,
+  description,
+  "imageUrl": image.asset->url,
+  donateLink,
+  main
 }`);

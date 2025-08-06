@@ -8,8 +8,11 @@ import { Connection, PublicKey } from "@solana/web3.js";
 import { Bouncy } from "ldrs/react";
 import type { Variants } from "motion";
 import { motion } from "motion/react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
+import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
 
 import "ldrs/react/Bouncy.css";
 
@@ -82,7 +85,7 @@ export function DonationStatistics() {
 
   return (
     <div className="bg-orange text-orange-foreground">
-      <div className="max-w-9xl mx-auto flex w-full flex-col gap-6 px-6 py-24 sm:py-32">
+      <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 py-24 sm:py-32">
         <motion.div
           initial={"hidden"}
           whileInView={"visible"}
@@ -93,107 +96,120 @@ export function DonationStatistics() {
             staggerChildren: 0.2,
           }}
           onAnimationComplete={() => setIsAnimationEnded(true)}
-          viewport={{ once: true }}
-          className="grid gap-6 md:grid-cols-2 2xl:grid-cols-4"
+          className="flex flex-col gap-8"
         >
-          <motion.div
-            variants={variant}
-            className="bg-yellow text-yellow-foreground col-span-full rounded-lg p-6 text-center md:py-12"
-          >
+          <motion.div variants={variant} className="text-center">
             {isLoading || !isAnimationEnded ? (
               <div className="mt-2">
-                <Bouncy size="48" color="#ea5239" />
+                <Bouncy size="48" color="#ebe969" />
               </div>
             ) : (
               <CountUp
                 duration={4}
                 useEasing
-                className="font-cooper text-5xl sm:text-7xl"
-                end={999_999_999}
+                className="font-cooper text-4xl sm:text-7xl"
+                end={123_456_789}
                 prefix="$"
               />
             )}
 
-            <p className="mt-4 text-xl font-semibold">TOTAL RAISED</p>
-          </motion.div>
-          <motion.div
-            variants={variant}
-            className="bg-yellow text-yellow-foreground rounded-lg p-6 text-center md:py-12"
-          >
-            {isLoading || !isAnimationEnded ? (
-              <div className="mt-2">
-                <Bouncy size="48" color="#ea5239" />
-              </div>
-            ) : (
-              <CountUp
-                duration={4}
-                useEasing
-                className="font-cooper text-3xl sm:text-4xl"
-                end={donated / 1e9}
-              />
-            )}
-
-            <p className="mt-2 font-semibold">SOL DONATED</p>
+            <p className="mt-4 text-lg font-semibold text-white sm:text-xl">
+              TOTAL RAISED
+            </p>
           </motion.div>
 
           <motion.div
             variants={variant}
-            className="bg-yellow text-yellow-foreground rounded-lg p-6 text-center md:py-12"
+            className="grid w-full gap-8 rounded-lg border-2 border-white py-8 text-center sm:w-auto sm:px-16 sm:py-12 md:grid-cols-2 md:gap-16"
           >
-            {isLoading || !isAnimationEnded ? (
-              <div className="mt-2">
-                <Bouncy size="48" color="#ea5239" />
-              </div>
-            ) : (
-              <CountUp
-                duration={4}
-                useEasing
-                className="font-cooper text-3xl sm:text-4xl"
-                end={bonkDonated / 1e5}
-              />
-            )}
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-col">
+                {isLoading || !isAnimationEnded ? (
+                  <div className="mt-2">
+                    <Bouncy size="48" color="#ebe969" />
+                  </div>
+                ) : (
+                  <CountUp
+                    duration={4}
+                    useEasing
+                    className="font-cooper text-2xl sm:text-4xl"
+                    end={donated / 1e9}
+                  />
+                )}
 
-            <p className="mt-2 font-semibold">BONK DONATED</p>
+                <p className="mt-2 font-semibold text-white">SOL DONATED</p>
+              </div>
+
+              <Separator className="mx-auto !h-[2px] max-w-48 rounded-full bg-white" />
+
+              <div className="flex flex-col">
+                {isLoading || !isAnimationEnded ? (
+                  <div className="mt-2">
+                    <Bouncy size="48" color="#ebe969" />
+                  </div>
+                ) : (
+                  <CountUp
+                    duration={4}
+                    useEasing
+                    className="font-cooper text-2xl sm:text-4xl"
+                    end={bonkDonated / 1e5}
+                  />
+                )}
+
+                <p className="mt-2 font-semibold text-white">BONK DONATED</p>
+              </div>
+            </div>
+
+            <Separator className="mx-auto !h-[2px] max-w-48 rounded-full bg-white md:hidden" />
+
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-col">
+                {isLoading || !isAnimationEnded ? (
+                  <div className="mt-2">
+                    <Bouncy size="48" color="#ebe969" />
+                  </div>
+                ) : (
+                  <CountUp
+                    duration={4}
+                    useEasing
+                    className="font-cooper text-2xl sm:text-4xl"
+                    end={Math.floor(burned / 1e3)}
+                  />
+                )}
+
+                <p className="mt-2 font-semibold text-white">BONK MATCHED</p>
+              </div>
+
+              <Separator className="mx-auto !h-[2px] max-w-48 rounded-full bg-white" />
+
+              <div className="flex flex-col">
+                {isLoading || !isAnimationEnded ? (
+                  <div className="mt-2">
+                    <Bouncy size="48" color="#ebe969" />
+                  </div>
+                ) : (
+                  <CountUp
+                    duration={4}
+                    useEasing
+                    className="font-cooper text-2xl sm:text-4xl"
+                    end={Math.floor(burned / 1e5)}
+                  />
+                )}
+
+                <p className="mt-2 font-semibold text-white">BONK BURNED</p>
+              </div>
+            </div>
           </motion.div>
 
-          <motion.div
-            variants={variant}
-            className="bg-yellow text-yellow-foreground rounded-lg p-6 text-center md:py-12"
-          >
-            {isLoading || !isAnimationEnded ? (
-              <div className="mt-2">
-                <Bouncy size="48" color="#ea5239" />
-              </div>
-            ) : (
-              <CountUp
-                duration={4}
-                useEasing
-                className="font-cooper text-3xl sm:text-4xl"
-                end={Math.floor(burned / 1e3)}
-              />
-            )}
+          <motion.p variants={variant} className="text-center text-white">
+            All donations made through BFP are 100% matched by{" "}
+            <span className="text-orange-foreground underline">BONK</span>
+          </motion.p>
 
-            <p className="mt-2 font-semibold">BONK MATCHED</p>
-          </motion.div>
-
-          <motion.div
-            variants={variant}
-            className="bg-yellow text-yellow-foreground rounded-lg p-6 text-center md:py-12"
-          >
-            {isLoading || !isAnimationEnded ? (
-              <div className="mt-2">
-                <Bouncy size="48" color="#ea5239" />
-              </div>
-            ) : (
-              <CountUp
-                duration={4}
-                useEasing
-                className="font-cooper text-3xl sm:text-4xl"
-                end={Math.floor(burned / 1e5)}
-              />
-            )}
-
-            <p className="mt-2 font-semibold">BONK BURNED</p>
+          <motion.div variants={variant} className="mx-auto">
+            <Button variant={"yellow"} asChild>
+              <Link href={"/about"}>Learn More</Link>
+            </Button>
           </motion.div>
         </motion.div>
       </div>

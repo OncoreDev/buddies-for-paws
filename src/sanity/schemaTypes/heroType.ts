@@ -4,33 +4,37 @@ import {
 } from "@sanity/orderable-document-list";
 import { defineType } from "sanity";
 
-export const charityType = defineType({
-  name: "charity",
+export const heroType = defineType({
+  name: "hero",
+  title: "Hero Carousel",
   type: "document",
   orderings: [orderRankOrdering],
   fields: [
     orderRankField({ type: "category", newItemPosition: "before" }),
     {
-      name: "name",
-      title: "Charity Name",
+      name: "title",
       type: "string",
       validation: (Rule) => Rule.required(),
     },
     {
-      name: "donationUrl",
-      title: "Donation URL",
-      type: "url",
-      validation: (Rule) => Rule.required().uri({ scheme: ["http", "https"] }),
+      name: "description",
+      type: "array",
+      title: "Description",
+      of: [{ type: "block" }],
+      validation: (Rule) => Rule.required(),
     },
     {
-      name: "logo",
-      title: "Logo",
+      name: "image",
       type: "image",
       validation: (Rule) => Rule.required(),
     },
     {
-      name: "local",
-      title: "Is local partner?",
+      name: "donateLink",
+      type: "url",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "main",
       type: "boolean",
       initialValue: false,
     },
