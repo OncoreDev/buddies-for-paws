@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 
 export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
   const [api, setApi] = useState<CarouselApi>();
+  console.log("🚀 ~ api:", api);
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
     <div className="bg-blue">
       <Carousel
         setApi={setApi}
-        opts={{ align: "center", duration: 0, watchDrag: false }}
+        opts={{ align: "center", duration: 0, watchDrag: false, loop: true }}
         plugins={[
           Autoplay({
             delay: 5000,
@@ -86,7 +87,7 @@ export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
               <CarouselItem key={hero.title ?? i} className="flex pl-6">
                 <div
                   key={hero.title}
-                  className="relative z-0 flex w-full flex-col overflow-hidden sm:rounded-lg"
+                  className="relative z-0 flex w-full flex-col overflow-hidden bg-black sm:rounded-lg"
                 >
                   <img
                     src={hero.imageUrl!}
