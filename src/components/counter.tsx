@@ -12,9 +12,9 @@ export function Counter({
     <div className="bg-blue flex flex-col gap-16 p-6 pt-12 pb-16">
       <div className="flex flex-col gap-8">
         <div className="text-yellow mx-auto flex w-full max-w-sm flex-col gap-2">
-          {!!totalRaised?.amount && (
+          {!!totalRaised[0].amount && (
             <p className="font-cooper text-center text-4xl sm:text-6xl">
-              ${totalRaised.amount.toLocaleString("en-US")}
+              ${totalRaised[0].amount.toLocaleString("en-US")}
             </p>
           )}
 

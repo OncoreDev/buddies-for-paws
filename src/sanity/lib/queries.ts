@@ -72,8 +72,9 @@ export const JOURNEYS_QUERY =
   learnMoreUrl
 }`);
 
-export const TOTAL_RAISED_QUERY = defineQuery(`*[_type == "totalRaised"][0] {
+export const TOTAL_RAISED_QUERY = defineQuery(`*[_type == "totalRaised"] {
   _id,
+  title,
   amount
 }`);
 

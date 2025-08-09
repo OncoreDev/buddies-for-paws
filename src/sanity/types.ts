@@ -449,11 +449,12 @@ export type JOURNEYS_QUERYResult = Array<{
   learnMoreUrl: string | null;
 }>;
 // Variable: TOTAL_RAISED_QUERY
-// Query: *[_type == "totalRaised"][0] {  _id,  amount}
-export type TOTAL_RAISED_QUERYResult = {
+// Query: *[_type == "totalRaised"] {  _id,  title,  amount}
+export type TOTAL_RAISED_QUERYResult = Array<{
   _id: string;
+  title: string | null;
   amount: number | null;
-} | null;
+}>;
 // Variable: HERO_CAROUSEL_QUERY
 // Query: *[_type == "hero"] | order(orderRank) {  _id,  title,  description,  "imageUrl": image.asset->url,  donateLink,  main}
 export type HERO_CAROUSEL_QUERYResult = Array<{
@@ -490,7 +491,7 @@ declare module "@sanity/client" {
     '*[_type == "event"] | order(orderRank) {\n  _id,\n  _updatedAt,\n  title,\n  slug,\n  description,\n  featured,\n  externalLinks,\n  mainImage,\n  galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n  "mainImageUrl": mainImage.asset->url,\n  "galleryImageUrls": galleryImages[].asset->url\n}': EVENTS_QUERYResult;
     '\n  *[_type == "event" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    description,\n    featured,\n    externalLinks,\n    mainImage,\n    galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n    "mainImageUrl": mainImage.asset->url,\n    "galleryImageUrls": galleryImages[].asset->url\n  }\n': EVENT_QUERYResult;
     '*[_type == "journey"] | order(orderRank) {\n  _id,\n  title,\n  description,\n  "imageUrl": image.asset->url,\n  donationUrl,\n  watchUrl,\n  learnMoreUrl\n}': JOURNEYS_QUERYResult;
-    '*[_type == "totalRaised"][0] {\n  _id,\n  amount\n}': TOTAL_RAISED_QUERYResult;
+    '*[_type == "totalRaised"] {\n  _id,\n  title,\n  amount\n}': TOTAL_RAISED_QUERYResult;
     '*[_type == "hero"] | order(orderRank) {\n  _id,\n  title,\n  description,\n  "imageUrl": image.asset->url,\n  donateLink,\n  main\n}': HERO_CAROUSEL_QUERYResult;
   }
 }
