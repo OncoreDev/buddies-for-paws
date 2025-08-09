@@ -19,7 +19,6 @@ import { useEffect, useState } from "react";
 
 export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
   const [api, setApi] = useState<CarouselApi>();
-  console.log("🚀 ~ api:", api);
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
