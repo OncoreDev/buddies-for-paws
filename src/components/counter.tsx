@@ -11,17 +11,18 @@ export function Counter({
   return (
     <div className="bg-blue flex flex-col gap-16 p-6 pt-12 pb-16">
       <div className="flex flex-col gap-8">
-        <div className="text-yellow mx-auto flex w-full max-w-sm flex-col gap-2">
-          {!!totalRaised[0].amount && (
+        {!!totalRaised[0].amount && (
+          <div className="text-yellow mx-auto flex w-full max-w-md flex-col gap-2">
             <p className="font-cooper text-center text-4xl sm:text-6xl">
               ${totalRaised[0].amount.toLocaleString("en-US")}
             </p>
-          )}
-
-          <p className="text-center font-bold sm:text-lg">
-            donated to over 12 animal welfare and wildlife charities since 2024
-          </p>
-        </div>
+            <p className="text-center font-bold sm:text-lg">
+              Almost ${totalRaised[0].amount.toLocaleString("en-US")} donated to
+              animal welfare and wildlife charities in 2024. We are on target to
+              hit our donation goal for 2025.
+            </p>
+          </div>
+        )}
 
         <p className="mx-auto w-full max-w-lg text-center text-white">
           All donations made through Buddies for Paws are 100% matched by{" "}

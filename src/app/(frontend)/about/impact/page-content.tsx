@@ -207,18 +207,18 @@ export function ImpactPageContent({
           className="bg-yellow text-yellow-foreground rounded-lg p-6 md:p-12 lg:p-16"
         >
           <div className="mx-auto flex w-full max-w-xl flex-col gap-8">
-            <div className="mx-auto flex w-full max-w-sm flex-col gap-2">
-              {!!totalRaised[0].amount && (
+            {!!totalRaised[0].amount && (
+              <div className="mx-auto flex w-full max-w-md flex-col gap-2">
                 <p className="font-cooper text-center text-4xl sm:text-6xl">
                   ${totalRaised[0].amount.toLocaleString("en-US")}
                 </p>
-              )}
-
-              <p className="text-center font-bold sm:text-lg">
-                donated to over 12 animal welfare and wildlife charities since
-                2024
-              </p>
-            </div>
+                <p className="text-center font-bold sm:text-lg">
+                  Almost ${totalRaised[0].amount.toLocaleString("en-US")}{" "}
+                  donated to animal welfare and wildlife charities in 2024. We
+                  are on target to hit our donation goal for 2025.
+                </p>
+              </div>
+            )}
 
             {!isLoading && (
               <p className="text-center text-black">
