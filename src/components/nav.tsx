@@ -126,9 +126,9 @@ export function Nav() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring" }}
-          className="max-w-9xl relative z-10 mx-auto flex h-24 w-full items-center gap-6 px-6 2xl:h-40"
+          className="max-w-9xl relative z-10 mx-auto flex h-24 w-full items-center gap-6 px-6 min-[1280px]:h-40"
         >
-          <div className="flex w-full items-center justify-between 2xl:hidden">
+          <div className="flex w-full items-center justify-between min-[1280px]:hidden">
             <Button
               variant={routeTheme?.buttonVariant}
               size={"icon"}
@@ -158,14 +158,14 @@ export function Nav() {
             </Tooltip>
           </div>
 
-          <div className="hidden w-full grid-cols-2 2xl:grid">
-            <div className="flex flex-1 items-center justify-end gap-12 pr-28 font-bold min-[1780px]:gap-20 min-[1780px]:pr-40">
+          <div className="hidden w-full grid-cols-2 min-[1280px]:grid">
+            <div className="flex flex-1 items-center justify-end gap-8 pr-24 font-bold min-[1480px]:gap-12 min-[1480px]:pr-32">
               {links.slice(0, half).map((link) => (
                 <NavLink key={link.label + "desktop"} link={link} />
               ))}
             </div>
 
-            <div className="flex flex-1 items-center justify-start gap-12 pl-28 font-bold min-[1780px]:gap-20 min-[1780px]:pl-40">
+            <div className="flex flex-1 items-center justify-start gap-8 pl-24 font-bold min-[1480px]:gap-12 min-[1480px]:pl-32">
               {links.slice(half).map((link) => (
                 <NavLink key={link.label + "desktop"} link={link} />
               ))}
@@ -182,8 +182,8 @@ export function Nav() {
             href={"/"}
             className="ease-spring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 hover:scale-105"
           >
-            <BFPMaster className="hidden 2xl:block 2xl:size-32" />
-            <BFPSubmark className="w-20 2xl:hidden" />
+            <BFPMaster className="hidden size-24 min-[1280px]:block min-[1480px]:size-32" />
+            <BFPSubmark className="w-20 min-[1280px]:hidden" />
           </Link>
         </motion.div>
       </nav>
