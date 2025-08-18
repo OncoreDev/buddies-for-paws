@@ -8,6 +8,13 @@ import { motion } from "motion/react";
 import Link from "next/link";
 
 export function NewsPageContent({ news }: { news: NEWS_QUERYResult }) {
+  const handleShare = () => {
+    const text = encodeURIComponent(news?.title || "");
+    const url = encodeURIComponent(window.location.href);
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    window.open(twitterUrl, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-24 px-6 py-24 sm:px-16 sm:py-32 xl:gap-32 xl:px-24">
       <div className="flex flex-col items-start gap-x-24 gap-y-6 sm:gap-y-8 lg:flex-row">
@@ -87,10 +94,13 @@ export function NewsPageContent({ news }: { news: NEWS_QUERYResult }) {
             }}
             transition={{ type: "spring" }}
           >
-            <Button asChild variant={"orange"} size={"sm"} className="mr-auto">
-              <Link href={""} target="_blank">
-                Share <img src={"/share.svg"} className="inline size-4" />
-              </Link>
+            <Button
+              variant={"orange"}
+              size={"sm"}
+              className="mr-auto"
+              onClick={handleShare}
+            >
+              Share <img src={"/share.svg"} className="inline size-4" />
             </Button>
           </motion.div>
 
