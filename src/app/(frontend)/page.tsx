@@ -11,7 +11,7 @@ import {
   TOTAL_RAISED_QUERY,
 } from "@/sanity/lib/queries";
 
-export default async function Home() {
+export default async function HomePage() {
   const [events, charities, totalRaised, heroCarousel] = await Promise.all([
     sanityFetch({ query: EVENTS_QUERY }),
     sanityFetch({ query: CHARITIES_QUERY }),

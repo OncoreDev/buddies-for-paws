@@ -87,3 +87,59 @@ export const HERO_CAROUSEL_QUERY =
   donateLink,
   main
 }`);
+
+export const ALL_NEWS_QUERY = defineQuery(`
+  *[_type == "news"] | order(publishedAt desc) {
+    _id,
+    _updatedAt,
+    title,
+    slug,
+    publishedAt,
+    "mainImageUrl": mainImage.asset->url,
+    categories[]->{
+      _id,
+      title
+    },
+    content[]{
+      ...,
+      _type == "image" => {
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    }
+  }
+`);
+
+export const NEWS_QUERY = defineQuery(`
+  *[_type == "news" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    "mainImageUrl": mainImage.asset->url,
+    categories[]->{
+      _id,
+      title
+    },
+    content[]{
+      ...,
+      _type == "image" => {
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    }
+  }
+`);
+
+export const NEWS_CATEGORIES_QUERY = defineQuery(`
+  *[_type == "newsCategory"] {
+    _id,
+    title
+  }
+`);

@@ -13,6 +13,88 @@
  */
 
 // Source: schema.json
+export type NewsCategory = {
+  _id: string;
+  _type: "newsCategory";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  orderRank?: string;
+  title?: string;
+};
+
+export type News = {
+  _id: string;
+  _type: "news";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  orderRank?: string;
+  title?: string;
+  slug?: Slug;
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "newsCategory";
+  }>;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  content?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "normal"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "blockquote";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+        _key: string;
+      }
+  >;
+  publishedAt?: string;
+};
+
 export type Hero = {
   _id: string;
   _type: "hero";
@@ -295,6 +377,8 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | NewsCategory
+  | News
   | Hero
   | TotalRaised
   | Charity
@@ -482,6 +566,119 @@ export type HERO_CAROUSEL_QUERYResult = Array<{
   donateLink: string | null;
   main: boolean | null;
 }>;
+// Variable: ALL_NEWS_QUERY
+// Query: *[_type == "news"] | order(publishedAt desc) {    _id,    _updatedAt,    title,    slug,    publishedAt,    "mainImageUrl": mainImage.asset->url,    categories[]->{      _id,      title    },    content[]{      ...,      _type == "image" => {        asset->{          _id,          url        },        alt      }    }  }
+export type ALL_NEWS_QUERYResult = Array<{
+  _id: string;
+  _updatedAt: string;
+  title: string | null;
+  slug: Slug | null;
+  publishedAt: string | null;
+  mainImageUrl: string | null;
+  categories: Array<{
+    _id: string;
+    title: string | null;
+  }> | null;
+  content: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "blockquote"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset: {
+          _id: string;
+          url: string | null;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+        _key: string;
+        alt: null;
+      }
+  > | null;
+}>;
+// Variable: NEWS_QUERY
+// Query: *[_type == "news" && slug.current == $slug][0] {    _id,    title,    slug,    publishedAt,    "mainImageUrl": mainImage.asset->url,    categories[]->{      _id,      title    },    content[]{      ...,      _type == "image" => {        asset->{          _id,          url        },        alt      }    }  }
+export type NEWS_QUERYResult = {
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  publishedAt: string | null;
+  mainImageUrl: string | null;
+  categories: Array<{
+    _id: string;
+    title: string | null;
+  }> | null;
+  content: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "blockquote"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset: {
+          _id: string;
+          url: string | null;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+        _key: string;
+        alt: null;
+      }
+  > | null;
+} | null;
+// Variable: NEWS_CATEGORIES_QUERY
+// Query: *[_type == "newsCategory"] {    _id,    title  }
+export type NEWS_CATEGORIES_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -493,5 +690,8 @@ declare module "@sanity/client" {
     '*[_type == "journey"] | order(orderRank) {\n  _id,\n  title,\n  description,\n  "imageUrl": image.asset->url,\n  donationUrl,\n  watchUrl,\n  learnMoreUrl\n}': JOURNEYS_QUERYResult;
     '*[_type == "totalRaised"] {\n  _id,\n  title,\n  amount\n}': TOTAL_RAISED_QUERYResult;
     '*[_type == "hero"] | order(orderRank) {\n  _id,\n  title,\n  description,\n  "imageUrl": image.asset->url,\n  donateLink,\n  main\n}': HERO_CAROUSEL_QUERYResult;
+    '\n  *[_type == "news"] | order(publishedAt desc) {\n    _id,\n    _updatedAt,\n    title,\n    slug,\n    publishedAt,\n    "mainImageUrl": mainImage.asset->url,\n    categories[]->{\n      _id,\n      title\n    },\n    content[]{\n      ...,\n      _type == "image" => {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    }\n  }\n': ALL_NEWS_QUERYResult;
+    '\n  *[_type == "news" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    publishedAt,\n    "mainImageUrl": mainImage.asset->url,\n    categories[]->{\n      _id,\n      title\n    },\n    content[]{\n      ...,\n      _type == "image" => {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    }\n  }\n': NEWS_QUERYResult;
+    '\n  *[_type == "newsCategory"] {\n    _id,\n    title\n  }\n': NEWS_CATEGORIES_QUERYResult;
   }
 }
