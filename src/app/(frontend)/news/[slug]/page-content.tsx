@@ -1,11 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Wysiwyg } from "@/components/wysiwyg";
 import { NEWS_QUERYResult } from "@/sanity/types";
 import { ArrowLeft } from "lucide-react";
-import { PortableText } from "next-sanity";
+import { motion } from "motion/react";
 import Link from "next/link";
-import { motion, stagger } from "motion/react";
 
 export function NewsPageContent({ news }: { news: NEWS_QUERYResult }) {
   return (
@@ -107,25 +107,7 @@ export function NewsPageContent({ news }: { news: NEWS_QUERYResult }) {
             }}
             transition={{ type: "spring" }}
           >
-            <PortableText
-              value={news?.content ?? []}
-              components={{
-                types: {
-                  image: ({ value }) => {
-                    if (!value?.asset?.url) return null;
-                    return (
-                      <div className="my-6">
-                        <img
-                          src={value.asset.url}
-                          alt={value.alt || "Blog image"}
-                          className="w-full overflow-hidden rounded-lg"
-                        />
-                      </div>
-                    );
-                  },
-                },
-              }}
-            />
+            <Wysiwyg content={news?.content ?? []} />
           </motion.div>
         </motion.div>
       </div>
