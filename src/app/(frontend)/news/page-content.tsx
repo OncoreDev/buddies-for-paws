@@ -17,10 +17,8 @@ import { useMemo, useState } from "react";
 
 export function NewsPageContent({
   allNews,
-  newsCategories,
 }: {
   allNews: ALL_NEWS_QUERYResult;
-  newsCategories: NEWS_CATEGORIES_QUERYResult;
 }) {
   const [keywords, setKeywords] = useState("");
   const [confirmedKeywords, setConfirmedKeywords] = useState("");
@@ -41,6 +39,16 @@ export function NewsPageContent({
       return matchesKeywords && matchesCategories;
     });
   }, [confirmedKeywords, selectedCategories]);
+
+  const availableCategories = useMemo(() => {
+    const categoryTitles = new Set<string>();
+    allNews.forEach((news) => {
+      news.categories?.forEach((cat) => {
+        if (cat.title) categoryTitles.add(cat.title);
+      });
+    });
+    return Array.from(categoryTitles);
+  }, [allNews]);
 
   return (
     <div className="max-w-9xl mx-auto flex w-full flex-col gap-24 px-6 py-16 sm:px-16 sm:py-24 xl:gap-32 xl:px-24">
@@ -102,38 +110,33 @@ export function NewsPageContent({
             <div className="flex flex-col gap-2">
               <p className="font-cooper">Categories</p>
 
-              {newsCategories.map((item) => (
+              {availableCategories.map((item) => (
                 <div
-                  key={item.title}
+                  key={item}
                   className="flex flex-row items-start space-y-0 space-x-3"
                 >
                   <Checkbox
-                    id={item.title!}
+                    id={item}
                     className="size-5 rounded-full border-none bg-white"
-                    checked={selectedCategories.includes(item.title!)}
+                    checked={selectedCategories.includes(item)}
                     onCheckedChange={(checked) => {
                       if (checked) {
-                        setSelectedCategories((prev) => [...prev, item.title!]);
+                        setSelectedCategories((prev) => [...prev, item]);
                       } else {
                         setSelectedCategories((prev) =>
-                          prev.filter((cat) => cat !== item.title),
+                          prev.filter((cat) => cat !== item),
                         );
                       }
                     }}
                   />
-                  <Label
-                    htmlFor={item.title!}
-                    className="grow text-sm font-normal"
-                  >
-                    {item.title}
+                  <Label htmlFor={item} className="grow text-sm font-normal">
+                    {item}
                   </Label>
                   <p className="ml-auto text-sm">
                     (
                     {
                       allNews.filter((news) =>
-                        news.categories?.some(
-                          (cat) => cat.title === item.title!,
-                        ),
+                        news.categories?.some((cat) => cat.title === item),
                       ).length
                     }
                     )

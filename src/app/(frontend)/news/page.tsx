@@ -9,14 +9,14 @@ export const metadata: Metadata = {
 };
 
 export default async function NewsPage() {
-  const [allNews, newsCategories] = await Promise.all([
+  const [allNews] = await Promise.all([
     sanityFetch({ query: ALL_NEWS_QUERY }),
-    sanityFetch({ query: NEWS_CATEGORIES_QUERY }),
+    // sanityFetch({ query: NEWS_CATEGORIES_QUERY }),
   ]);
   return (
     <NewsPageContent
       allNews={allNews.data}
-      newsCategories={newsCategories.data}
+      // newsCategories={newsCategories.data}
     />
   );
 }
