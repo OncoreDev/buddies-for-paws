@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Form from "next/form";
 import Image from "next/image";
 import Link from "next/link";
 import { FaDiscord, FaInstagram, FaTiktok, FaXTwitter } from "react-icons/fa6";
@@ -54,9 +53,10 @@ export function Footer() {
             }}
             transition={{ type: "spring" }}
           >
-            <Form
-              formMethod="post"
+            <form
+              method="post"
               action="https://bonkforpaws.us16.list-manage.com/subscribe/post"
+              target="_blank"
             >
               <div className="flex flex-col gap-4 sm:flex-row">
                 <input
@@ -79,7 +79,7 @@ export function Footer() {
                   Sign up
                 </Button>
               </div>
-            </Form>
+            </form>
           </motion.div>
         </motion.div>
 

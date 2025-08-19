@@ -44,7 +44,23 @@ export const newsType = defineType({
     {
       name: "content",
       type: "array",
-      of: [{ type: "block" }, { type: "image" }],
+      of: [
+        { type: "block" },
+        {
+          type: "image",
+          fields: [
+            {
+              name: "credits",
+              type: "string",
+              title: "Credits",
+              description: "Photo credit / source",
+              options: {
+                isHighlighted: true,
+              },
+            },
+          ],
+        },
+      ],
       validation: (Rule) => Rule.required(),
     },
     {

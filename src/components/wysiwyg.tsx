@@ -47,6 +47,20 @@ export const Wysiwyg: React.FC<WysiwygProps> = ({ content }) => {
             </blockquote>
           ),
         },
+        list: {
+          bullet: ({ children }) => (
+            <ul className="my-4 list-inside list-disc space-y-2">{children}</ul>
+          ),
+          number: ({ children }) => (
+            <ol className="my-4 list-inside list-decimal space-y-2">
+              {children}
+            </ol>
+          ),
+        },
+        listItem: {
+          bullet: ({ children }) => <li>{children}</li>,
+          number: ({ children }) => <li>{children}</li>,
+        },
         marks: {
           strong: ({ children }) => (
             <strong className="font-bold">{children}</strong>
@@ -66,11 +80,18 @@ export const Wysiwyg: React.FC<WysiwygProps> = ({ content }) => {
         types: {
           image: ({ value }) =>
             value?.asset?.url ? (
-              <img
-                src={value.asset.url}
-                alt={value.alt || ""}
-                className="my-6 w-full rounded-lg"
-              />
+              <figure className="my-6">
+                <img
+                  src={value.asset.url}
+                  alt={value.alt || ""}
+                  className="w-full rounded-lg"
+                />
+                {value.credits && (
+                  <figcaption className="text-muted-foreground mt-2 text-sm">
+                    {value.credits}
+                  </figcaption>
+                )}
+              </figure>
             ) : null,
         },
       }}

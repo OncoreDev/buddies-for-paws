@@ -88,6 +88,7 @@ export type News = {
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        credits?: string;
         _type: "image";
         _key: string;
       }
@@ -614,6 +615,7 @@ export type ALL_NEWS_QUERYResult = Array<{
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        credits?: string;
         _type: "image";
         _key: string;
         alt: null;
@@ -667,6 +669,7 @@ export type NEWS_QUERYResult = {
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        credits?: string;
         _type: "image";
         _key: string;
         alt: null;
