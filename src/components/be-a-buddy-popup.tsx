@@ -42,7 +42,7 @@ const routeThemes: {
   {
     prefixes: ["/events", "/about"],
     class: "bg-teal text-teal-foreground",
-    bodyClass: "",
+    bodyClass: "text-teal-foreground",
     linkClass: "text-teal-foreground",
     inputClass:
       "border-teal-foreground text-teal-foreground placeholder:text-teal-foreground/60 ",
@@ -52,7 +52,7 @@ const routeThemes: {
   {
     prefixes: ["/charities", "/news"],
     class: "bg-yellow text-yellow-foreground",
-    bodyClass: "",
+    bodyClass: "text-yellow-foreground",
     linkClass: "text-yellow-foreground",
     inputClass:
       "border-yellow-foreground text-yellow-foreground placeholder:text-yellow-foreground/60 ",
@@ -140,14 +140,14 @@ export function BeABuddyPopup() {
 
               <DialogHeader
                 className={cn(
-                  "flex flex-col gap-6 !text-center",
+                  "flex flex-col gap-6 !text-center text-white",
                   routeTheme?.bodyClass,
                 )}
               >
                 <DialogTitle className="font-cooper text-3xl text-inherit sm:text-5xl">
                   {state === "success" ? "Thank you!" : "Want to be a Buddy?"}
                 </DialogTitle>
-                <DialogDescription className="text-sm text-inherit">
+                <DialogDescription className="text-base text-inherit">
                   {state === "success" ? (
                     <span className="font-semibold">
                       You are now officially a Buddy!
@@ -156,7 +156,7 @@ export function BeABuddyPopup() {
                     "Sign up for the latest news, fundraising events, and rescue stories."
                   )}
                 </DialogDescription>
-                <DialogDescription className="text-sm text-inherit">
+                <DialogDescription className="text-base text-inherit">
                   {state === "success" ? (
                     "Look out for updates, news and animal stories in your inbox soon."
                   ) : (
