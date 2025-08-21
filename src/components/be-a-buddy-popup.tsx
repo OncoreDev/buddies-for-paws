@@ -209,35 +209,9 @@ export function BeABuddyPopup() {
                       y: 0,
                       transition: { delay: 0.2, type: "spring" },
                     }}
-                    onSubmit={async (e) => {
-                      e.preventDefault();
-                      if (isLoading) return;
-
-                      setIsLoading(true);
-                      try {
-                        const formData = new FormData(e.currentTarget);
-
-                        // send to your Next.js API
-                        const res = await fetch("/api/subscribe", {
-                          method: "POST",
-                          body: formData,
-                        });
-                        const data = await res.json();
-                        if (!data.success) {
-                          toast.error("Subscription failed. Please try again.");
-                          return;
-                        }
-
-                        handleSubscribe();
-                        toast.success("Subscribed successfully!");
-                      } catch (e) {
-                        toast.error("Failed to subscribe. Please try again.");
-                      }
-                      setIsLoading(false);
-                    }}
-                    // method="post"
-                    // action="https://bonkforpaws.us16.list-manage.com/subscribe/post"
-                    // target="_blank"
+                    method="post"
+                    action="https://bonkforpaws.us16.list-manage.com/subscribe/post"
+                    target="_blank"
                   >
                     <div className="flex flex-col gap-2">
                       <input
