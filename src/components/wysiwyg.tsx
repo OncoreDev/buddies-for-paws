@@ -80,14 +80,22 @@ export const Wysiwyg: React.FC<WysiwygProps> = ({ content }) => {
         types: {
           image: ({ value }) =>
             value?.asset?.url ? (
-              <figure className="my-6">
-                <img
-                  src={value.asset.url}
-                  alt={value.alt || ""}
-                  className="w-full rounded-lg"
-                />
+              <figure className="relative my-6 w-full">
+                <div className="relative overflow-hidden rounded-lg">
+                  <div
+                    className="absolute inset-0 scale-105 bg-cover bg-center blur-lg filter"
+                    style={{ backgroundImage: `url(${value.asset.url})` }}
+                  />
+
+                  <img
+                    src={value.asset.url}
+                    alt={value.alt || ""}
+                    className="relative max-h-[500px] w-full rounded-lg object-contain"
+                  />
+                </div>
+
                 {value.credits && (
-                  <figcaption className="text-muted-foreground mt-2 text-sm">
+                  <figcaption className="text-muted-foreground relative z-10 mt-2 text-sm">
                     {value.credits}
                   </figcaption>
                 )}
