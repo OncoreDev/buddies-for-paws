@@ -119,19 +119,28 @@ export const NEWS_QUERY = defineQuery(`
     title,
     slug,
     publishedAt,
-    "mainImageUrl": mainImage.asset->url,
+    "mainImage": mainImage{
+      asset->{
+        _id,
+        url,
+        metadata{dimensions{width, height}}
+      },
+      alt
+    },
     categories[]->{
       _id,
       title
     },
-    content[]{
+    content[] {
       ...,
       _type == "image" => {
         asset->{
           _id,
-          url
+          url,
+          metadata{dimensions{width, height}}
         },
-        alt
+        alt,
+        credits
       }
     }
   }

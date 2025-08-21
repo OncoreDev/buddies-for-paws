@@ -623,13 +623,25 @@ export type ALL_NEWS_QUERYResult = Array<{
   > | null;
 }>;
 // Variable: NEWS_QUERY
-// Query: *[_type == "news" && slug.current == $slug][0] {    _id,    title,    slug,    publishedAt,    "mainImageUrl": mainImage.asset->url,    categories[]->{      _id,      title    },    content[]{      ...,      _type == "image" => {        asset->{          _id,          url        },        alt      }    }  }
+// Query: *[_type == "news" && slug.current == $slug][0] {    _id,    title,    slug,    publishedAt,    "mainImage": mainImage{      asset->{        _id,        url,        metadata{dimensions{width, height}}      },      alt    },    categories[]->{      _id,      title    },    content[] {      ...,      _type == "image" => {        asset->{          _id,          url,          metadata{dimensions{width, height}}        },        alt,        credits      }    }  }
 export type NEWS_QUERYResult = {
   _id: string;
   title: string | null;
   slug: Slug | null;
   publishedAt: string | null;
-  mainImageUrl: string | null;
+  mainImage: {
+    asset: {
+      _id: string;
+      url: string | null;
+      metadata: {
+        dimensions: {
+          width: number | null;
+          height: number | null;
+        } | null;
+      } | null;
+    } | null;
+    alt: null;
+  } | null;
   categories: Array<{
     _id: string;
     title: string | null;
@@ -665,11 +677,17 @@ export type NEWS_QUERYResult = {
         asset: {
           _id: string;
           url: string | null;
+          metadata: {
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
         } | null;
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
-        credits?: string;
+        credits: string | null;
         _type: "image";
         _key: string;
         alt: null;
@@ -694,7 +712,7 @@ declare module "@sanity/client" {
     '*[_type == "totalRaised"] {\n  _id,\n  title,\n  amount\n}': TOTAL_RAISED_QUERYResult;
     '*[_type == "hero"] | order(orderRank) {\n  _id,\n  title,\n  description,\n  "imageUrl": image.asset->url,\n  donateLink,\n  main\n}': HERO_CAROUSEL_QUERYResult;
     '\n  *[_type == "news"] | order(publishedAt desc) {\n    _id,\n    _updatedAt,\n    title,\n    slug,\n    publishedAt,\n    "mainImageUrl": mainImage.asset->url,\n    categories[]->{\n      _id,\n      title\n    },\n    content[]{\n      ...,\n      _type == "image" => {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    }\n  }\n': ALL_NEWS_QUERYResult;
-    '\n  *[_type == "news" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    publishedAt,\n    "mainImageUrl": mainImage.asset->url,\n    categories[]->{\n      _id,\n      title\n    },\n    content[]{\n      ...,\n      _type == "image" => {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    }\n  }\n': NEWS_QUERYResult;
+    '\n  *[_type == "news" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    publishedAt,\n    "mainImage": mainImage{\n      asset->{\n        _id,\n        url,\n        metadata{dimensions{width, height}}\n      },\n      alt\n    },\n    categories[]->{\n      _id,\n      title\n    },\n    content[] {\n      ...,\n      _type == "image" => {\n        asset->{\n          _id,\n          url,\n          metadata{dimensions{width, height}}\n        },\n        alt,\n        credits\n      }\n    }\n  }\n': NEWS_QUERYResult;
     '\n  *[_type == "newsCategory"] {\n    _id,\n    title\n  }\n': NEWS_CATEGORIES_QUERYResult;
   }
 }

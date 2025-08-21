@@ -78,19 +78,32 @@ export const Wysiwyg: React.FC<WysiwygProps> = ({ content }) => {
           ),
         },
         types: {
-          image: ({ value }) =>
-            value?.asset?.url ? (
+          image: ({ value }) => {
+            if (!value?.asset?.url) return null;
+
+            // Check orientation using metadata dimensions
+            const isLandscape =
+              value.asset.metadata?.dimensions?.width >
+              value.asset.metadata?.dimensions?.height;
+
+            return (
               <figure className="relative my-6 w-full">
                 <div className="relative overflow-hidden rounded-lg">
+                  {/* Blurred background */}
                   <div
-                    className="absolute inset-0 scale-105 bg-cover bg-center blur-lg filter"
+                    className={`absolute inset-0 scale-105 bg-cover bg-center blur-lg filter ${
+                      isLandscape ? "" : "h-[500px]"
+                    }`}
                     style={{ backgroundImage: `url(${value.asset.url})` }}
                   />
 
+                  {/* Main image */}
                   <img
                     src={value.asset.url}
                     alt={value.alt || ""}
-                    className="relative max-h-[500px] w-full rounded-lg object-contain"
+                    className={`relative w-full rounded-lg object-contain ${
+                      !isLandscape ? "max-h-[500px]" : ""
+                    }`}
                   />
                 </div>
 
@@ -100,7 +113,8 @@ export const Wysiwyg: React.FC<WysiwygProps> = ({ content }) => {
                   </figcaption>
                 )}
               </figure>
-            ) : null,
+            );
+          },
         },
       }}
     />

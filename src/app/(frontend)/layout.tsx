@@ -5,6 +5,7 @@ import { WalletProvider } from "@/providers/wallet-provider";
 import { SanityLive } from "@/sanity/lib/live";
 import { Toaster } from "react-hot-toast";
 import "../globals.css";
+import { BeABuddyPopup } from "@/components/be-a-buddy-popup";
 
 export default function FrontendLayout({
   children,
@@ -24,6 +25,7 @@ export default function FrontendLayout({
               className: "!rounded-lg",
             }}
           />
+          <BeABuddyPopup />
         </WalletProvider>
       </TooltipProvider>
       <SanityLive />
