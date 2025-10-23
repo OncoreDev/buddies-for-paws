@@ -82,7 +82,7 @@ export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
           </div>
 
           <CarouselContent className="-ml-6">
-            <CarouselItem className="flex pl-6">
+            {/* <CarouselItem className="flex pl-6">
               <div className="relative z-0 flex w-full flex-col overflow-hidden bg-black sm:rounded-lg">
                 <img
                   src={
@@ -147,7 +147,7 @@ export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
                   </Button>
                 </div>
               </div>
-            </CarouselItem>
+            </CarouselItem> */}
 
             {items.map((hero, i) => (
               <CarouselItem key={hero.title ?? i} className="flex pl-6">
