@@ -38,10 +38,10 @@ export function JourneysPageContent({
 
       {journeys.map((journey, i) => (
         <motion.div
-          key={journey.title}
+          key={journey._id}
           variants={{
             hidden: {},
-            visible: { transition: { staggerChildren: 0.4 } },
+            visible: { transition: { staggerChildren: 0.25 } },
           }}
           initial="hidden"
           whileInView="visible"
@@ -63,7 +63,7 @@ export function JourneysPageContent({
             )}
           >
             <img
-              src={journey.imageUrl ?? ""}
+              src={journey.image.url ?? ""}
               alt="An image of a rescued animal"
               className="absolute inset-0 -z-10 h-full w-full object-cover"
             />
@@ -73,7 +73,7 @@ export function JourneysPageContent({
             variants={{
               hidden: {},
               visible: {
-                transition: { staggerChildren: 0.25 },
+                transition: { staggerChildren: 0.15 },
               },
             }}
             className="flex flex-col gap-4 sm:gap-6"
@@ -89,7 +89,7 @@ export function JourneysPageContent({
               }}
               className="text-orange font-cooper text-3xl sm:text-5xl"
             >
-              {journey.title}
+              Meet {journey.title}
             </motion.h2>
             <motion.p
               variants={{
@@ -114,7 +114,7 @@ export function JourneysPageContent({
               }}
               className="grid flex-wrap gap-3 sm:grid-cols-3"
             >
-              <Button asChild>
+              <Button asChild className="col-span-full">
                 <Link href={journey.donationUrl ?? ""} target="_blank">
                   DONATE NOW
                 </Link>
@@ -129,6 +129,12 @@ export function JourneysPageContent({
               <Button asChild variant={"orange-outline"}>
                 <Link href={journey.learnMoreUrl ?? ""} target="_blank">
                   Learn more
+                </Link>
+              </Button>
+
+              <Button asChild variant={"orange-outline"}>
+                <Link href={`/guardian-animals/${journey.slug?.current}`}>
+                  Updates
                 </Link>
               </Button>
             </motion.div>

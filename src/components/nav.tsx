@@ -35,7 +35,7 @@ const routeThemes: {
   buttonVariant: VariantProps<typeof buttonVariants>["variant"];
 }[] = [
   {
-    prefixes: ["/journeys", "/brand"],
+    prefixes: ["/guardian-animals", "/brand"],
     navClass: "bg-yellow text-yellow-foreground",
     linkIndicatorClass: "bg-yellow-foreground",
     buttonVariant: "orange",
@@ -61,9 +61,34 @@ const routeThemes: {
 ];
 
 const links = [
-  { href: "/journeys", label: "Journeys" },
   { href: "/events", label: "Events" },
   { href: "/news", label: "News" },
+  {
+    href: "/guardian-animals",
+    label: "Guardian Animals",
+    subLinks: [
+      {
+        href: "/guardian-animals",
+        label: "All Guardian Animals",
+      },
+      {
+        href: "/guardian-animals/hero",
+        label: "Meet Hero",
+      },
+      {
+        href: "/guardian-animals/buddy",
+        label: "Meet Buddy",
+      },
+      {
+        href: "/guardian-animals/big-papa",
+        label: "Meet Big Papa",
+      },
+      {
+        href: "/guardian-animals/bani",
+        label: "Meet Bani",
+      },
+    ],
+  },
   {
     href: "/charities",
     label: "Charities",

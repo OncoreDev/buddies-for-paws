@@ -61,16 +61,164 @@ export const EVENT_QUERY = defineQuery(`
   }
 `);
 
-export const JOURNEYS_QUERY =
-  defineQuery(`*[_type == "journey"] | order(orderRank) {
+export const JOURNEYS_QUERY = defineQuery(`
+*[_type == "journey"] | order(orderRank){
   _id,
   title,
+  slug,
   description,
-  "imageUrl": image.asset->url,
+  location,
   donationUrl,
   watchUrl,
-  learnMoreUrl
-}`);
+  learnMoreUrl,
+  "bannerUrl": banner.asset->url,
+  "image": {
+    "url": image.asset->url,
+    "credits": image.credits
+  },
+  content[] {
+      ...,
+      _type == "image" => {
+        asset->{
+          _id,
+          url,
+          metadata{dimensions{width, height}}
+        },
+        alt,
+        credits
+      }
+    },
+  
+  // Charity object
+  charity{
+   _id,
+    name,
+    url
+  },
+
+  // Species / Breed object
+  speciesOrBreed{
+   _id,
+    type,
+    value
+  },
+
+  // Latest Updates
+  "latestUpdates": latestUpdates[]->{
+    _id,
+    title,
+    slug,
+    publishedAt,
+    "mainImageUrl": mainImage.asset->url,
+    content[] {
+      ...,
+      _type == "image" => {
+        asset->{
+          _id,
+          url,
+          metadata{dimensions{width, height}}
+        },
+        alt,
+        credits
+      }
+    }
+  },
+}
+`);
+
+export const JOURNEY_QUERY = defineQuery(`
+*[_type == "journey" && slug.current == $slug][0]{
+  _id,
+  title,
+  slug,
+  description,
+  location,
+  donationUrl,
+  watchUrl,
+  learnMoreUrl,
+  "bannerUrl": banner.asset->url,
+  "image": {
+    "url": image.asset->url,
+    "credits": image.credits
+  },
+  content[] {
+      ...,
+      _type == "image" => {
+        asset->{
+          _id,
+          url,
+          metadata{dimensions{width, height}}
+        },
+        alt,
+        credits
+      }
+    },
+  
+  // Charity object
+  charity{
+   _id,
+    name,
+    url
+  },
+
+  // Species / Breed object
+  speciesOrBreed{
+   _id,
+    type,
+    value
+  },
+
+  // How Support Helps
+  howSupportHelps[]{
+    _id,
+    text,
+    "iconUrl": icon.asset->url
+  },
+
+  // Latest Updates
+  "latestUpdates": latestUpdates[]->{
+   _id,
+    title,
+    slug,
+    publishedAt,
+    "mainImageUrl": mainImage.asset->url,
+    content[] {
+      ...,
+      _type == "image" => {
+        asset->{
+          _id,
+          url,
+          metadata{dimensions{width, height}}
+        },
+        alt,
+        credits
+      }
+    }
+  }
+}
+`);
+
+export const JOURNEY_UPDATE_QUERY = defineQuery(`
+  *[_type == "journeyUpdate" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    "mainImageUrl": mainImage.asset->url,
+    content[] {
+      ...,
+      _type == "image" => {
+        asset->{
+          _id,
+          url,
+          metadata{dimensions{width, height}}
+        },
+        alt,
+        credits
+      }
+    }
+  }
+`);
 
 export const TOTAL_RAISED_QUERY = defineQuery(`*[_type == "totalRaised"] {
   _id,

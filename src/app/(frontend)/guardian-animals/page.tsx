@@ -4,9 +4,9 @@ import { Metadata } from "next";
 import { JourneysPageContent } from "./page-content";
 
 export const metadata: Metadata = {
-  title: "Journeys",
+  title: "Guardian Animals",
   description:
-    "Explore our featured journeys and learn how you can embark on a transformative experience. Discover ways to support causes that matter to you.",
+    "Explore our guardian animals and learn how you can embark on a transformative experience. Discover ways to support causes that matter to you.",
 };
 
 export default async function JourneyPage() {

@@ -173,16 +173,16 @@ export type Charity = {
   local?: boolean;
 };
 
-export type Journey = {
+export type JourneyUpdate = {
   _id: string;
-  _type: "journey";
+  _type: "journeyUpdate";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   orderRank?: string;
   title?: string;
-  description?: string;
-  image?: {
+  slug?: Slug;
+  mainImage?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -194,9 +194,163 @@ export type Journey = {
     crop?: SanityImageCrop;
     _type: "image";
   };
+  content?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "normal"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "blockquote";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        credits?: string;
+        _type: "image";
+        _key: string;
+      }
+  >;
+  publishedAt?: string;
+};
+
+export type Journey = {
+  _id: string;
+  _type: "journey";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  orderRank?: string;
+  title?: string;
+  slug?: Slug;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    credits?: string;
+    _type: "image";
+  };
+  description?: string;
   donationUrl?: string;
   watchUrl?: string;
   learnMoreUrl?: string;
+  banner?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  charity?: {
+    name?: string;
+    url?: string;
+  };
+  speciesOrBreed?: {
+    type?: "species" | "breed";
+    value?: string;
+  };
+  location?: string;
+  content?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "normal"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "blockquote";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        credits?: string;
+        _type: "image";
+        _key: string;
+      }
+  >;
+  latestUpdates?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "journeyUpdate";
+  }>;
+  howSupportHelps?: Array<{
+    icon?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    text?: string;
+    _key: string;
+  }>;
 };
 
 export type Event = {
@@ -383,6 +537,7 @@ export type AllSanitySchemaTypes =
   | Hero
   | TotalRaised
   | Charity
+  | JourneyUpdate
   | Journey
   | Event
   | SanityImagePaletteSwatch
@@ -523,16 +678,322 @@ export type EVENT_QUERYResult = {
   galleryImageUrls: Array<string | null> | null;
 } | null;
 // Variable: JOURNEYS_QUERY
-// Query: *[_type == "journey"] | order(orderRank) {  _id,  title,  description,  "imageUrl": image.asset->url,  donationUrl,  watchUrl,  learnMoreUrl}
+// Query: *[_type == "journey"] | order(orderRank){  _id,  title,  slug,  description,  location,  donationUrl,  watchUrl,  learnMoreUrl,  "bannerUrl": banner.asset->url,  "image": {    "url": image.asset->url,    "credits": image.credits  },  content[] {      ...,      _type == "image" => {        asset->{          _id,          url,          metadata{dimensions{width, height}}        },        alt,        credits      }    },    // Charity object  charity{   _id,    name,    url  },  // Species / Breed object  speciesOrBreed{   _id,    type,    value  },  // Latest Updates  "latestUpdates": latestUpdates[]->{    _id,    title,    slug,    publishedAt,    "mainImageUrl": mainImage.asset->url,    content[] {      ...,      _type == "image" => {        asset->{          _id,          url,          metadata{dimensions{width, height}}        },        alt,        credits      }    }  },}
 export type JOURNEYS_QUERYResult = Array<{
   _id: string;
   title: string | null;
+  slug: Slug | null;
   description: string | null;
-  imageUrl: string | null;
+  location: string | null;
   donationUrl: string | null;
   watchUrl: string | null;
   learnMoreUrl: string | null;
+  bannerUrl: string | null;
+  image: {
+    url: string | null;
+    credits: string | null;
+  };
+  content: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "blockquote"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset: {
+          _id: string;
+          url: string | null;
+          metadata: {
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        credits: string | null;
+        _type: "image";
+        _key: string;
+        alt: null;
+      }
+  > | null;
+  charity: {
+    _id: null;
+    name: string | null;
+    url: string | null;
+  } | null;
+  speciesOrBreed: {
+    _id: null;
+    type: "breed" | "species" | null;
+    value: string | null;
+  } | null;
+  latestUpdates: Array<{
+    _id: string;
+    title: string | null;
+    slug: Slug | null;
+    publishedAt: string | null;
+    mainImageUrl: string | null;
+    content: Array<
+      | {
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?:
+            | "blockquote"
+            | "h1"
+            | "h2"
+            | "h3"
+            | "h4"
+            | "h5"
+            | "h6"
+            | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        }
+      | {
+          asset: {
+            _id: string;
+            url: string | null;
+            metadata: {
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          credits: string | null;
+          _type: "image";
+          _key: string;
+          alt: null;
+        }
+    > | null;
+  }> | null;
 }>;
+// Variable: JOURNEY_QUERY
+// Query: *[_type == "journey" && slug.current == $slug][0]{  _id,  title,  slug,  description,  location,  donationUrl,  watchUrl,  learnMoreUrl,  "bannerUrl": banner.asset->url,  "image": {    "url": image.asset->url,    "credits": image.credits  },  content[] {      ...,      _type == "image" => {        asset->{          _id,          url,          metadata{dimensions{width, height}}        },        alt,        credits      }    },    // Charity object  charity{   _id,    name,    url  },  // Species / Breed object  speciesOrBreed{   _id,    type,    value  },  // How Support Helps  howSupportHelps[]{    _id,    text,    "iconUrl": icon.asset->url  },  // Latest Updates  "latestUpdates": latestUpdates[]->{   _id,    title,    slug,    publishedAt,    "mainImageUrl": mainImage.asset->url,    content[] {      ...,      _type == "image" => {        asset->{          _id,          url,          metadata{dimensions{width, height}}        },        alt,        credits      }    }  }}
+export type JOURNEY_QUERYResult = {
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  description: string | null;
+  location: string | null;
+  donationUrl: string | null;
+  watchUrl: string | null;
+  learnMoreUrl: string | null;
+  bannerUrl: string | null;
+  image: {
+    url: string | null;
+    credits: string | null;
+  };
+  content: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "blockquote"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset: {
+          _id: string;
+          url: string | null;
+          metadata: {
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        credits: string | null;
+        _type: "image";
+        _key: string;
+        alt: null;
+      }
+  > | null;
+  charity: {
+    _id: null;
+    name: string | null;
+    url: string | null;
+  } | null;
+  speciesOrBreed: {
+    _id: null;
+    type: "breed" | "species" | null;
+    value: string | null;
+  } | null;
+  howSupportHelps: Array<{
+    _id: null;
+    text: string | null;
+    iconUrl: string | null;
+  }> | null;
+  latestUpdates: Array<{
+    _id: string;
+    title: string | null;
+    slug: Slug | null;
+    publishedAt: string | null;
+    mainImageUrl: string | null;
+    content: Array<
+      | {
+          children?: Array<{
+            marks?: Array<string>;
+            text?: string;
+            _type: "span";
+            _key: string;
+          }>;
+          style?:
+            | "blockquote"
+            | "h1"
+            | "h2"
+            | "h3"
+            | "h4"
+            | "h5"
+            | "h6"
+            | "normal";
+          listItem?: "bullet" | "number";
+          markDefs?: Array<{
+            href?: string;
+            _type: "link";
+            _key: string;
+          }>;
+          level?: number;
+          _type: "block";
+          _key: string;
+        }
+      | {
+          asset: {
+            _id: string;
+            url: string | null;
+            metadata: {
+              dimensions: {
+                width: number | null;
+                height: number | null;
+              } | null;
+            } | null;
+          } | null;
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          credits: string | null;
+          _type: "image";
+          _key: string;
+          alt: null;
+        }
+    > | null;
+  }> | null;
+} | null;
+// Variable: JOURNEY_UPDATE_QUERY
+// Query: *[_type == "journeyUpdate" && slug.current == $slug][0] {    _id,    title,    slug,    publishedAt,    "mainImageUrl": mainImage.asset->url,    content[] {      ...,      _type == "image" => {        asset->{          _id,          url,          metadata{dimensions{width, height}}        },        alt,        credits      }    }  }
+export type JOURNEY_UPDATE_QUERYResult = {
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  publishedAt: string | null;
+  mainImageUrl: string | null;
+  content: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          | "blockquote"
+          | "h1"
+          | "h2"
+          | "h3"
+          | "h4"
+          | "h5"
+          | "h6"
+          | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset: {
+          _id: string;
+          url: string | null;
+          metadata: {
+            dimensions: {
+              width: number | null;
+              height: number | null;
+            } | null;
+          } | null;
+        } | null;
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        credits: string | null;
+        _type: "image";
+        _key: string;
+        alt: null;
+      }
+  > | null;
+} | null;
 // Variable: TOTAL_RAISED_QUERY
 // Query: *[_type == "totalRaised"] {  _id,  title,  amount}
 export type TOTAL_RAISED_QUERYResult = Array<{
@@ -708,7 +1169,9 @@ declare module "@sanity/client" {
     '*[_type == "charity"] | order(orderRank) {\n  _id,\n  name,\n  donationUrl,\n  local,\n  "logoUrl": logo.asset->url\n}': CHARITIES_QUERYResult;
     '*[_type == "event"] | order(orderRank) {\n  _id,\n  _updatedAt,\n  title,\n  slug,\n  description,\n  featured,\n  externalLinks,\n  mainImage,\n  galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n  "mainImageUrl": mainImage.asset->url,\n  "galleryImageUrls": galleryImages[].asset->url\n}': EVENTS_QUERYResult;
     '\n  *[_type == "event" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    description,\n    featured,\n    externalLinks,\n    mainImage,\n    galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n    "mainImageUrl": mainImage.asset->url,\n    "galleryImageUrls": galleryImages[].asset->url\n  }\n': EVENT_QUERYResult;
-    '*[_type == "journey"] | order(orderRank) {\n  _id,\n  title,\n  description,\n  "imageUrl": image.asset->url,\n  donationUrl,\n  watchUrl,\n  learnMoreUrl\n}': JOURNEYS_QUERYResult;
+    '\n*[_type == "journey"] | order(orderRank){\n  _id,\n  title,\n  slug,\n  description,\n  location,\n  donationUrl,\n  watchUrl,\n  learnMoreUrl,\n  "bannerUrl": banner.asset->url,\n  "image": {\n    "url": image.asset->url,\n    "credits": image.credits\n  },\n  content[] {\n      ...,\n      _type == "image" => {\n        asset->{\n          _id,\n          url,\n          metadata{dimensions{width, height}}\n        },\n        alt,\n        credits\n      }\n    },\n  \n  // Charity object\n  charity{\n   _id,\n    name,\n    url\n  },\n\n  // Species / Breed object\n  speciesOrBreed{\n   _id,\n    type,\n    value\n  },\n\n  // Latest Updates\n  "latestUpdates": latestUpdates[]->{\n    _id,\n    title,\n    slug,\n    publishedAt,\n    "mainImageUrl": mainImage.asset->url,\n    content[] {\n      ...,\n      _type == "image" => {\n        asset->{\n          _id,\n          url,\n          metadata{dimensions{width, height}}\n        },\n        alt,\n        credits\n      }\n    }\n  },\n}\n': JOURNEYS_QUERYResult;
+    '\n*[_type == "journey" && slug.current == $slug][0]{\n  _id,\n  title,\n  slug,\n  description,\n  location,\n  donationUrl,\n  watchUrl,\n  learnMoreUrl,\n  "bannerUrl": banner.asset->url,\n  "image": {\n    "url": image.asset->url,\n    "credits": image.credits\n  },\n  content[] {\n      ...,\n      _type == "image" => {\n        asset->{\n          _id,\n          url,\n          metadata{dimensions{width, height}}\n        },\n        alt,\n        credits\n      }\n    },\n  \n  // Charity object\n  charity{\n   _id,\n    name,\n    url\n  },\n\n  // Species / Breed object\n  speciesOrBreed{\n   _id,\n    type,\n    value\n  },\n\n  // How Support Helps\n  howSupportHelps[]{\n    _id,\n    text,\n    "iconUrl": icon.asset->url\n  },\n\n  // Latest Updates\n  "latestUpdates": latestUpdates[]->{\n   _id,\n    title,\n    slug,\n    publishedAt,\n    "mainImageUrl": mainImage.asset->url,\n    content[] {\n      ...,\n      _type == "image" => {\n        asset->{\n          _id,\n          url,\n          metadata{dimensions{width, height}}\n        },\n        alt,\n        credits\n      }\n    }\n  }\n}\n': JOURNEY_QUERYResult;
+    '\n  *[_type == "journeyUpdate" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    publishedAt,\n    "mainImageUrl": mainImage.asset->url,\n    content[] {\n      ...,\n      _type == "image" => {\n        asset->{\n          _id,\n          url,\n          metadata{dimensions{width, height}}\n        },\n        alt,\n        credits\n      }\n    }\n  }\n': JOURNEY_UPDATE_QUERYResult;
     '*[_type == "totalRaised"] {\n  _id,\n  title,\n  amount\n}': TOTAL_RAISED_QUERYResult;
     '*[_type == "hero"] | order(orderRank) {\n  _id,\n  title,\n  description,\n  "imageUrl": image.asset->url,\n  donateLink,\n  main\n}': HERO_CAROUSEL_QUERYResult;
     '\n  *[_type == "news"] | order(publishedAt desc) {\n    _id,\n    _updatedAt,\n    title,\n    slug,\n    publishedAt,\n    "mainImageUrl": mainImage.asset->url,\n    categories[]->{\n      _id,\n      title\n    },\n    content[]{\n      ...,\n      _type == "image" => {\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    }\n  }\n': ALL_NEWS_QUERYResult;
