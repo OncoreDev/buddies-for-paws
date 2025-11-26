@@ -25,6 +25,7 @@ import { TbMenu, TbX } from "react-icons/tb";
 import { BFPMaster } from "./logo/bfp-master";
 import { BFPSubmark } from "./logo/bfp-submark";
 import { Button, buttonVariants } from "./ui/button";
+import { JOURNEYS_QUERYResult } from "@/sanity/types";
 
 const routeThemes: {
   prefixes: string[];
@@ -60,73 +61,63 @@ const routeThemes: {
   },
 ];
 
-const links = [
-  { href: "/events", label: "Events" },
-  { href: "/news", label: "News" },
-  {
-    href: "/guardian-animals",
-    label: "Guardian Animals",
-    subLinks: [
-      {
-        href: "/guardian-animals",
-        label: "All Guardian Animals",
-      },
-      {
-        href: "/guardian-animals/hero",
-        label: "Meet Hero",
-      },
-      {
-        href: "/guardian-animals/buddy",
-        label: "Meet Buddy",
-      },
-      {
-        href: "/guardian-animals/big-papa",
-        label: "Meet Big Papa",
-      },
-      {
-        href: "/guardian-animals/bani",
-        label: "Meet Bani",
-      },
-    ],
-  },
-  {
-    href: "/charities",
-    label: "Charities",
-    subLinks: [
-      {
-        href: "/charities/global-partners",
-        label: "Buddies global charities partners",
-      },
-      {
-        href: "/charities/local-partners",
-        label: "Buddies local charity partners",
-      },
-    ],
-  },
-  {
-    href: "/about",
-    label: "About",
-    subLinks: [
-      {
-        href: "/about/mission",
-        label: "Mission",
-      },
-      {
-        href: "/about/impact",
-        label: "Impact",
-      },
-    ],
-  },
-  { href: "/brand", label: "Brand" },
-  { href: "/contact", label: "Contact" },
-  { href: "https://baobaoinu.com/", label: "Store" },
-];
+export function Nav({
+  journeys,
+}: {
+  journeys: NonNullable<JOURNEYS_QUERYResult>;
+}) {
+  const links = [
+    { href: "/events", label: "Events" },
+    { href: "/news", label: "News" },
+    {
+      href: "/guardian-animals",
+      label: "Guardian Animals",
+      subLinks: [
+        {
+          href: "/guardian-animals",
+          label: "All Guardian Animals",
+        },
+        ...journeys.map((journey) => ({
+          href: `/guardian-animals/${journey.slug?.current}`,
+          label: `Meet ${journey.title}`,
+        })),
+      ],
+    },
+    {
+      href: "/charities",
+      label: "Charities",
+      subLinks: [
+        {
+          href: "/charities/global-partners",
+          label: "Buddies global charities partners",
+        },
+        {
+          href: "/charities/local-partners",
+          label: "Buddies local charity partners",
+        },
+      ],
+    },
+    {
+      href: "/about",
+      label: "About",
+      subLinks: [
+        {
+          href: "/about/mission",
+          label: "Mission",
+        },
+        {
+          href: "/about/impact",
+          label: "Impact",
+        },
+      ],
+    },
+    { href: "/brand", label: "Brand" },
+    { href: "/contact", label: "Contact" },
+    { href: "https://baobaoinu.com/", label: "Store" },
+  ];
+  const mobileLinks = [{ href: "/", label: "Home" }, ...links];
+  const half = Math.ceil(links.length / 2);
 
-const mobileLinks = [{ href: "/", label: "Home" }, ...links];
-
-const half = Math.ceil(links.length / 2);
-
-export function Nav() {
   const pathname = usePathname();
   const [isOpenMobileMenu, setIsOpenMobileMenu] = useState(false);
 
