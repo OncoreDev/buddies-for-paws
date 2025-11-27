@@ -2,6 +2,7 @@ import { SITE_CONFIG } from "@/lib/site-config";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -59,6 +60,7 @@ export default function RootLayout({
         className={`${cooperBlackStd.variable} ${inter.variable} relative z-0 flex min-h-screen flex-col antialiased`}
       >
         {children}
+        <GoogleAnalytics gaId="G-0C67RBPTW7" />
       </body>
     </html>
   );
