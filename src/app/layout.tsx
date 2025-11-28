@@ -60,8 +60,8 @@ export default function RootLayout({
         className={`${cooperBlackStd.variable} ${inter.variable} relative z-0 flex min-h-screen flex-col antialiased`}
       >
         {children}
-        <GoogleAnalytics gaId="G-0C67RBPTW7" />
       </body>
+      <GoogleAnalytics gaId="G-0C67RBPTW7" />
     </html>
   );
 }
