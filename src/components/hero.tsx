@@ -185,7 +185,7 @@ export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
                       className={cn(
                         "flex h-full w-full flex-col gap-6 p-6 pt-8 sm:gap-8 sm:p-8 sm:pt-12 lg:min-h-[600px] lg:w-[500px] lg:rounded-md",
                         hero.main
-                          ? "bg-orange text-orange-foreground"
+                          ? "text-orange bg-white/90"
                           : "bg-white sm:bg-white/90",
                       )}
                     >
