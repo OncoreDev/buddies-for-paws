@@ -93,22 +93,20 @@ export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
                 />
 
                 <div className="relative lg:hidden">
-                  <img
-                    src={
-                      "https://cdn.sanity.io/images/a5fs5e8w/production/2a6342bd0910ed2650f8207850842aef94893401-1921x1080.png?w=2000&fit=max&auto=format"
-                    }
+                  <Image
+                    src={BFP_Ledger_Socials_Website_Banner}
                     alt=""
                     className="aspect-video w-full object-cover"
                   />
 
-                  <Button className="absolute right-4 bottom-4 mt-auto ml-auto h-24 w-24 rounded-full pt-2 whitespace-pre-wrap">
+                  {/* <Button className="absolute right-4 bottom-4 mt-auto ml-auto h-24 w-24 rounded-full pt-2 whitespace-pre-wrap">
                     <Link
                       href={"https://luma.com/londonafterhours"}
                       target="_blank"
                     >
                       RSVP Today
                     </Link>
-                  </Button>
+                  </Button> */}
                 </div>
 
                 <div className={cn("flex w-full grow lg:p-8", "text-orange")}>
@@ -118,7 +116,7 @@ export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
                       "bg-white sm:bg-white/90",
                     )}
                   >
-                    <h2 className="font-cooper text-center text-4xl sm:text-6xl">
+                    <h2 className="font-cooper text-center text-3xl sm:text-6xl">
                       BONK x Ledger
                     </h2>
 
@@ -196,7 +194,7 @@ export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
                           : "bg-white sm:bg-white/90",
                       )}
                     >
-                      <h2 className="font-cooper text-center text-4xl sm:text-6xl">
+                      <h2 className="font-cooper text-center text-3xl sm:text-6xl">
                         {hero.title}
                       </h2>
 
