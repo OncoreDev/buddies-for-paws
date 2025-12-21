@@ -126,7 +126,7 @@ export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
                         <br />
                         <br />
                         30% of proceeds support Buddies for Paws, with every
-                        donation match by BONK. <br />
+                        donation matched by BONK. <br />
                         <br />
                         <b>Pawtect your BONK. Pawtect animals.</b>
                       </p>
