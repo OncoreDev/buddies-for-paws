@@ -14,8 +14,10 @@ import { HERO_CAROUSEL_QUERYResult } from "@/sanity/types";
 import { PortableText } from "@portabletext/react";
 import Autoplay from "embla-carousel-autoplay";
 import { motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import BFP_Ledger_Socials_Website_Banner from "../../images/BFP_Ledger Socials_Website_Banner.png";
 
 export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
   const [api, setApi] = useState<CarouselApi>();
@@ -82,12 +84,10 @@ export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
           </div>
 
           <CarouselContent className="-ml-6">
-            {/* <CarouselItem className="flex pl-6">
+            <CarouselItem className="flex pl-6">
               <div className="relative z-0 flex w-full flex-col overflow-hidden bg-black sm:rounded-lg">
-                <img
-                  src={
-                    "https://cdn.sanity.io/images/a5fs5e8w/production/2a6342bd0910ed2650f8207850842aef94893401-1921x1080.png?w=2000&fit=max&auto=format"
-                  }
+                <Image
+                  src={BFP_Ledger_Socials_Website_Banner}
                   alt=""
                   className="absolute inset-0 -z-10 hidden h-full w-full object-cover lg:block"
                 />
@@ -111,43 +111,50 @@ export function Hero({ items }: { items: HERO_CAROUSEL_QUERYResult }) {
                   </Button>
                 </div>
 
-                <div className={cn("flex w-full grow lg:p-8", "text-blue")}>
+                <div className={cn("flex w-full grow lg:p-8", "text-orange")}>
                   <div
                     className={cn(
                       "flex h-full w-full flex-col gap-6 p-6 pt-8 sm:gap-8 sm:p-8 sm:pt-12 lg:min-h-[600px] lg:w-[500px] lg:rounded-md",
                       "bg-white sm:bg-white/90",
                     )}
                   >
-                    <h2 className="font-cooper text-center text-3xl sm:text-5xl">
-                      Buddies for Paws Fashion Fundraiser
+                    <h2 className="font-cooper text-center text-4xl sm:text-6xl">
+                      BONK x Ledger
                     </h2>
 
-                    <div className="mx-auto w-full text-center">
+                    <div className="mx-auto w-full max-w-80 text-center">
                       <p>
-                        Buddies for Paws is returning to London on October 21st
-                        2025, for a night of fundraising, fashion & fun!!! Join
-                        us and some very special buddies for an unforgettable
-                        evening. Presented by BONK, Jito, OVHcloud & Solana and
-                        co-hosted by Buddies for Paws, Lissen and Zebu. Expect a
-                        charity fashion show like no other, limited-edition
-                        merch and lots of prizes and surprise. All proceeds from
-                        the event will be donated to Buddies for Paws, and 100%
-                        matched by BONK. Space is limited, secure your spot now
+                        Limited-edition BONK x Ledger wallets available now.
+                        <br />
+                        <br />
+                        30% of proceeds support Buddies for Paws, with every
+                        donation match by BONK. <br />
+                        <br />
+                        <b>Pawtect your BONK. Pawtect animals.</b>
                       </p>
                     </div>
+
+                    <Button asChild className="mt-auto" variant="orange">
+                      <Link
+                        href="https://shop.ledger.com/pages/BONK?r=b269f5c87f28"
+                        target="_blank"
+                      >
+                        Shop now
+                      </Link>
+                    </Button>
                   </div>
 
-                  <Button className="mt-auto ml-auto hidden h-32 w-32 rounded-full pt-2 text-xl whitespace-pre-wrap lg:flex">
+                  {/* <Button className="mt-auto ml-auto hidden h-32 w-32 rounded-full pt-2 text-xl whitespace-pre-wrap lg:flex">
                     <Link
                       href={"https://luma.com/londonafterhours"}
                       target="_blank"
                     >
                       RSVP Today
                     </Link>
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
-            </CarouselItem> */}
+            </CarouselItem>
 
             {items.map((hero, i) => (
               <CarouselItem key={hero.title ?? i} className="flex pl-6">
