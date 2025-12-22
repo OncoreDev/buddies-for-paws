@@ -19,7 +19,7 @@ export function LocalCharitiesPageContent({
           transition={{ type: "spring", delay: 0.2 }}
           className="text-blue font-cooper text-5xl sm:text-7xl"
         >
-          Local charity partners
+          Honorary charity partners
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}

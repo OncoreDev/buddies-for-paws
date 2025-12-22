@@ -29,10 +29,18 @@ export const charityType = defineType({
       validation: (Rule) => Rule.required(),
     },
     {
-      name: "local",
-      title: "Is local partner?",
-      type: "boolean",
-      initialValue: false,
+      name: "partnerType",
+      title: "Partner type",
+      type: "string",
+      initialValue: "global",
+      options: {
+        list: [
+          { title: "Global", value: "global" },
+          { title: "Honorary", value: "honorary" },
+        ],
+        layout: "radio",
+      },
+      validation: (Rule) => Rule.required(),
     },
   ],
 });

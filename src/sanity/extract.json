@@ -992,10 +992,20 @@
         },
         "optional": true
       },
-      "local": {
+      "partnerType": {
         "type": "objectAttribute",
         "value": {
-          "type": "boolean"
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "global"
+            },
+            {
+              "type": "string",
+              "value": "honorary"
+            }
+          ]
         },
         "optional": true
       }

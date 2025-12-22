@@ -170,7 +170,7 @@ export type Charity = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  local?: boolean;
+  partnerType?: "global" | "honorary";
 };
 
 export type JourneyUpdate = {
@@ -554,12 +554,12 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: CHARITIES_QUERY
-// Query: *[_type == "charity"] | order(orderRank) {  _id,  name,  donationUrl,  local,  "logoUrl": logo.asset->url}
+// Query: *[_type == "charity"] | order(orderRank) {  _id,  name,  donationUrl,  partnerType,  "logoUrl": logo.asset->url}
 export type CHARITIES_QUERYResult = Array<{
   _id: string;
   name: string | null;
   donationUrl: string | null;
-  local: boolean | null;
+  partnerType: "global" | "honorary" | null;
   logoUrl: string | null;
 }>;
 // Variable: EVENTS_QUERY
@@ -1166,7 +1166,7 @@ export type NEWS_CATEGORIES_QUERYResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "charity"] | order(orderRank) {\n  _id,\n  name,\n  donationUrl,\n  local,\n  "logoUrl": logo.asset->url\n}': CHARITIES_QUERYResult;
+    '*[_type == "charity"] | order(orderRank) {\n  _id,\n  name,\n  donationUrl,\n  partnerType,\n  "logoUrl": logo.asset->url\n}': CHARITIES_QUERYResult;
     '*[_type == "event"] | order(orderRank) {\n  _id,\n  _updatedAt,\n  title,\n  slug,\n  description,\n  featured,\n  externalLinks,\n  mainImage,\n  galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n  "mainImageUrl": mainImage.asset->url,\n  "galleryImageUrls": galleryImages[].asset->url\n}': EVENTS_QUERYResult;
     '\n  *[_type == "event" && slug.current == $slug][0] {\n    _id,\n    title,\n    slug,\n    description,\n    featured,\n    externalLinks,\n    mainImage,\n    galleryImages[]{\n      asset->{\n        _id,\n        url,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n    "mainImageUrl": mainImage.asset->url,\n    "galleryImageUrls": galleryImages[].asset->url\n  }\n': EVENT_QUERYResult;
     '\n*[_type == "journey"] | order(orderRank){\n  _id,\n  title,\n  slug,\n  description,\n  location,\n  donationUrl,\n  watchUrl,\n  learnMoreUrl,\n  "bannerUrl": banner.asset->url,\n  "image": {\n    "url": image.asset->url,\n    "credits": image.credits\n  },\n  content[] {\n      ...,\n      _type == "image" => {\n        asset->{\n          _id,\n          url,\n          metadata{dimensions{width, height}}\n        },\n        alt,\n        credits\n      }\n    },\n  \n  // Charity object\n  charity{\n   _id,\n    name,\n    url\n  },\n\n  // Species / Breed object\n  speciesOrBreed{\n   _id,\n    type,\n    value\n  },\n\n  // Latest Updates\n  "latestUpdates": latestUpdates[]->{\n    _id,\n    title,\n    slug,\n    publishedAt,\n    "mainImageUrl": mainImage.asset->url,\n    content[] {\n      ...,\n      _type == "image" => {\n        asset->{\n          _id,\n          url,\n          metadata{dimensions{width, height}}\n        },\n        alt,\n        credits\n      }\n    }\n  },\n}\n': JOURNEYS_QUERYResult;

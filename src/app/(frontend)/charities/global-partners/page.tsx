@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default async function GlobalCharitiesPage() {
   const { data } = await sanityFetch({ query: CHARITIES_QUERY });
-  const charities = data.filter((charity) => !charity.local);
+  const charities = data.filter((charity) => charity.partnerType === "global");
 
   return <GlobalCharitiesPageContent charities={charities} />;
 }

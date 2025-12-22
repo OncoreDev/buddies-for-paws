@@ -5,7 +5,7 @@ export const CHARITIES_QUERY =
   _id,
   name,
   donationUrl,
-  local,
+  partnerType,
   "logoUrl": logo.asset->url
 }`);
 

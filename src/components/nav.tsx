@@ -75,7 +75,7 @@ export function Nav({
       subLinks: [
         {
           href: "/guardian-animals",
-          label: "All Guardian Animals",
+          label: "All guardian animals",
         },
         ...journeys.map((journey) => ({
           href: `/guardian-animals/${journey.slug?.current}`,
@@ -89,11 +89,11 @@ export function Nav({
       subLinks: [
         {
           href: "/charities/global-partners",
-          label: "Buddies global charities partners",
+          label: "Buddies global charity partners",
         },
         {
-          href: "/charities/local-partners",
-          label: "Buddies local charity partners",
+          href: "/charities/honorary-partners",
+          label: "Buddies honorary charity partners",
         },
       ],
     },
