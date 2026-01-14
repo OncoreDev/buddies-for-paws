@@ -17,27 +17,20 @@ export function Counter({
               ${totalRaised[0].amount.toLocaleString("en-US")}
             </p>
             <p className="text-center font-bold sm:text-lg">
-              Almost ${totalRaised[0].amount.toLocaleString("en-US")} donated to
-              animal welfare and wildlife charities in 2024. We are on target to
-              hit our donation goal for 2025.
+              Almost ${totalRaised[0].amount.toLocaleString("en-US")} raised for
+              animals
             </p>
           </div>
         )}
 
         <p className="mx-auto w-full max-w-lg text-center text-white">
-          All donations made through Buddies for Paws are 100% matched by{" "}
-          <Link
-            href={"https://bonkcoin.com/"}
-            target="_blank"
-            className="text-yellow font-semibold underline"
-          >
-            BONK
-          </Link>
-          , doubling the impact for animals in need.
+          Since 2024, Buddies for Paws has helped raise almost $
+          {totalRaised[0].amount?.toLocaleString("en-US") || "-"} for animal
+          welfare and wildlife conservation charities worldwide.
           <br />
           <br />
-          To learn more about the benefits of donating through Buddies for Paws
-          and the benefits of blockchain technology, click below.
+          Donations made through Buddies for Paws are matched 100% by BONK,
+          helping your gift go even further for animals in need
         </p>
 
         <Button
