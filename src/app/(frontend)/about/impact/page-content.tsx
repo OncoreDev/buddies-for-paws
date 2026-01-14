@@ -178,8 +178,9 @@ export function ImpactPageContent({
           </div>
 
           <p className="font-cooper text-center text-xl sm:text-3xl">
-            PLUS: Every donation made through Buddies for Paws is 100% matched
-            by <span className="underline">BONK</span>, doubling our impact.
+            PLUS: Every donation made through Buddies for Paws is matched 100%
+            by <span className="underline">BONK</span>, helping your gift go
+            further.
           </p>
         </motion.div>
       </motion.div>
