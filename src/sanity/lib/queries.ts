@@ -4,9 +4,11 @@ export const CHARITIES_QUERY =
   defineQuery(`*[_type == "charity"] | order(orderRank) {
   _id,
   name,
+  description,
   donationUrl,
   partnerType,
-  "logoUrl": logo.asset->url
+  "logoUrl": logo.asset->url,
+  "imageUrl": image.asset->url
 }`);
 
 export const EVENTS_QUERY =
@@ -93,7 +95,10 @@ export const JOURNEYS_QUERY = defineQuery(`
   charity{
    _id,
     name,
-    url
+    url,
+      "image": {
+    "url": image.asset->url
+  },
   },
 
   // Species / Breed object

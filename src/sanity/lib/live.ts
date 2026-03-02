@@ -17,5 +17,5 @@ export const { sanityFetch, SanityLive } = defineLive({
     apiVersion: "vX",
   }),
   serverToken: token,
-  browserToken: token,
+  // browserToken: token,
 });

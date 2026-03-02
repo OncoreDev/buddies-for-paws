@@ -3,6 +3,8 @@
 import COLOR_COMBINATIONS_PNG from "../../../../images/brand/color-combinations.png";
 import PRIMARY_COLORS_PNG from "../../../../images/brand/primary-colors.png";
 import SECONDARY_COLORS_PNG from "../../../../images/brand/secondary-colors.png";
+import BRAND_GUIDELINES_HEADER_PNG from "../../../../images/brand/brand-guidelines-header.png";
+import HEART_STICKER_ORANGE_PNG from "../../../../images/stickers/heart sticker orange.png";
 
 import { BFPMaster } from "@/components/logo/bfp-master";
 import { BFPSubmark } from "@/components/logo/bfp-submark";
@@ -10,6 +12,7 @@ import { motion, stagger, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import { Button } from "@/components/ui/button";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -27,8 +30,45 @@ const logoColors = [
 
 export function BrandPageContent() {
   return (
-    <div className="max-w-8xl mx-auto flex w-full flex-col gap-16 px-6 py-24 sm:gap-24 sm:px-16 sm:py-32">
-      <motion.div
+    <>
+      <section className="bg-yellow text-orange overflow-hidden">
+        <div className="max-w-8xl mx-auto flex w-full flex-col gap-16 px-6 py-24 sm:px-16 sm:py-32">
+          <div className="relative grid gap-x-16 gap-y-8 lg:grid-cols-2">
+            <div className="flex items-center justify-center lg:order-1">
+              <div className="relative w-full">
+                <Image
+                  src={BRAND_GUIDELINES_HEADER_PNG}
+                  alt="BFP Pose Helping Friends 01"
+                  className="w-full rounded-lg"
+                />
+
+                <Image
+                  src={HEART_STICKER_ORANGE_PNG}
+                  alt="I Love BFP Sticker"
+                  className="animate-float-soft absolute -top-[9%] left-[90%] w-[17%]"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col justify-center gap-6 sm:gap-12">
+              <h1 className="font-cooper text-5xl sm:text-7xl">
+                Our brand guidelines
+              </h1>
+              <p className="sm:text-xl">
+                <b>
+                  All logos, colours, typefaces, and brand assets are live here
+                  to help you keep everything BFP-approved.
+                </b>{" "}
+                Unsure on something? Give us a shout.
+              </p>
+              <Button variant={"orange"} className="mr-auto" asChild>
+                <Link href={"/contact"}>Contact us</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div className="max-w-8xl mx-auto flex w-full flex-col gap-16 px-6 py-24 sm:gap-24 sm:px-16 sm:py-32">
+        {/* <motion.div
         initial={"hidden"}
         whileInView={"visible"}
         transition={{ delayChildren: stagger(0.2, { startDelay: 0.2 }) }}
@@ -53,157 +93,159 @@ export function BrandPageContent() {
           </Link>
           . We’re happy to help.
         </motion.p>
-      </motion.div>
+      </motion.div> */}
 
-      <Section>
-        <SectionHeader>
-          <SectionTitle>Master logo</SectionTitle>
-          <SectionDescription>
-            This is our master logo. It should be used as often as possible and
-            is available in all BFP primary colors, including black and white.
-            <br />
-            <br />
-            Please use the colored versions responsibly and refer to the color
-            guidance page for detailed instructions. Detailed below is guidance
-            on clear space.
-            <br />
-            <br />
-            If in doubt, give it more room, never less.
-          </SectionDescription>
-        </SectionHeader>
+        <Section>
+          <SectionHeader>
+            <SectionTitle>Master logo</SectionTitle>
+            <SectionDescription>
+              This is our master logo. It should be used as often as possible
+              and is available in all BFP primary colors, including black and
+              white.
+              <br />
+              <br />
+              Please use the colored versions responsibly and refer to the color
+              guidance page for detailed instructions. Detailed below is
+              guidance on clear space.
+              <br />
+              <br />
+              If in doubt, give it more room, never less.
+            </SectionDescription>
+          </SectionHeader>
 
-        <div className="grid grid-cols-2 gap-x-6 gap-y-8 md:flex md:flex-wrap md:gap-x-12">
-          {logoColors.map((color, i) => (
-            <BFPLogo key={i + "master-logo"} color={color} type="master" />
-          ))}
-        </div>
-      </Section>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-8 md:flex md:flex-wrap md:gap-x-12">
+            {logoColors.map((color, i) => (
+              <BFPLogo key={i + "master-logo"} color={color} type="master" />
+            ))}
+          </div>
+        </Section>
 
-      <Section>
-        <SectionHeader>
-          <SectionTitle>Submark logo</SectionTitle>
-          <SectionDescription>
-            This is our submark. We use it in situations where the master logo
-            might be too large, the text becomes unreadable, or space is
-            limited. It’s also ideal for mobile website headers, among other
-            compact applications.
-            <br />
-            <br />
-            Detailed below is guidance on clear space. If in doubt, give it more
-            room, never less.
-          </SectionDescription>
-        </SectionHeader>
+        <Section>
+          <SectionHeader>
+            <SectionTitle>Submark logo</SectionTitle>
+            <SectionDescription>
+              This is our submark. We use it in situations where the master logo
+              might be too large, the text becomes unreadable, or space is
+              limited. It’s also ideal for mobile website headers, among other
+              compact applications.
+              <br />
+              <br />
+              Detailed below is guidance on clear space. If in doubt, give it
+              more room, never less.
+            </SectionDescription>
+          </SectionHeader>
 
-        <div className="grid grid-cols-2 gap-x-6 gap-y-8 md:flex md:flex-wrap md:gap-x-12">
-          {logoColors.map((color, i) => (
-            <BFPLogo key={i + "submark-logo"} color={color} type="submark" />
-          ))}
-        </div>
-      </Section>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-8 md:flex md:flex-wrap md:gap-x-12">
+            {logoColors.map((color, i) => (
+              <BFPLogo key={i + "submark-logo"} color={color} type="submark" />
+            ))}
+          </div>
+        </Section>
 
-      <Section>
-        <SectionHeader>
-          <SectionTitle>Color palette</SectionTitle>
-          <SectionDescription>
-            This is the full BFP palette. We don’t lead with a specific color
-            way—our approach is flexible and adaptable. Our primary palette
-            includes colors that should always be featured in any asset.
-            Supporting colors should never appear on their own, and the master
-            logo or submark should not be presented in these supporting colors.
-            However, they are suitable for use in UI elements, infographics,
-            iconography, and more.
-          </SectionDescription>
-        </SectionHeader>
+        <Section>
+          <SectionHeader>
+            <SectionTitle>Color palette</SectionTitle>
+            <SectionDescription>
+              This is the full BFP palette. We don’t lead with a specific color
+              way—our approach is flexible and adaptable. Our primary palette
+              includes colors that should always be featured in any asset.
+              Supporting colors should never appear on their own, and the master
+              logo or submark should not be presented in these supporting
+              colors. However, they are suitable for use in UI elements,
+              infographics, iconography, and more.
+            </SectionDescription>
+          </SectionHeader>
 
-        <div className="flex flex-col gap-6 sm:gap-8">
-          <h2 className="text-orange font-cooper text-2xl sm:text-3xl">
-            Primary colors
-          </h2>
+          <div className="flex flex-col gap-6 sm:gap-8">
+            <h2 className="text-orange font-cooper text-2xl sm:text-3xl">
+              Primary colors
+            </h2>
 
-          <Image
-            src={PRIMARY_COLORS_PNG}
-            alt="Primary Colors"
-            className="w-full"
-          />
-        </div>
-
-        <div className="flex flex-col gap-6 sm:gap-8">
-          <h2 className="text-orange font-cooper text-2xl sm:text-3xl">
-            Secondary colors
-          </h2>
-
-          <Image
-            src={SECONDARY_COLORS_PNG}
-            alt="Secondary Colors"
-            className="w-full"
-          />
-        </div>
-      </Section>
-
-      <Section>
-        <SectionHeader>
-          <SectionTitle>Color combinations</SectionTitle>
-          <SectionDescription>
-            Use only the approved color combinations shown here to ensure
-            legibility across all touchpoints and assets. Some colors pair well
-            with white— others don’t. Our goal is clarity and consistency. If a
-            combination looks off, it probably is.
-          </SectionDescription>
-        </SectionHeader>
-
-        <Image
-          src={COLOR_COMBINATIONS_PNG}
-          alt="Color Combinations"
-          className="w-full"
-        />
-      </Section>
-
-      <Section>
-        <SectionHeader>
-          <SectionTitle>Typography</SectionTitle>
-          <SectionDescription>
-            We have two typefaces:
-            <br />
-            <br />
-            <b>Cooper Std Black</b> and <b>Inter</b>.
-            <br />
-            <br />
-            Cooper Std Black should be used for headlines, titles, CTAs, and any
-            impactful text.
-            <br />
-            <br />
-            Inter is reserved for body copy, supporting text, footers, terms and
-            conditions, and similar content.
-          </SectionDescription>
-        </SectionHeader>
-
-        <div className="flex flex-wrap gap-x-32 gap-y-8">
-          <div className="flex flex-col gap-4">
-            <p className="font-cooper text-orange text-5xl sm:text-6xl">
-              Cooper Std Black
-            </p>
-            <Link
-              href={"https://fonts.adobe.com/fonts/cooper-black"}
-              target="_blank"
-              className="text-orange underline"
-            >
-              fonts.adobe.com/fonts/cooper-black
-            </Link>
+            <Image
+              src={PRIMARY_COLORS_PNG}
+              alt="Primary Colors"
+              className="w-full"
+            />
           </div>
 
-          <div className="flex flex-col gap-4">
-            <p className="text-blue text-5xl sm:text-6xl">Inter</p>
-            <Link
-              href={"https://fonts.google.com/specimen/Inter"}
-              target="_blank"
-              className="text-orange underline"
-            >
-              fonts.google.com/specimen/Inter
-            </Link>
+          <div className="flex flex-col gap-6 sm:gap-8">
+            <h2 className="text-orange font-cooper text-2xl sm:text-3xl">
+              Secondary colors
+            </h2>
+
+            <Image
+              src={SECONDARY_COLORS_PNG}
+              alt="Secondary Colors"
+              className="w-full"
+            />
           </div>
-        </div>
-      </Section>
-    </div>
+        </Section>
+
+        <Section>
+          <SectionHeader>
+            <SectionTitle>Color combinations</SectionTitle>
+            <SectionDescription>
+              Use only the approved color combinations shown here to ensure
+              legibility across all touchpoints and assets. Some colors pair
+              well with white— others don’t. Our goal is clarity and
+              consistency. If a combination looks off, it probably is.
+            </SectionDescription>
+          </SectionHeader>
+
+          <Image
+            src={COLOR_COMBINATIONS_PNG}
+            alt="Color Combinations"
+            className="w-full"
+          />
+        </Section>
+
+        <Section>
+          <SectionHeader>
+            <SectionTitle>Typography</SectionTitle>
+            <SectionDescription>
+              We have two typefaces:
+              <br />
+              <br />
+              <b>Cooper Std Black</b> and <b>Inter</b>.
+              <br />
+              <br />
+              Cooper Std Black should be used for headlines, titles, CTAs, and
+              any impactful text.
+              <br />
+              <br />
+              Inter is reserved for body copy, supporting text, footers, terms
+              and conditions, and similar content.
+            </SectionDescription>
+          </SectionHeader>
+
+          <div className="flex flex-wrap gap-x-32 gap-y-8">
+            <div className="flex flex-col gap-4">
+              <p className="font-cooper text-orange text-5xl sm:text-6xl">
+                Cooper Std Black
+              </p>
+              <Link
+                href={"https://fonts.adobe.com/fonts/cooper-black"}
+                target="_blank"
+                className="text-orange underline"
+              >
+                fonts.adobe.com/fonts/cooper-black
+              </Link>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <p className="text-blue text-5xl sm:text-6xl">Inter</p>
+              <Link
+                href={"https://fonts.google.com/specimen/Inter"}
+                target="_blank"
+                className="text-orange underline"
+              >
+                fonts.google.com/specimen/Inter
+              </Link>
+            </div>
+          </div>
+        </Section>
+      </div>
+    </>
   );
 }
 

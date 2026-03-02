@@ -1,0 +1,2 @@
+sanity dataset export production production-backup.tar.gz
+sanity dataset import production-backup.tar.gz production

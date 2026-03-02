@@ -83,6 +83,12 @@ export const journeyType = defineType({
           title: "Charity URL",
           validation: (Rule) => Rule.required(),
         },
+        {
+          name: "image",
+          type: "image",
+          title: "Charity Image URL",
+          validation: (Rule) => Rule.required(),
+        },
       ],
       validation: (Rule) => Rule.required(),
     },

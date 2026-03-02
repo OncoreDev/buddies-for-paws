@@ -121,9 +121,10 @@ export function Nav({
   const pathname = usePathname();
   const [isOpenMobileMenu, setIsOpenMobileMenu] = useState(false);
 
-  const routeTheme = routeThemes.find(({ prefixes }) =>
-    prefixes.some((prefix) => pathname.startsWith(prefix)),
-  );
+  const routeTheme = routeThemes.find(({ prefixes }) => {
+    if (pathname === "/") return prefixes.includes("/events"); // default to first theme for homepage
+    return prefixes.some((prefix) => pathname.startsWith(prefix));
+  });
 
   const handleMenuToggle = () => {
     if (!isOpenMobileMenu) {
@@ -312,9 +313,10 @@ const NavLink = ({ link, className }: { link: any; className?: string }) => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const routeTheme = routeThemes.find(({ prefixes }) =>
-    prefixes.some((prefix) => pathname.startsWith(prefix)),
-  );
+  const routeTheme = routeThemes.find(({ prefixes }) => {
+    if (pathname === "/") return prefixes.includes("/events"); // default to first theme for homepage
+    return prefixes.some((prefix) => pathname.startsWith(prefix));
+  });
 
   return (
     <motion.div

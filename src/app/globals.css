@@ -56,6 +56,8 @@
 
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  --animate-float-soft: float-soft 5s ease-in-out infinite;
+  --animate-float-windy: floatWindy 6s ease-in-out infinite;
 
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -136,5 +138,41 @@
   }
   to {
     transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes float-soft {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(0px, -12px) rotate(5deg);
+  }
+  50% {
+    transform: translate(6px, -8px) rotate(-5deg);
+  }
+  75% {
+    transform: translate(-6px, -8px) rotate(5deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+@keyframes floatWindy {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(8px, -6px) rotate(2deg);
+  }
+  50% {
+    transform: translate(-6px, -14px) rotate(-5deg);
+  }
+  75% {
+    transform: translate(10px, -10px) rotate(3deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
   }
 }
