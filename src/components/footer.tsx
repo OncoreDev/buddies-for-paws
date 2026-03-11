@@ -17,8 +17,10 @@ export function Footer() {
       <div className="mx-auto w-full max-w-7xl px-6 py-16 sm:px-16 sm:py-24">
         <div className="grid gap-16 lg:grid-cols-2">
           <div>
-            <p className="font-cooper text-5xl">Subscribe to our newsletter</p>
-            <p className="mt-4">
+            <p className="font-cooper text-center text-5xl sm:text-left">
+              Subscribe to our newsletter
+            </p>
+            <p className="mt-4 text-center sm:text-left">
               Follow our guardian animals, partners, and the impact we’re
               making.
             </p>

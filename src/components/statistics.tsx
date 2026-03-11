@@ -135,7 +135,7 @@ export function Statistics({
   }, []);
 
   return (
-    <div className="bg-yellow text-orange px-6 py-24 sm:px-16 sm:py-32">
+    <div className="bg-yellow text-orange overflow-hidden px-6 py-24 sm:px-16 sm:py-32">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 sm:gap-16">
         <div>
           {!!totalRaised[0].amount && (
@@ -190,7 +190,7 @@ export function Statistics({
             </div>
           </div>
           <div className="flex flex-col justify-center gap-6">
-            <div className="relative flex max-w-80 items-center gap-2 md:max-w-none md:gap-6">
+            <div className="relative mx-auto flex max-w-80 items-center gap-2 sm:mx-0">
               <Image
                 src={MatchedByBonkedImage}
                 alt="Matched by Bonked Sticker Orange"
@@ -200,11 +200,11 @@ export function Statistics({
               <Image
                 src={HeartStickerOrange}
                 alt="Heart Sticker Orange"
-                className="animate-float-windy w-[20%] shrink-0"
+                className="animate-float-windy absolute -right-14 w-[16%] shrink-0 sm:-right-16 sm:w-[20%]"
               />
             </div>
 
-            <p className="sm:text-lg">
+            <p className="text-center sm:text-left sm:text-lg">
               <b>
                 All donations made through Buddies for Paws are matched 100% by
                 BONK,
@@ -212,7 +212,11 @@ export function Statistics({
               providing additional funding to support animal welfare charities
               and wildlife conservation efforts worldwide.
             </p>
-            <Button variant={"orange"} className="mr-auto" asChild>
+            <Button
+              variant={"orange"}
+              className="mr-auto ml-auto sm:ml-0"
+              asChild
+            >
               <Link href={"https://bonkforpaws.com/"}>Donate today</Link>
             </Button>
           </div>
