@@ -46,7 +46,7 @@ export function WhatsNewCarousel() {
           </div>
 
           <CarouselContent className="-ml-8">
-            <CarouselItem className="flex pl-8">
+            {/* <CarouselItem className="flex pl-8">
               <div className="relative z-0 flex w-full flex-col overflow-hidden rounded-lg bg-white/80 p-6 sm:p-8">
                 <div className="grid gap-x-12 gap-y-8 lg:grid-cols-2">
                   <div className="relative mx-auto w-full">
@@ -84,7 +84,7 @@ export function WhatsNewCarousel() {
                   </div>
                 </div>
               </div>
-            </CarouselItem>
+            </CarouselItem> */}
 
             <CarouselItem className="flex pl-8">
               <div className="relative z-0 flex w-full flex-col overflow-hidden rounded-lg bg-white/80 p-6 sm:p-8">
