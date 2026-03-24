@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ExclamationMarkStickerBlue from "../../../../images/stickers/Exclamation mark sticker blue.png";
-import HeartStickerTeal from "../../../../images/stickers/heart sticker teal.png";
+import HeartStickerTeal from "../../../../images/stickers/heart sticker blue.png";
 import MatchedByBonkStickerBlue from "../../../../images/stickers/matched by bonk sticker blue.png";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -13,7 +13,7 @@ export default function CharitiesLayout({
   return (
     <>
       {children}
-      <section className="bg-blue overflow-hidden text-white">
+      <section className="bg-teal text-blue overflow-hidden">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-16 px-6 py-16 sm:px-16 sm:py-24">
           <div className="relative grid gap-x-16 gap-y-16 lg:grid-cols-2">
             <div className="flex items-center justify-center">
@@ -33,7 +33,7 @@ export default function CharitiesLayout({
                 <Image
                   src={HeartStickerTeal}
                   alt="Heart Sticker Teal"
-                  className="animate-float-windy absolute -bottom-16 -left-12 w-[20%]"
+                  className="animate-float-windy absolute -bottom-16 -left-12 w-[20%] -rotate-45"
                 />
               </div>
             </div>
@@ -47,7 +47,7 @@ export default function CharitiesLayout({
                 Every single donation is matched 100% by BONK, making your money
                 go further for animals in need.
               </p>
-              <Button variant={"teal"} className="mr-auto" asChild>
+              <Button variant={"blue"} className="mr-auto" asChild>
                 <Link href={"/about"}>Learn more</Link>
               </Button>
             </div>

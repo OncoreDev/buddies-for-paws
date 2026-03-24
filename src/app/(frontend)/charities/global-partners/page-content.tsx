@@ -67,8 +67,16 @@ export function GlobalCharitiesPageContent({
                 <img
                   src={charity.logoUrl!}
                   alt={charity.name!}
-                  className="aspect-7/3 w-full object-contain brightness-0 invert"
+                  className={cn(
+                    "aspect-8/3 w-full object-contain brightness-0 invert",
+                    charity.name === "Dogs for Better Lives" && "scale-80",
+                    charity.name ===
+                      "Scottish Society for the Prevention of Cruelty to Animals" &&
+                      "scale-80",
+                    charity.name === "Save The Chimps" && "scale-115",
+                  )}
                 />
+                {/* {charity.name} */}
 
                 <Button
                   variant={"teal"}

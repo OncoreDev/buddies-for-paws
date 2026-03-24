@@ -65,7 +65,7 @@ export default async function HomePage() {
             />
             <Image
               src={HeartStickerOrange}
-              className="animate-float-windy absolute bottom-[45%] left-[37%] -z-20 w-[6%] -rotate-90"
+              className="animate-float-windy absolute bottom-[45%] left-[37%] -z-20 w-[6%] -rotate-60"
               alt="Heart Sticker Orange"
             />
             <Image

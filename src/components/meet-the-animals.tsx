@@ -8,6 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
 import { EVENTS_QUERYResult, JOURNEYS_QUERYResult } from "@/sanity/types";
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowRight } from "lucide-react";
@@ -33,9 +34,10 @@ export function MeetTheAnimals({
 
         <div className="flex flex-wrap items-center justify-center gap-6">
           {journeys.map((journey) => (
-            <div
+            <Link
+              href={`/guardian-animals/${journey.slug!.current!}`}
               key={journey._id}
-              className="bg-orange w-64 overflow-hidden rounded-lg text-white"
+              className="bg-orange hover:bg-yellow hover:text-orange group w-64 overflow-hidden rounded-lg text-white"
             >
               <img
                 src={journey.image!.url!}
@@ -49,10 +51,13 @@ export function MeetTheAnimals({
                 <img
                   src={journey.charity!.image!.url!}
                   alt={journey.charity!.name!}
-                  className="aspect-7/3 w-full object-contain brightness-0 invert"
+                  className={cn(
+                    "aspect-7/3 w-full object-contain brightness-0 invert",
+                    journey.title === "Hero" && "scale-75",
+                  )}
                 />
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

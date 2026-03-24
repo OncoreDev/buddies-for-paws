@@ -86,7 +86,7 @@ export function WhatsNewCarousel() {
               </div>
             </CarouselItem> */}
 
-            <CarouselItem className="flex pl-8">
+            {/* <CarouselItem className="flex pl-8">
               <div className="relative z-0 flex w-full flex-col overflow-hidden rounded-lg bg-white/80 p-6 sm:p-8">
                 <div className="grid gap-x-12 gap-y-8 lg:grid-cols-2">
                   <div className="relative z-0 mx-auto w-full">
@@ -95,17 +95,6 @@ export function WhatsNewCarousel() {
                       alt="BONK x BFP Night Pub Quiz"
                       className="aspect-square w-full rounded-lg object-cover"
                     />
-                    {/* <Image
-                      src={HeartStickerBlue}
-                      alt="Heart Sticker Blue"
-                      className="animate-float-soft absolute top-[37%] left-[10%] w-[15%]"
-                    />
-
-                    <Image
-                      src={SpecialBuy}
-                      alt="Special Buy"
-                      className="animate-float-windy absolute top-[77%] left-[40%] w-[60%]"
-                    /> */}
                   </div>
                   <div className="flex flex-col items-center justify-center gap-6 text-center lg:items-start lg:text-left">
                     <p className="-mb-4 text-sm">
@@ -139,7 +128,7 @@ export function WhatsNewCarousel() {
                   </div>
                 </div>
               </div>
-            </CarouselItem>
+            </CarouselItem> */}
 
             <CarouselItem className="flex pl-8">
               <div className="relative z-0 mb-auto flex w-full flex-col overflow-hidden rounded-lg bg-white/80 p-6 sm:p-8">
