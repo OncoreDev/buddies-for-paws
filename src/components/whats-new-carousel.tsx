@@ -14,6 +14,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BFP_Pose_Ledger_001 from "../../images/BFP_Pose_Ledger_001.png";
 import BONKXBFP_NIGHT_PUB from "../../images/BONK-x-BFP_Website-Carousel.png";
+import BFP_KEYRINGS from "../../images/BFP-Keyrings.jpg";
 import BONKXBFP_PILATES from "../../images/BONK-x-BFP_Pilates-Website-Banner.png";
 import HeartStickerBlue from "../../images/stickers/heart sticker blue.png";
 import SpecialBuy from "../../images/stickers/special buy.png";
@@ -131,6 +132,51 @@ export function WhatsNewCarousel() {
             </CarouselItem> */}
 
             <CarouselItem className="flex pl-8">
+              <div className="relative z-0 flex w-full flex-col overflow-hidden rounded-lg bg-white/80 p-6 sm:p-8">
+                <div className="grid gap-x-12 gap-y-8 lg:grid-cols-2">
+                  <div className="relative z-0 mx-auto w-full">
+                    <Image
+                      src={BFP_KEYRINGS}
+                      alt="BFP Keyrings"
+                      className="aspect-square w-full rounded-lg object-cover"
+                    />
+                    <Image
+                      src={HeartStickerBlue}
+                      alt="Heart Sticker Blue"
+                      className="animate-float-soft absolute top-[82%] left-[80%] w-[15%]"
+                    />
+                    <Image
+                      src={SpecialBuy}
+                      alt="Special Buy"
+                      className="animate-float-windy absolute top-[10%] left-[5%] w-[60%]"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center gap-6 text-center lg:items-start lg:text-left">
+                    <p className="-mb-4 text-sm">
+                      <b>SPECIAL BUY</b>
+                    </p>
+                    <h2 className="font-cooper text-4xl sm:text-5xl">
+                      BFP Keyrings
+                    </h2>
+
+                    <p className="text-black">
+                      <b>Meet Your Guardian Animal.</b> Five animals. Five
+                      charities. One keyring that makes a real difference. Every
+                      purchase supports your chosen charity. BONK matches every
+                      donation for even greater impact.
+                    </p>
+
+                    <Button asChild variant="blue">
+                      <Link href="https://baobaoinu.com/en-gb" target="_blank">
+                        Shop now
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </CarouselItem>
+
+            <CarouselItem className="flex pl-8">
               <div className="relative z-0 mb-auto flex w-full flex-col overflow-hidden rounded-lg bg-white/80 p-6 sm:p-8">
                 <div className="grid gap-x-12 gap-y-8 lg:grid-cols-2">
                   <div className="relative mx-auto w-full">
@@ -144,7 +190,6 @@ export function WhatsNewCarousel() {
                       alt="Heart Sticker Blue"
                       className="animate-float-soft absolute top-[37%] left-[10%] w-[15%]"
                     />
-
                     <Image
                       src={SpecialBuy}
                       alt="Special Buy"
