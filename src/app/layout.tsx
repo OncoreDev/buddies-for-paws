@@ -2,7 +2,7 @@ import { SITE_CONFIG } from "@/lib/site-config";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -61,6 +61,7 @@ export default function RootLayout({
       >
         {children}
       </body>
+      <GoogleTagManager gtmId="GTM-W3W7TVPV" />
       <GoogleAnalytics gaId="G-0C67RBPTW7" />
     </html>
   );
