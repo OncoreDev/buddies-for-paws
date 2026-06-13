@@ -162,8 +162,8 @@ export function WhatsNewCarousel() {
                     <p className="text-black">
                       <b>Meet Your Guardian Animal.</b> Five animals. Five
                       charities. One keyring that makes a real difference. Every
-                      purchase supports your chosen charity. BONK matches every
-                      donation for even greater impact.
+                      purchase supports your chosen charity.
+                      {/* BONK matches every donation for even greater impact. */}
                     </p>
 
                     <Button asChild variant="blue">

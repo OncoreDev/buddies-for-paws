@@ -2,6 +2,7 @@ import Image from "next/image";
 import ExclamationMarkStickerBlue from "../../../../images/stickers/Exclamation mark sticker blue.png";
 import HeartStickerTeal from "../../../../images/stickers/heart sticker blue.png";
 import MatchedByBonkStickerBlue from "../../../../images/stickers/matched by bonk sticker blue.png";
+import PoweredByBonkStickerOrange from "../../../../images/stickers/powered by bonk sticker orange.png";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -19,8 +20,8 @@ export default function CharitiesLayout({
             <div className="flex items-center justify-center">
               <div className="relative mt-8 w-full max-w-80">
                 <Image
-                  src={MatchedByBonkStickerBlue}
-                  alt="Matched by BONK Sticker Blue"
+                  src={PoweredByBonkStickerOrange}
+                  alt="Powered by BONK Sticker Orange"
                   className="w-full rounded-lg"
                 />
 
@@ -39,13 +40,21 @@ export default function CharitiesLayout({
             </div>
 
             <div className="flex flex-col justify-center gap-6">
-              <p className="sm:text-lg">
+              {/* <p className="sm:text-lg">
                 <b>
                   BONK is the coin behind BFP, and they&apos;re leading the way
                   when it comes to using Crypto for doing good.
                 </b>{" "}
                 Every single donation is matched 100% by BONK, making your money
                 go further for animals in need.
+              </p> */}
+              <p className="sm:text-lg">
+                <b>
+                  BONK is the coin behind BFP, and together we're leading the
+                  way when it comes to using crypto for doing good.
+                </b>{" "}
+                Since 2024 we've raised almost $600,000 for animal welfare
+                charities worldwide, and we're just getting started.
               </p>
               <Button variant={"blue"} className="mr-auto" asChild>
                 <Link href={"/about"}>Learn more</Link>

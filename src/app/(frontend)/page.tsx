@@ -40,9 +40,13 @@ export default async function HomePage() {
             <h1 className="font-cooper max-w-md text-4xl sm:text-5xl">
               Supporting animal charities worldwide
             </h1>
-            <p className="max-w-64 sm:text-lg">
+            {/* <p className="max-w-64 sm:text-lg">
               Every donation made through Buddies for Paws is{" "}
               <b>matched 100% by BONK.</b>
+            </p> */}
+            <p className="max-w-64 sm:text-lg">
+              Every donation made through Buddies for Paws supports animal
+              charities worldwide, <b>powered by BONK.</b>
             </p>
 
             <div className="flex flex-wrap gap-x-6 gap-y-4">

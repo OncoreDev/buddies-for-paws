@@ -177,11 +177,11 @@ export function ImpactPageContent({
             ))}
           </div>
 
-          <p className="font-cooper text-center text-xl sm:text-3xl">
+          {/* <p className="font-cooper text-center text-xl sm:text-3xl">
             PLUS: Every donation made through Buddies for Paws is matched 100%
             by <span className="underline">BONK</span>, helping your gift go
             further.
-          </p>
+          </p> */}
         </motion.div>
       </motion.div>
 
@@ -213,15 +213,19 @@ export function ImpactPageContent({
                 <p className="font-cooper text-center text-4xl sm:text-6xl">
                   ${totalRaised[0].amount.toLocaleString("en-US")}
                 </p>
-                <p className="text-center font-bold sm:text-lg">
+                {/* <p className="text-center font-bold sm:text-lg">
                   Almost ${totalRaised[0].amount.toLocaleString("en-US")}{" "}
                   donated to animal welfare and wildlife charities in 2024. We
                   are on target to hit our donation goal for 2025.
+                </p> */}
+                <p className="text-center font-bold sm:text-lg">
+                  Almost ${totalRaised[0].amount.toLocaleString("en-US")}{" "}
+                  donated to animal welfare and wildlife charities since 2024.
                 </p>
               </div>
             )}
 
-            {!isLoading && (
+            {/* {!isLoading && (
               <p className="text-center text-black">
                 Thanks to your generosity Buddies for Paws has donated{" "}
                 <span className="text-yellow-foreground font-semibold">
@@ -236,6 +240,20 @@ export function ImpactPageContent({
                   {Math.round(burned / 1e5).toLocaleString("en-US")}
                 </span>{" "}
                 BONK to make our community even stronger!
+              </p>
+            )} */}
+
+            {!isLoading && (
+              <p className="text-center text-black">
+                Thanks to your generosity, Buddies for Paws has donated{" "}
+                <span className="text-yellow-foreground font-semibold">
+                  {Math.round(donated / 1e9).toLocaleString("en-US")}
+                </span>{" "}
+                SOL and{" "}
+                <span className="text-yellow-foreground font-semibold">
+                  {Math.round(bonkDonated / 1e5).toLocaleString("en-US")}
+                </span>{" "}
+                BONK to animal welfare charities worldwide.
               </p>
             )}
 

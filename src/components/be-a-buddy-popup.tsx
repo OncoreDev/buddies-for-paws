@@ -160,17 +160,18 @@ export function BeABuddyPopup() {
                   {state === "success" ? (
                     "Look out for updates, news and animal stories in your inbox soon."
                   ) : (
-                    <span className="font-semibold">
-                      100% of donations matched by{" "}
-                      <span
-                        className={cn(
-                          "text-orange-foreground underline",
-                          routeTheme?.linkClass,
-                        )}
-                      >
-                        BONK
-                      </span>
-                    </span>
+                    <></>
+                    // <span className="font-semibold">
+                    //   100% of donations matched by{" "}
+                    //   <span
+                    //     className={cn(
+                    //       "text-orange-foreground underline",
+                    //       routeTheme?.linkClass,
+                    //     )}
+                    //   >
+                    //     BONK
+                    //   </span>
+                    // </span>
                   )}
                 </DialogDescription>
               </DialogHeader>

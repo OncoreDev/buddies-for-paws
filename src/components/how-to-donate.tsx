@@ -7,22 +7,18 @@ import Image from "next/image";
 
 const steps = [
   {
-    img: "",
     title: "Connect your wallet",
     description: "Use a supported crypto wallet to donate securely",
   },
   {
-    img: "",
     title: "Make your donation",
     description: "Choose the amount and complete your donation",
   },
+  // {
+  //   title: "BONK matches it",
+  //   description: "BONK 100% matches your donation",
+  // },
   {
-    img: "",
-    title: "BONK matches it",
-    description: "BONK 100% matches your donation",
-  },
-  {
-    img: "",
     title: "Help animals everywhere",
     description: "Your donation supports animal welfare charities",
   },
@@ -38,7 +34,7 @@ export function HowToDonate() {
 
         <Image src={HowToDonateImage} alt="How to donate" className="w-full" />
 
-        <div className="grid gap-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-4 lg:px-12">
+        <div className="grid gap-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:px-12">
           {steps.map((step, index) => (
             <div
               key={"steps-" + index}

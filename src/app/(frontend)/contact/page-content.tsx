@@ -23,6 +23,7 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import ContactImage from "../../../../images/contact/contact.png";
+import ContactImage2 from "../../../../images/contact/contact2.png";
 import ExclamationMarkSticker from "../../../../images/stickers/Exclamation mark sticker blue.png";
 
 export function ContactPageContent() {
@@ -86,7 +87,7 @@ export function ContactPageContent() {
                   className="animate-float-windy absolute top-0 right-0 w-[15%]"
                 />
                 <Image
-                  src={ContactImage}
+                  src={ContactImage2}
                   alt="Contact Us"
                   className="-mb-8 w-full max-w-80 lg:max-w-none"
                 />

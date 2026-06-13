@@ -18,9 +18,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import MatchedByBonkedImage from "../../images/stickers/matched by bonk sticker orange.png";
+import PoweredByBonkedImage from "../../images/stickers/powered by bonk sticker orange.png";
 import ExclamationMarkStickerOrange from "../../images/stickers/Exclamation mark sticker orange.png";
 import HeartStickerOrange from "../../images/stickers/heart sticker orange.png";
 import BFPPoseHighFive001 from "../../images/BFP_Pose_HighFive_001.png";
+import BFPPoseHighFive002 from "../../images/BFP_Pose_HighFive_002.png";
 import Image from "next/image";
 
 const preflightCommitment = "processed";
@@ -183,7 +185,7 @@ export function Statistics({
                 className="animate-float-soft absolute bottom-0 left-0 w-[15%]"
               />
               <Image
-                src={BFPPoseHighFive001}
+                src={BFPPoseHighFive002}
                 alt="BFP Pose High Five"
                 className="w-full max-w-96 md:max-w-none"
               />
@@ -192,8 +194,8 @@ export function Statistics({
           <div className="flex flex-col justify-center gap-6">
             <div className="relative mx-auto flex max-w-80 items-center gap-2 sm:mx-0">
               <Image
-                src={MatchedByBonkedImage}
-                alt="Matched by Bonked Sticker Orange"
+                src={PoweredByBonkedImage}
+                alt="Powered by Bonked Sticker Orange"
                 className="w-full"
               />
 
@@ -204,13 +206,18 @@ export function Statistics({
               />
             </div>
 
-            <p className="text-center sm:text-left sm:text-lg">
+            {/* <p className="text-center sm:text-left sm:text-lg">
               <b>
                 All donations made through Buddies for Paws are matched 100% by
                 BONK,
               </b>{" "}
               providing additional funding to support animal welfare charities
               and wildlife conservation efforts worldwide.
+            </p> */}
+            <p className="text-center sm:text-left sm:text-lg">
+              <b>Buddies for Paws is proudly powered by BONK, </b>supporting
+              animal welfare charities and wildlife conservation efforts
+              worldwide.
             </p>
             <Button
               variant={"orange"}

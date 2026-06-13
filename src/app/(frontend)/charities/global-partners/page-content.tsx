@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CHARITIES_QUERYResult } from "@/sanity/types";
 import Image from "next/image";
 import BFPPoseFamilyHearts001 from "../../../../../images/charity/BFP_Pose_Family_Hearts_001.png";
+import BFPPoseFamilyHearts002 from "../../../../../images/charity/BFP_Pose_Family_Hearts_002.png";
 import Link from "next/link";
 import { X } from "lucide-react";
 import { useState } from "react";
@@ -24,7 +25,7 @@ export function GlobalCharitiesPageContent({
             <div className="flex items-center justify-center lg:order-1">
               <div className="relative">
                 <Image
-                  src={BFPPoseFamilyHearts001}
+                  src={BFPPoseFamilyHearts002}
                   alt="BFP Family With BONK"
                   className="mx-auto -mt-12 -mb-8 w-full max-w-96 lg:-mb-12 lg:max-w-none"
                 />
