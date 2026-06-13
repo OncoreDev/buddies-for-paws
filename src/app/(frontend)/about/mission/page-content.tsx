@@ -139,11 +139,11 @@ export function MissionPageContent() {
               </p> */}
               <p className="sm:text-lg">
                 <b>
-                  BONK is the coin behind BFP, and together we're leading the
-                  way when it comes to using crypto for doing good.
+                  BONK is the coin behind BFP, and together we&apos;re leading
+                  the way when it comes to using crypto for doing good.
                 </b>{" "}
-                Since 2024 we've raised almost $600,000 for animal welfare
-                charities worldwide, and we're just getting started.
+                Since 2024 we&apos;ve raised almost $600,000 for animal welfare
+                charities worldwide, and we&apos;re just getting started.
               </p>
               <Button variant={"yellow"} className="mr-auto" asChild>
                 <Link href={"https://bonkcoin.com"} target="_blank">
