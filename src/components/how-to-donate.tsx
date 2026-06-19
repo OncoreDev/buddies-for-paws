@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "./ui/button";
-import HowToDonateImage from "../../images/how-to-donate.png";
+import HowToDonateImage from "../../images/how-to-donate-02.png";
 import Image from "next/image";
 
 const steps = [
@@ -34,11 +34,11 @@ export function HowToDonate() {
 
         <Image src={HowToDonateImage} alt="How to donate" className="w-full" />
 
-        <div className="grid gap-6 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:px-12">
+        <div className="grid gap-6 gap-y-12 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:px-12">
           {steps.map((step, index) => (
             <div
               key={"steps-" + index}
-              className="flex flex-col gap-4 sm:gap-6"
+              className="flex flex-col gap-4 sm:gap-6 last:sm:col-span-full last:lg:last:col-span-1"
             >
               {/* <div className="bg-yellow mx-auto aspect-square w-full max-w-64 rounded-full sm:max-w-none"></div> */}
               <div className="bg-yellow font-cooper text-orange mx-auto flex aspect-square size-10 items-center justify-center rounded-full text-xl sm:size-14 sm:text-2xl">
