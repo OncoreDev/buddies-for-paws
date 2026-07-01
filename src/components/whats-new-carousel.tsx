@@ -20,7 +20,8 @@ import BONKXBFP_PILATES from "../../images/BONK-x-BFP_Pilates-Website-Banner.png
 import HeartStickerBlue from "../../images/stickers/heart sticker blue.png";
 import SpecialBuy from "../../images/stickers/special buy.png";
 import OfficialMerch from "../../images/stickers/official merch.png";
-import ExclamationMarkBlue from "../../images/stickers//Exclamation mark sticker blue.png";
+import ExclamationMarkBlue from "../../images/stickers/Exclamation mark sticker blue.png";
+import BFPPoweredByBonk from "../../images/stickers/bfp powered by bonk.png";
 
 export function WhatsNewCarousel() {
   return (
@@ -199,7 +200,7 @@ export function WhatsNewCarousel() {
                       className="animate-float-windy absolute top-[10%] left-[10%] w-[80%]"
                     />
                   </div>
-                  <div className="flex flex-col items-center justify-center gap-6 text-center lg:items-start lg:text-left">
+                  <div className="relative flex flex-col items-center justify-center gap-6 text-center lg:items-start lg:text-left">
                     <p className="-mb-4 text-sm">
                       <b>OFFICIAL MERCHANDISE</b>
                     </p>
@@ -223,6 +224,12 @@ export function WhatsNewCarousel() {
                         Shop now
                       </Link>
                     </Button>
+
+                    <Image
+                      src={BFPPoweredByBonk}
+                      alt="BFP Powered By BONK"
+                      className="absolute right-0 bottom-0 hidden w-32 lg:block"
+                    />
                   </div>
                 </div>
               </div>
