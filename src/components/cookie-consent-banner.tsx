@@ -9,7 +9,7 @@ export function CookieConsentBanner() {
   if (hasAnswered) return null;
 
   return (
-    <div className="bg-yellow text-orange fixed right-4 bottom-4 left-4 z-50 max-w-xl rounded-lg p-6">
+    <div className="bg-yellow text-orange fixed right-2 bottom-2 left-2 z-50 max-w-xl rounded-lg p-6 sm:right-6 sm:bottom-6 sm:left-6">
       <h3 className="font-cooper text-xl">Cookie Preferences</h3>
 
       <p className="mt-2 text-sm">
