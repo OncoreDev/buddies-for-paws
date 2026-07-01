@@ -1,8 +1,10 @@
+import localFont from "next/font/local";
+
 import { SITE_CONFIG } from "@/lib/site-config";
+import { CookieConsentProvider } from "@/providers/cookie-consent-provider";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import localFont from "next/font/local";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+
 import "./globals.css";
 
 const inter = Inter({
@@ -59,10 +61,8 @@ export default function RootLayout({
       <body
         className={`${cooperBlackStd.variable} ${inter.variable} relative z-0 flex min-h-screen flex-col antialiased`}
       >
-        {children}
+        <CookieConsentProvider>{children}</CookieConsentProvider>
       </body>
-      <GoogleTagManager gtmId="GTM-W3W7TVPV" />
-      <GoogleAnalytics gaId="G-0C67RBPTW7" />
     </html>
   );
 }
