@@ -15,9 +15,12 @@ import Link from "next/link";
 import BFP_Pose_Ledger_001 from "../../images/BFP_Pose_Ledger_001.png";
 import BONKXBFP_NIGHT_PUB from "../../images/BONK-x-BFP_Website-Carousel.png";
 import BFP_KEYRINGS from "../../images/BFP-Keyrings.jpg";
+import BONK_MERCH from "../../images/BONK-merch.png";
 import BONKXBFP_PILATES from "../../images/BONK-x-BFP_Pilates-Website-Banner.png";
 import HeartStickerBlue from "../../images/stickers/heart sticker blue.png";
 import SpecialBuy from "../../images/stickers/special buy.png";
+import OfficialMerch from "../../images/stickers/official merch.png";
+import ExclamationMarkBlue from "../../images/stickers//Exclamation mark sticker blue.png";
 
 export function WhatsNewCarousel() {
   return (
@@ -159,7 +162,7 @@ export function WhatsNewCarousel() {
                       BFP Keyrings
                     </h2>
 
-                    <p className="text-black">
+                    <p className="max-w-sm text-black">
                       <b>Meet Your Guardian Animal.</b> Five animals. Five
                       charities. One keyring that makes a real difference. Every
                       purchase supports your chosen charity.
@@ -168,6 +171,55 @@ export function WhatsNewCarousel() {
 
                     <Button asChild variant="blue">
                       <Link href="https://baobaoinu.com/en-gb" target="_blank">
+                        Shop now
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </CarouselItem>
+
+            <CarouselItem className="flex pl-8">
+              <div className="relative z-0 flex w-full flex-col overflow-hidden rounded-lg bg-white/80 p-6 sm:p-8">
+                <div className="grid gap-x-12 gap-y-8 lg:grid-cols-2">
+                  <div className="relative z-0 mx-auto w-full">
+                    <Image
+                      src={BONK_MERCH}
+                      alt="BONK Merch"
+                      className="aspect-square w-full rounded-lg object-cover"
+                    />
+                    <Image
+                      src={ExclamationMarkBlue}
+                      alt="Exclamation Mark Blue"
+                      className="animate-float-soft absolute top-[80%] left-[10%] w-[15%]"
+                    />
+                    <Image
+                      src={OfficialMerch}
+                      alt="Official Merch"
+                      className="animate-float-windy absolute top-[10%] left-[10%] w-[80%]"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center gap-6 text-center lg:items-start lg:text-left">
+                    <p className="-mb-4 text-sm">
+                      <b>OFFICIAL MERCHANDISE</b>
+                    </p>
+                    <h2 className="font-cooper max-w-sm text-4xl sm:text-5xl">
+                      Shop Official BONK Merch
+                    </h2>
+
+                    <p className="max-w-sm text-black">
+                      <b>
+                        Exclusive merchandise that gives back. Every purchase
+                        supports animal welfare charities worldwide.{" "}
+                      </b>
+                      <br />
+                      <br />
+                      Select your country to see regional availability.
+                      {/* BONK matches every donation for even greater impact. */}
+                    </p>
+
+                    <Button asChild variant="blue">
+                      <Link href="https://baobaoinu.com/" target="_blank">
                         Shop now
                       </Link>
                     </Button>
