@@ -13,8 +13,9 @@ export function CookieConsentBanner() {
       <h3 className="font-cooper text-xl">Cookie Preferences</h3>
 
       <p className="mt-2 text-sm">
-        By clicking "Accept", you consent to the use of Google Analytics cookies
-        to help us understand website usage and improve your experience.
+        By clicking &quot;Accept&quot;, you consent to the use of Google
+        Analytics cookies to help us understand website usage and improve your
+        experience.
       </p>
 
       <div className="mt-4 flex justify-end gap-2">
